@@ -1,7 +1,7 @@
 ﻿/*
  * Author: Laura Legg
  * Class name: ThugsTBone.cs
- * Purpose: Class used to represent the Philly cheesesteak sandwich entree.
+ * Purpose: Class used to represent the T-Bone sandwich entree.
  */
 using System;
 using System.Collections.Generic;
