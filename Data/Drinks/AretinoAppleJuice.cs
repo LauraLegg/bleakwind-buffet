@@ -13,38 +13,30 @@ namespace BleakwindBuffet.Data.Drinks
     public class AretinoAppleJuice
     {
         /// <summary>
-        /// Stores the price of the drink based on the size.
-        /// </summary>
-        private double _price = 0.62;
-        /// <summary>
         /// Gets and sets the price of the drink based on the size.
         /// </summary>
         public double Price
         {
-            get => _price;
-            private set
+            get 
             {
-                if (Size == Size.Small) _price = 0.62;
-                if (Size == Size.Medium) _price = 0.87;
-                if (Size == Size.Large) _price = 1.01;
+                if (Size == Size.Small) return 0.62;
+                if (Size == Size.Medium) return 0.87;
+                if (Size == Size.Large) return 1.01;
+                throw new NotImplementedException($"Price for {Size} Aretino Apple Juice not found");
             }
         }
 
-        /// <summary>
-        /// Stores number of calories in the drink based on the size.
-        /// </summary>
-        private uint _calories = 44;
         /// <summary>
         /// Gets and sets the calories based on the size.
         /// </summary>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get 
             {
-                if (Size == Size.Small) _calories = 44;
-                if (Size == Size.Medium) _calories = 88;
-                if (Size == Size.Large) _calories = 132;
+                if (Size == Size.Small) return 44;
+                if (Size == Size.Medium) return 88;
+                if (Size == Size.Large) return 132;
+                throw new NotImplementedException($"Calories for {Size} Aretino Apple Juice not found");
             }
         }
 
