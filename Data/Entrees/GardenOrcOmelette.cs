@@ -9,30 +9,30 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    class GardenOrcOmelette
+    public class GardenOrcOmelette
     {
         /// <summary>
-        /// Gets the price for the omelette.
+        /// Gets the price for the entree.
         /// </summary>
         public double Price => 4.57;
 
         /// <summary>
-        /// Gets the calories for the omelette.
+        /// Gets the number calories for the entree.
         /// </summary>
         public uint Calories => 404;
 
         /// <summary>
-        /// Property is true when broccoli is to be added to the omelette.
+        /// Property is true when broccoli is to be added to the entree.
         /// </summary>
         public bool Broccoli { get; set; } = true;
 
         /// <summary>
-        /// Property is true when mushrooms are to be added to the omelette.
+        /// Property is true when mushrooms are to be added to the entree.
         /// </summary>
         public bool Mushrooms { get; set; } = true;
 
         /// <summary>
-        /// Property is true when tomato is to be added to the omelette.
+        /// Property is true when tomato is to be added to the entree.
         /// </summary>
         public bool Tomato { get; set; } = true;
 
@@ -58,9 +58,9 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
-        /// Returns the name of the omelette as a string.
+        /// Overrides ToString() to return the name of the entree.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the name of the entree.</returns>
         public override string ToString()
         {
             return "Garden Orc Omelette";

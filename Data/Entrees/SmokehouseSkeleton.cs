@@ -1,7 +1,7 @@
 ﻿/*
  * Author: Laura Legg
  * Class name: SmokehouseSkeleton.cs
- * Purpose: Class used to represent the Smokehouse Skeleton breakfast combo entree.
+ * Purpose: Class used to represent the Smokehouse Skeleton breakfast entree.
  */
 using System;
 using System.Collections.Generic;
@@ -12,37 +12,38 @@ namespace BleakwindBuffet.Data.Entrees
     public class SmokehouseSkeleton
     {
         /// <summary>
-        /// Gets the price for the breakfast combo.
+        /// Gets the price of the entree.
         /// </summary>
         public double Price => 5.62;
 
         /// <summary>
-        /// Gets the calories for the breakfast combo.
+        /// Gets the number of calories for the entree.
         /// </summary>
         public uint Calories => 602;
 
         /// <summary>
-        /// Property is true when sausage links is to be added to the combo.
+        /// Property is true when sausage links are to be added to the entree.
         /// </summary>
         public bool SausageLink { get; set; } = true;
 
         /// <summary>
-        /// Property is true when eggs are to be added to the combo.
+        /// Property is true when eggs are to be added to the entree.
         /// </summary>
         public bool Egg { get; set; } = true;
 
         /// <summary>
-        /// Property is true when hash browns are to be added to the combo.
+        /// Property is true when hash browns are to be added to the entree.
         /// </summary>
         public bool HashBrowns { get; set; } = true;
 
         /// <summary>
-        /// Property is true when pancakes are to be added to the combo.
+        /// Property is true when pancakes are to be added to the entree.
         /// </summary>
         public bool Pancake { get; set; } = true;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to false, a hold 
+        /// instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -58,9 +59,9 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
-        /// Returns the name of the combo as a string.
+        /// Overrides ToString() to return the name of the entree.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the name of the entree.</returns>
         public override string ToString()
         {
             return "Smokehouse Skeleton";

@@ -1,7 +1,7 @@
 ﻿/*
  * Author: Laura Legg
  * Class name: PhillyPoacher.cs
- * Purpose: Class used to represent the Philly cheesesteak sandwich entree.
+ * Purpose: Class used to represent the Philly Poacher.
  */
 using System;
 using System.Collections.Generic;
@@ -9,35 +9,36 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    class PhillyPoacher
+    public class PhillyPoacher
     {
         /// <summary>
-        /// Gets the price for the sandwich.
+        /// Gets the price of the entree.
         /// </summary>
         public double Price => 7.23;
 
         /// <summary>
-        /// Gets the calories for the sandwich.
+        /// Gets the number of calories for the entree.
         /// </summary>
         public uint Calories => 784;
 
         /// <summary>
-        /// Property is true when Sirloin is to be added to the sandwich.
+        /// Property is true when sirloin is to be added to the entree.
         /// </summary>
         public bool Sirloin { get; set; } = true;
 
         /// <summary>
-        /// Property is true when Onion is to be added to the sandwich.
+        /// Property is true when onion is to be added to the entree.
         /// </summary>
         public bool Onion { get; set; } = true;
 
         /// <summary>
-        /// Property is true when the roll is to be added to the sandwich.
+        /// Property is true when the roll is to be added to the entree.
         /// </summary>
         public bool Roll { get; set; } = true;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to false, a hold 
+        /// instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -52,9 +53,9 @@ namespace BleakwindBuffet.Data.Entrees
         }
 
         /// <summary>
-        /// Returns the name of the sandwich as a string.
+        /// Overrides ToString() to return the name of the entree.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the name of the entree.</returns>
         public override string ToString()
         {
             return "Philly Poacher";

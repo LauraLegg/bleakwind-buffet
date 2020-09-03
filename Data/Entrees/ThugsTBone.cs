@@ -7,16 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class ThugsTBone
+    public class ThugsTBone
     {
         public double Price => 6.44;
 
         public uint Calories => 982;
 
         /// <summary>
-        ///  It has no boolean properties. The SpecialInstructions should return an emplty list always.
+        ///  It has no boolean properties. The SpecialInstructions 
+        ///  property should always return an emplty list.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -28,9 +29,9 @@ namespace Data.Entrees
         }
 
         /// <summary>
-        /// Returns the name of the sandwich as a string.
+        /// Overrides ToString() to return the name of the entree.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the name of the entree.</returns>
         public override string ToString()
         {
             return "Thugs T-Bone";

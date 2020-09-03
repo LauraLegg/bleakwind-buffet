@@ -59,7 +59,8 @@ namespace BleakwindBuffet.Data.Drinks
         public SodaFlavor Flavor { get; set; } = SodaFlavor.Cherry;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to false, a 
+        /// hold instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {
