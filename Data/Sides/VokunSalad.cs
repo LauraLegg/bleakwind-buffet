@@ -13,38 +13,36 @@ namespace BleakwindBuffet.Data.Sides
     public class VokunSalad
     {
         /// <summary>
-        /// Stores the price of the side based on the size.
+        /// Gets the price of the side based on the size.
         /// </summary>
-        private double _price = 0.93;
-        /// <summary>
-        /// Gets and sets the price of the side based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if price is not set for a certain size.
+        /// </exception>
         public double Price
         {
-            get => _price;
-            private set
+            get
             {
-                if (Size == Size.Small) _price = 0.93;
-                if (Size == Size.Medium) _price = 1.28;
-                if (Size == Size.Large) _price = 1.82;
+                if (Size == Size.Small) return 0.93;
+                if (Size == Size.Medium) return 1.28;
+                if (Size == Size.Large) return 1.82;
+                throw new NotImplementedException($"Price for {Size} Vokun Salad not found");
             }
         }
 
         /// <summary>
-        /// Stores number of calories in the side based on the size.
+        /// Gets the number of calories based on the size.
         /// </summary>
-        private uint _calories = 41;
-        /// <summary>
-        /// Gets and sets the calories based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the number of calories is not set for a certain size.
+        /// </exception>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 41;
-                if (Size == Size.Medium) _calories = 52;
-                if (Size == Size.Large) _calories = 73;
+                if (Size == Size.Small) return 41;
+                if (Size == Size.Medium) return 52;
+                if (Size == Size.Large) return 73;
+                throw new NotImplementedException($"Calories for {Size} Vokun Salad not found");
             }
         }
 
@@ -54,8 +52,10 @@ namespace BleakwindBuffet.Data.Sides
         public Size Size { get; set; } = Size.Small;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to false, a hold 
+        /// instruction is added to the special instructions list.
         /// </summary>
+        /*
         public List<string> SpecialInstructions
         {
             get
@@ -64,11 +64,12 @@ namespace BleakwindBuffet.Data.Sides
                 return instructions;
             }
         }
+        */
 
         /// <summary>
-        /// Returns the size and name of the side.
+        /// Overrides ToString() to return the name of the side.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the size and name of the side.</returns>
         public override string ToString()
         {
             return $"{Size} Vokun Salad";

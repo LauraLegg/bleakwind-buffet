@@ -13,38 +13,36 @@ namespace BleakwindBuffet.Data.Sides
     public class DragonbornWaffleFries
     {
         /// <summary>
-        /// Stores the price of the side based on the size.
+        /// Gets the price of the side based on the size.
         /// </summary>
-        private double _price = 0.42;
-        /// <summary>
-        /// Gets and sets the price of the side based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if price is not set for a certain size.
+        /// </exception>
         public double Price
         {
-            get => _price;
-            private set
+            get
             {
-                if (Size == Size.Small) _price = 0.42;
-                if (Size == Size.Medium) _price = 0.76;
-                if (Size == Size.Large) _price = 0.96;
+                if (Size == Size.Small) return 0.42;
+                if (Size == Size.Medium) return 0.76;
+                if (Size == Size.Large) return 0.96;
+                throw new NotImplementedException($"Price for {Size} Dragonborn Waffle Fries not found");
             }
         }
 
         /// <summary>
-        /// Stores number of calories in the side based on the size.
+        /// Gets the calories based on the size.
         /// </summary>
-        private uint _calories = 77;
-        /// <summary>
-        /// Gets and sets the calories based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if number of calories is not set for a certain size.
+        /// </exception>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 77;
-                if (Size == Size.Medium) _calories = 89;
-                if (Size == Size.Large) _calories = 100;
+                if (Size == Size.Small) return 77;
+                if (Size == Size.Medium) return 89;
+                if (Size == Size.Large) return 100;
+                throw new NotImplementedException($"Calories for {Size} Dragonborn Waffle Fries not found");
             }
         }
 
@@ -56,6 +54,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
         /// </summary>
+        /*
         public List<string> SpecialInstructions
         {
             get
@@ -64,11 +63,12 @@ namespace BleakwindBuffet.Data.Sides
                 return instructions;
             }
         }
+        */
 
         /// <summary>
-        /// Returns the size and name of the side.
+        /// Overrides ToString() to return the name of the side.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the size and name of the side.</returns>
         public override string ToString()
         {
             return $"{Size} Dragonborn Waffle Fries";
