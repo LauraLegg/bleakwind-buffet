@@ -1,7 +1,7 @@
 ﻿/* 
  * Author: Laura Legg
  * Class name: MarkarthMilk.cs
- * Purpose: Class used to represent a Markarth Milk drink.
+ * Purpose: Class used to represent Markarth Milk.
  */
 using BleakwindBuffet.Data.Enums;
 using System;
@@ -13,38 +13,36 @@ namespace BleakwindBuffet.Data.Drinks
     public class MarkarthMilk
     {
         /// <summary>
-        /// Stores the price of the drink based on the size.
+        /// Gets the price of the drink based on the size.
         /// </summary>
-        private double _price = 1.05;
-        /// <summary>
-        /// Gets and sets the price of the drink based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if price is not set for a certain size.
+        /// </exception>
         public double Price
         {
-            get => _price;
-            private set
+            get 
             {
-                if (Size == Size.Small) _price = 1.05;
-                if (Size == Size.Medium) _price = 1.11;
-                if (Size == Size.Large) _price = 1.22;
+                if (Size == Size.Small) return 1.05;
+                if (Size == Size.Medium) return 1.11;
+                if (Size == Size.Large) return 1.22;
+                throw new NotImplementedException($"Price for {Size} Markarth Milk not found");
             }
         }
 
         /// <summary>
-        /// Stores number of calories in the drink based on the size.
+        /// Gets the number of calories based on the size.
         /// </summary>
-        private uint _calories = 56;
-        /// <summary>
-        /// Gets and sets the calories based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the number of calories is not set for a certain size.
+        /// </exception>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 56;
-                if (Size == Size.Medium) _calories = 72;
-                if (Size == Size.Large) _calories = 93;
+                if (Size == Size.Small) return 56;
+                if (Size == Size.Medium) return 72;
+                if (Size == Size.Large) return 93;
+                throw new NotImplementedException($"Calories for {Size} Markarth Milk not found");
             }
         }
 
@@ -59,7 +57,7 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice { get; set; } = false;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to true, an add instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -72,9 +70,9 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Returns the size and name of the drink.
+        /// Overrides ToString() to return the name of the drink.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the size and name of the drink.</returns>
         public override string ToString()
         {
             return $"{Size} Markarth Milk";

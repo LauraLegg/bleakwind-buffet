@@ -38,7 +38,8 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Lemon { get; set; } = false;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to false, a hold instruction is 
+        /// added to the special instructions list, or vice versa.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -52,9 +53,9 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Returns the size and name of the drink.
+        /// Overrides ToString() to return the name of the drink.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the size and name of the drink.</returns>
         public override string ToString()
         {
             return $"{Size} Warrior Water";

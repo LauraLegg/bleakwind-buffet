@@ -13,38 +13,36 @@ namespace BleakwindBuffet.Data.Drinks
     public class CandlehearthCoffee
     {
         /// <summary>
-        /// Stores the price of the drink based on the size.
+        /// Gets the price of the drink based on the size.
         /// </summary>
-        private double _price = 0.75;
-        /// <summary>
-        /// Gets and sets the price of the drink based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if price is not set for a certain size.
+        /// </exception>
         public double Price
         {
-            get => _price;
-            private set
+            get
             {
-                if (Size == Size.Small) _price = 0.75;
-                if (Size == Size.Medium) _price = 1.25;
-                if (Size == Size.Large) _price = 1.75;
+                if (Size == Size.Small) return 0.75;
+                if (Size == Size.Medium) return 1.25;
+                if (Size == Size.Large) return 1.75;
+                throw new NotImplementedException($"Price for {Size} Candlehearth Coffee not found");
             }
         }
 
         /// <summary>
-        /// Stores number of calories in the drink based on the size.
+        /// Gets the number of calories based on the size.
         /// </summary>
-        private uint _calories = 7;
-        /// <summary>
-        /// Gets and sets the calories based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the number of calories is not set for a certain size.
+        /// </exception>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 7;
-                if (Size == Size.Medium) _calories = 10;
-                if (Size == Size.Large) _calories = 20;
+                if (Size == Size.Small) return 7;
+                if (Size == Size.Medium) return 10;
+                if (Size == Size.Large) return 20;
+                throw new NotImplementedException($"Calories for {Size} Candlehearth Coffee not found");
             }
         }
 
@@ -69,7 +67,7 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Decaf { get; set; } = false;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to true, an add instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -83,9 +81,12 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Returns the size and name of the drink.
+        /// Overrides ToString() to return the name of the drink.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// Returns the size and name of the drink. If Decaf is true, 
+        /// then the name of the drink is changed to include Decaf.
+        /// </returns>
         public override string ToString()
         {
             if (!Decaf) return $"{Size} Candlehearth Coffee";

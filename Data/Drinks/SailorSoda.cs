@@ -13,38 +13,36 @@ namespace BleakwindBuffet.Data.Drinks
     public class SailorSoda
     {
         /// <summary>
-        /// Stores the price of the drink based on the size.
+        /// Gets the price of the drink based on the size.
         /// </summary>
-        private double _price = 1.42;
-        /// <summary>
-        /// Gets and sets the price of the drink based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if price is not set for a certain size.
+        /// </exception>
         public double Price
         {
-            get => _price;
-            private set
+            get
             {
-                if (Size == Size.Small) _price = 1.42;
-                if (Size == Size.Medium) _price = 1.74;
-                if (Size == Size.Large) _price = 2.07;
+                if (Size == Size.Small) return 1.42;
+                if (Size == Size.Medium) return 1.74;
+                if (Size == Size.Large) return 2.07;
+                throw new NotImplementedException($"Price for {Size} Sailor Soda not found");
             }
         }
 
         /// <summary>
-        /// Stores number of calories in the drink based on the size.
+        /// Gets the number of calories based on the size.
         /// </summary>
-        private uint _calories = 117;
-        /// <summary>
-        /// Gets and sets the calories based on the size.
-        /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if the number of calories is not set for a certain size.
+        /// </exception>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 117;
-                if (Size == Size.Medium) _calories = 153;
-                if (Size == Size.Large) _calories = 205;
+                if (Size == Size.Small) return 117;
+                if (Size == Size.Medium) return 153;
+                if (Size == Size.Large) return 205;
+                throw new NotImplementedException($"Price for {Size} Sailor Soda not found");
             }
         }
 
@@ -74,9 +72,9 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Returns the size, flavor, and name of the drink.
+        /// Overrides ToString() to return the name of the drink.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the size and name of the drink.</returns>
         public override string ToString()
         {
             return $"{Size} {Flavor} Sailor Soda";

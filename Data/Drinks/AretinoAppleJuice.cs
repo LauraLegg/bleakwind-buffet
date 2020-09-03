@@ -13,8 +13,11 @@ namespace BleakwindBuffet.Data.Drinks
     public class AretinoAppleJuice
     {
         /// <summary>
-        /// Gets and sets the price of the drink based on the size.
+        /// Gets the price of the drink based on the size.
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if price is not set for a certain size.
+        /// </exception>
         public double Price
         {
             get 
@@ -27,8 +30,11 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Gets and sets the calories based on the size.
+        /// Gets the number of calories based on the size.
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// Thrown if number of calories is not set for a certain size.
+        /// </exception>
         public uint Calories
         {
             get 
@@ -51,7 +57,7 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice { get; set; } = false;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to true, an add instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {
@@ -64,9 +70,9 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Returns the size and name of the drink.
+        /// Overrides ToString() to return the name of the drink.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the size and name of the drink.</returns>
         public override string ToString()
         {
             return $"{Size} Aretino Apple Juice";
