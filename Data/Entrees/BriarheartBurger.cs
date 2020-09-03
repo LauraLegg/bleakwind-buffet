@@ -37,7 +37,7 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Mustard { get; set; } = true;
 
         /// <summary>
-        /// Property is true when pickles is to be added to the entree.
+        /// Property is true when pickles are to be added to the entree.
         /// </summary>
         public bool Pickle { get; set; } = true;
 

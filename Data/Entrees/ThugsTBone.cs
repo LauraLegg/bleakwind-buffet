@@ -11,8 +11,14 @@ namespace BleakwindBuffet.Data.Entrees
 {
     public class ThugsTBone
     {
+        /// <summary>
+        /// Gets the price for the entree.
+        /// </summary>
         public double Price => 6.44;
 
+        /// <summary>
+        /// Gets the number of calories in the entree.
+        /// </summary>
         public uint Calories => 982;
 
         /// <summary>

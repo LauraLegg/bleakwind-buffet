@@ -67,7 +67,8 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Decaf { get; set; } = false;
 
         /// <summary>
-        /// If any of the ingredients are set to true, an add instruction is added to the special instructions list.
+        /// If any of the ingredients are set to true, an add 
+        /// instruction is added to the special instructions list.
         /// </summary>
         public List<string> SpecialInstructions
         {

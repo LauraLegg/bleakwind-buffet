@@ -17,7 +17,7 @@ namespace BleakwindBuffet.Data.Entrees
         public double Price => 5.62;
 
         /// <summary>
-        /// Gets the number of calories for the entree.
+        /// Gets the number of calories in the entree.
         /// </summary>
         public uint Calories => 602;
 

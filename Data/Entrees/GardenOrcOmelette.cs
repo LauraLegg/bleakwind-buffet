@@ -17,7 +17,7 @@ namespace BleakwindBuffet.Data.Entrees
         public double Price => 4.57;
 
         /// <summary>
-        /// Gets the number calories for the entree.
+        /// Gets the number calories in the entree.
         /// </summary>
         public uint Calories => 404;
 
@@ -37,7 +37,7 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Tomato { get; set; } = true;
 
         /// <summary>
-        /// Property is true when cheddar is to be added to the omelette.
+        /// Property is true when cheddar is to be added to the entree.
         /// </summary>
         public bool Cheddar { get; set; } = true;
 

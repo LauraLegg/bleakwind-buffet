@@ -42,7 +42,7 @@ namespace BleakwindBuffet.Data.Drinks
                 if (Size == Size.Small) return 117;
                 if (Size == Size.Medium) return 153;
                 if (Size == Size.Large) return 205;
-                throw new NotImplementedException($"Price for {Size} Sailor Soda not found");
+                throw new NotImplementedException($"Calories for {Size} Sailor Soda not found");
             }
         }
 
