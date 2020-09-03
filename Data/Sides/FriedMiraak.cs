@@ -52,18 +52,10 @@ namespace BleakwindBuffet.Data.Sides
         public Size Size { get; set; } = Size.Small;
 
         /// <summary>
-        /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
+        /// If any of the ingredients are set to false, 
+        /// a hold instruction is added to the special instructions list.
         /// </summary>
-        /*
-        public List<string> SpecialInstructions
-        {
-            get
-            {
-                List<string> instructions = new List<string>();
-                return instructions;
-            }
-        }
-        */
+        public List<string> SpecialInstructions => new List<string>();
 
         /// <summary>
         /// Overrides ToString() to return the name of the side.
