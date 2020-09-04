@@ -1,10 +1,11 @@
 ﻿/*
  * Author: Zachery Brunner
+ * Modified by: Laura Legg
  * Class: ThugsTBoneTests.cs
  * Purpose: Test the ThugsTBone.cs class in the Data library
  */
 using Xunit;
-
+using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
@@ -14,21 +15,29 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
+            ThugsTBone bone = new ThugsTBone();
+            Assert.Equal(6.44, bone.Price);
         }
 
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
+            ThugsTBone bone = new ThugsTBone();
+            Assert.Equal((uint) 982, bone.Calories);
         }
 
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
+            ThugsTBone bone = new ThugsTBone();
+            Assert.Empty(bone.SpecialInstructions);
         }
 
         [Fact]
         public void ShouldReturnCorrectToString()
         {
+            ThugsTBone bone = new ThugsTBone();
+            Assert.Equal("Thugs T-Bone", bone.ToString());
         }
     }
 }
