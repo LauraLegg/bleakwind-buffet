@@ -87,5 +87,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             water.Size = size;
             Assert.Equal(name, water.ToString());
         }
+
+        [Fact]
+        public void ShouldBeAssignableToAbstractDrinkClass()
+        {
+            WarriorWater water = new WarriorWater();
+            Assert.IsAssignableFrom<Drink>(water);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToAbstractIOrderItemClass()
+        {
+            WarriorWater water = new WarriorWater();
+            Assert.IsAssignableFrom<IOrderItem>(water);
+        }
     }
 }

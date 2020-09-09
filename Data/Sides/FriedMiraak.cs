@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class FriedMiraak
+    public class FriedMiraak : Side, IOrderItem
     {
         /// <summary>
         /// Gets the price of the side based on the size.
@@ -18,7 +18,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <exception cref="System.NotImplementedException">
         /// Thrown if price is not set for a certain size.
         /// </exception>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -35,7 +35,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <exception cref="System.NotImplementedException">
         /// Thrown if number of calories is not set for a certain size.
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get 
             {
@@ -49,13 +49,13 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// The size of the side.
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// If any of the ingredients are set to false, 
         /// a hold instruction is added to the special instructions list.
         /// </summary>
-        public List<string> SpecialInstructions => new List<string>();
+        public override List<string> SpecialInstructions => new List<string>();
 
         /// <summary>
         /// Overrides ToString() to return the name of the side.

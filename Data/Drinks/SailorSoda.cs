@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class SailorSoda
+    public class SailorSoda : Drink, IOrderItem
     {
         /// <summary>
         /// Gets the price of the drink based on the size.
@@ -18,7 +18,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// Thrown if price is not set for a certain size.
         /// </exception>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -35,7 +35,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// Thrown if the number of calories is not set for a certain size.
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -49,7 +49,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// The size of the drink.
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// Property is true when ice is included in the drink.
@@ -62,7 +62,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// If any of the ingredients are set to false, a 
         /// hold instruction is added to the special instructions list.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

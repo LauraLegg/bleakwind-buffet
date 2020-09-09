@@ -71,5 +71,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             grits.Size = size;
             Assert.Equal(name, grits.ToString());
         }
+
+        [Fact]
+        public void ShouldBeAssignableToAbstractSideClass()
+        {
+            MadOtarGrits grits = new MadOtarGrits();
+            Assert.IsAssignableFrom<Side>(grits);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToAbstractIOrderItemClass()
+        {
+            MadOtarGrits grits = new MadOtarGrits();
+            Assert.IsAssignableFrom<IOrderItem>(grits);
+        }
     }
 }
