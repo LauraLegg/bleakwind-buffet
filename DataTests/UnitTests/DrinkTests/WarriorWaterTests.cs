@@ -96,7 +96,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         }
 
         [Fact]
-        public void ShouldBeAssignableToAbstractIOrderItemClass()
+        public void ShouldBeAssignableToIOrderItemClass()
         {
             WarriorWater water = new WarriorWater();
             Assert.IsAssignableFrom<IOrderItem>(water);

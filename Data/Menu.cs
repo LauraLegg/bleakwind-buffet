@@ -6,6 +6,7 @@
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Sides;
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,10 @@ namespace BleakwindBuffet.Data
 {
     public static class Menu
     {
+        /// <summary>
+        /// A method that returns a list of instances of each entree item 
+        /// </summary>
+        /// <returns>Returns list of each entree item</returns>
         public static IEnumerable<IOrderItem> Entrees()
         {
             List<IOrderItem> entrees = new List<IOrderItem>();
@@ -27,46 +32,101 @@ namespace BleakwindBuffet.Data
             return entrees;
         }
 
+        /// <summary>
+        /// A method that returns a list of instances of each side item 
+        /// </summary>
+        /// <returns>Returns list of each side item</returns>
         public static IEnumerable<IOrderItem> Sides()
         {
             List<IOrderItem> sides = new List<IOrderItem>();
-            sides.Add(new DragonbornWaffleFries());
-            sides.Add(new FriedMiraak());
-            sides.Add(new MadOtarGrits());
-            sides.Add(new VokunSalad());
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
+                sides.Add(new DragonbornWaffleFries()
+                {
+                    Size = size
+                });
+
+                sides.Add(new FriedMiraak()
+                {
+                    Size = size
+                });
+
+                sides.Add(new MadOtarGrits()
+                {
+                    Size = size
+                });
+
+                sides.Add(new VokunSalad()
+                {
+                    Size = size
+                });
+            }
             return sides;
         }
 
+        /// <summary>
+        /// A method that returns a list of instances of each drink item 
+        /// </summary>
+        /// <returns>Returns a list of each drink item</returns>
         public static IEnumerable<IOrderItem> Drinks()
         {
             List<IOrderItem> drinks = new List<IOrderItem>();
-            drinks.Add(new AretinoAppleJuice());
-            drinks.Add(new CandlehearthCoffee());
-            drinks.Add(new MarkarthMilk());
-            drinks.Add(new SailorSoda());
-            drinks.Add(new WarriorWater());
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
+                drinks.Add(new AretinoAppleJuice()
+                {
+                    Size = size
+                });
+
+                drinks.Add(new CandlehearthCoffee()
+                {
+                    Decaf = false,
+                    Size = size
+                });
+
+                drinks.Add(new CandlehearthCoffee()
+                {
+                    Decaf = true,
+                    Size = size
+                });
+
+                drinks.Add(new MarkarthMilk()
+                {
+                    Size = size
+                });
+
+                foreach (SodaFlavor flavor in Enum.GetValues(typeof(SodaFlavor)))
+                {
+                    drinks.Add(new SailorSoda()
+                    {
+                        Size = size,
+                        Flavor = flavor
+                    });
+                }
+
+                drinks.Add(new WarriorWater()
+                {
+                    Size = size
+                });
+            }
             return drinks;
         }
 
+        /// <summary>
+        /// A method that returns a list of instances of each food or drink item 
+        /// </summary>
+        /// <returns>Returns a list of each food or drink item</returns>
         public static IEnumerable<IOrderItem> FullMenu()
         {
             List<IOrderItem> menu = new List<IOrderItem>();
-            menu.Add(new BriarheartBurger());
-            menu.Add(new DoubleDraugr());
-            menu.Add(new GardenOrcOmelette());
-            menu.Add(new PhillyPoacher());
-            menu.Add(new SmokehouseSkeleton());
-            menu.Add(new ThalmorTriple());
-            menu.Add(new ThugsTBone());
-            menu.Add(new DragonbornWaffleFries());
-            menu.Add(new FriedMiraak());
-            menu.Add(new MadOtarGrits());
-            menu.Add(new VokunSalad());
-            menu.Add(new AretinoAppleJuice());
-            menu.Add(new CandlehearthCoffee());
-            menu.Add(new MarkarthMilk());
-            menu.Add(new SailorSoda());
-            menu.Add(new WarriorWater());
+            List<IOrderItem> entrees = (List<IOrderItem>) Entrees();
+            List<IOrderItem> sides = (List<IOrderItem>)Sides();
+            List<IOrderItem> drinks = (List<IOrderItem>) Drinks();
+
+            menu.AddRange(entrees);
+            menu.AddRange(sides);
+            menu.AddRange(drinks);
+
             return menu;
         }
     }
