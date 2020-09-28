@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="PointOfSale.SideIngredients"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!--The grid is 1 colum by 2 rows-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--Where the list of special instructions will be displayed-->
+        <ListView Name ="ingredients"/>
+        
+        <!--Button that will be used to apply changes to the menu item and add it to the order.-->
+        <Button Name="applyButton"  Grid.Row="1" Grid.Column="1">
+            Apply to Order
+        </Button>
+    </Grid>
+</UserControl>
