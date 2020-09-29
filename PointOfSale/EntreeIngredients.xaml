@@ -17,12 +17,11 @@
         </Grid.RowDefinitions>
 
         <!--Where the list of special instructions will be displayed-->
-        <ListView Name ="ingredients"/>
+        <ListView Name ="specialInstructions"/>
 
         <!--Button that will be used to apply changes to the menu item and add it to the order.-->
-        <Button Name="applyButton"  Grid.Row="1" Grid.Column="1">
-            Apply to Order
+        <Button Name="doneButton"  Click="DoneButton_Click" Grid.Row="1" FontSize="20" FontFamily="arial">
+            Done
         </Button>
     </Grid>
-
 </UserControl>

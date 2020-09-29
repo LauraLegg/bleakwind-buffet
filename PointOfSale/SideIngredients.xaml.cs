@@ -18,12 +18,18 @@ namespace PointOfSale
     /// </summary>
     public partial class SideIngredients : UserControl
     {
+        MenuButtons buttons;
+
+        private string name;
+
         /// <summary>
         /// Constructor for the sides
         /// </summary>
-        public SideIngredients()
+        public SideIngredients(MenuButtons buttons, string name)
         {
             InitializeComponent();
+            this.name = name;
+            this.buttons = buttons;
             SideSizeSetter();
         }
 
@@ -33,32 +39,26 @@ namespace PointOfSale
         void SideSizeSetter()
         {
             RadioButton small = new RadioButton();
-            small.FontFamily = new FontFamily("arial");
-            small.FontSize = 20;
             small.Content = "Small";
-            ingredients.Items.Add(small);
-
-            TextBlock space = new TextBlock();
-            space.Text = "";
-            space.FontSize = 1;
-            ingredients.Items.Add(space);
+            specialInstructions.Items.Add(small);
 
             RadioButton medium = new RadioButton();
-            medium.FontFamily = new FontFamily("arial");
-            medium.FontSize = 20;
             medium.Content = "Medium";
-            ingredients.Items.Add(medium);
-
-            TextBlock space2 = new TextBlock();
-            space2.Text = "";
-            space2.FontSize = 1;
-            ingredients.Items.Add(space2);
+            specialInstructions.Items.Add(medium);
 
             RadioButton large = new RadioButton();
-            large.FontFamily = new FontFamily("arial");
-            large.FontSize = 20;
             large.Content = "Large";
-            ingredients.Items.Add(large);
+            specialInstructions.Items.Add(large);
+        }
+
+        /// <summary>
+        /// Event handler for done button. Switches the screen back to the menu buttons.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            buttons.SwitchScreen(4, name);
         }
     }
 }

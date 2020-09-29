@@ -18,21 +18,29 @@ namespace PointOfSale
     /// </summary>
     public partial class EntreeIngredients : UserControl
     {
-        /// <summary>
-        /// Holds the name of the entree button.
-        /// </summary>
+        MenuButtons buttons;
         private string itemName;
 
         /// <summary>
         /// Contructor for the entree control.
         /// </summary>
         /// <param name="item">Name of the entree button</param>
-        public EntreeIngredients(string item)
+        public EntreeIngredients(MenuButtons buttons, string name)
         {
             InitializeComponent();
-            itemName = item;
+            this.buttons = buttons;
+            itemName = name;
             EntreeSpecialInstructions();
+        }
 
+        /// <summary>
+        /// Event handler for the done button. Switches screen back to menu buttons.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            buttons.SwitchScreen(4, itemName);
         }
 
         /// <summary>
@@ -40,146 +48,106 @@ namespace PointOfSale
         /// </summary>
         void EntreeSpecialInstructions()
         {
-            if (itemName == "thalmorButton" || itemName == "draugrButton" || itemName == "briarheartButton")
+            if (itemName == "onBriarheart" || itemName == "onDoubleDraugr" || itemName == "onThalmorTriple")
             {
                 CheckBox bun = new CheckBox();
-                bun.FontFamily = new FontFamily("arial");
-                bun.FontSize = 20;
                 bun.Content = "Bun";
-                ingredients.Items.Add(bun);
+                specialInstructions.Items.Add(bun);
 
                 CheckBox ketchup = new CheckBox();
-                ketchup.FontFamily = new FontFamily("arial");
-                ketchup.FontSize = 20;
                 ketchup.Content = "Ketchup";
-                ingredients.Items.Add(ketchup);
+                specialInstructions.Items.Add(ketchup);
 
                 CheckBox mustard = new CheckBox();
-                mustard.FontFamily = new FontFamily("arial");
-                mustard.FontSize = 20;
                 mustard.Content = "Mustard";
-                ingredients.Items.Add(mustard);
+                specialInstructions.Items.Add(mustard);
 
                 CheckBox pickles = new CheckBox();
-                pickles.FontFamily = new FontFamily("arial");
-                pickles.FontSize = 20;
                 pickles.Content = "Pickles";
-                ingredients.Items.Add(pickles);
+                specialInstructions.Items.Add(pickles);
 
                 CheckBox cheese = new CheckBox();
-                cheese.FontFamily = new FontFamily("arial");
-                cheese.FontSize = 20;
                 cheese.Content = "Cheese";
-                ingredients.Items.Add(cheese);
+                specialInstructions.Items.Add(cheese);
 
-                if (itemName == "thalmorButton" || itemName == "draugrButton")
+                if (itemName == "onThalmorTriple" || itemName == "onDoubleDraugr")
                 {
                     CheckBox tomato = new CheckBox();
-                    tomato.FontFamily = new FontFamily("arial");
-                    tomato.FontSize = 20;
                     tomato.Content = "Tomato";
-                    ingredients.Items.Add(tomato);
+                    specialInstructions.Items.Add(tomato);
 
                     CheckBox lettuce = new CheckBox();
-                    lettuce.FontFamily = new FontFamily("arial");
-                    lettuce.FontSize = 20;
                     lettuce.Content = "Lettuce";
-                    ingredients.Items.Add(lettuce);
+                    specialInstructions.Items.Add(lettuce);
 
                     CheckBox mayo = new CheckBox();
-                    mayo.FontFamily = new FontFamily("arial");
-                    mayo.FontSize = 20;
                     mayo.Content = "Mayo";
-                    ingredients.Items.Add(mayo);
+                    specialInstructions.Items.Add(mayo);
 
-                    if (itemName == "thalmorButton")
+                    if (itemName == "onThalmorTriple")
                     {
                         CheckBox bacon = new CheckBox();
-                        bacon.FontFamily = new FontFamily("arial");
-                        bacon.FontSize = 20;
                         bacon.Content = "Bacon";
-                        ingredients.Items.Add(bacon);
+                        specialInstructions.Items.Add(bacon);
 
                         CheckBox egg = new CheckBox();
-                        egg.FontFamily = new FontFamily("arial");
-                        egg.FontSize = 20;
                         egg.Content = "Egg";
-                        ingredients.Items.Add(egg);
+                        specialInstructions.Items.Add(egg);
                     }
                 }
             }
 
-            else if (itemName == "skeletonButton")
+            else if (itemName == "onSmokehouseSkeleton")
             {
                 CheckBox sausage = new CheckBox();
-                sausage.FontFamily = new FontFamily("arial");
-                sausage.FontSize = 20;
                 sausage.Content = "Sausage Link";
-                ingredients.Items.Add(sausage);
+                specialInstructions.Items.Add(sausage);
 
                 CheckBox egg = new CheckBox();
-                egg.FontFamily = new FontFamily("arial");
-                egg.FontSize = 20;
                 egg.Content = "Eggs";
-                ingredients.Items.Add(egg);
+                specialInstructions.Items.Add(egg);
 
                 CheckBox hashBrowns = new CheckBox();
-                hashBrowns.FontFamily = new FontFamily("arial");
-                hashBrowns.FontSize = 20;
                 hashBrowns.Content = "Hash Browns";
-                ingredients.Items.Add(hashBrowns);
+                specialInstructions.Items.Add(hashBrowns);
 
                 CheckBox pancake = new CheckBox();
-                pancake.FontFamily = new FontFamily("arial");
-                pancake.FontSize = 20;
                 pancake.Content = "Pancakes";
-                ingredients.Items.Add(pancake);
+                specialInstructions.Items.Add(pancake);
             }
 
-            else if (itemName == "omeletteButton")
+            else if (itemName == "onGardenOrcOmelette")
             {
                 CheckBox broccoli = new CheckBox();
-                broccoli.FontFamily = new FontFamily("arial");
-                broccoli.FontSize = 20;
                 broccoli.Content = "Broccoli";
-                ingredients.Items.Add(broccoli);
+                specialInstructions.Items.Add(broccoli);
 
                 CheckBox mushrooms = new CheckBox();
                 mushrooms.Content = "Mushrooms";
-                ingredients.Items.Add(mushrooms);
+                specialInstructions.Items.Add(mushrooms);
 
                 CheckBox tomato = new CheckBox();
-                tomato.FontFamily = new FontFamily("arial");
-                tomato.FontSize = 20;
                 tomato.Content = "Tomato";
-                ingredients.Items.Add(tomato);
+                specialInstructions.Items.Add(tomato);
 
                 CheckBox cheddar = new CheckBox();
-                cheddar.FontFamily = new FontFamily("arial");
-                cheddar.FontSize = 20;
                 cheddar.Content = "Cheddar";
-                ingredients.Items.Add(cheddar);
+                specialInstructions.Items.Add(cheddar);
             }
 
-            else if (itemName == "poacherButton")
+            else if (itemName == "onPhillyPoacher")
             {
                 CheckBox sirloin = new CheckBox();
-                sirloin.FontFamily = new FontFamily("arial");
-                sirloin.FontSize = 20;
                 sirloin.Content = "Sirloin";
-                ingredients.Items.Add(sirloin);
+                specialInstructions.Items.Add(sirloin);
 
                 CheckBox onion = new CheckBox();
-                onion.FontFamily = new FontFamily("arial");
-                onion.FontSize = 20;
                 onion.Content = "Onion";
-                ingredients.Items.Add(onion);
+                specialInstructions.Items.Add(onion);
 
                 CheckBox roll = new CheckBox();
-                roll.FontFamily = new FontFamily("arial");
-                roll.FontSize = 20;
                 roll.Content = "Roll";
-                ingredients.Items.Add(roll);
+                specialInstructions.Items.Add(roll);
             }
         }
     }

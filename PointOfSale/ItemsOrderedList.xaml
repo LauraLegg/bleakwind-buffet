@@ -16,14 +16,12 @@
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
         
-        <!--How the list of ordered items is going to be displayed-->
-        <Border BorderThickness="2" BorderBrush="Gray">
-            <TextBlock TextAlignment="Center" FontFamily="arial" FontWeight="Bold" FontSize="25" TextDecorations="underline">
-                Items Ordered:
+        <!--A textbox containing the order number and a spot for the list of ordered items.-->
+        <Border>
+            <TextBlock Name="orderNumber" TextAlignment="Center" FontFamily="arial" FontWeight="Bold" FontSize="25">
+                Order #___
             </TextBlock>
         </Border>
-        <Border Grid.Row="1">
-            <ListView/>
-        </Border>
+        <ListView Name="orderList" Grid.Row="1"/>
     </Grid>
 </UserControl> 

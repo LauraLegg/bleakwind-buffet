@@ -19,128 +19,99 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkIngredients : UserControl
     {
-        /// <summary>
-        /// Holds the name of the entree button.
-        /// </summary>
-        private string itemName;
+        MenuButtons buttons;
+
+        private string name;
 
         /// <summary>
         /// Constructor for the drinks.
         /// </summary>
         /// <param name="item">The name of the drink button.</param>
-        public DrinkIngredients(string item)
+        public DrinkIngredients(MenuButtons buttons, string name)
         {
             InitializeComponent();
-            itemName = item;
+            this.name = name;
+            this.buttons = buttons;
             DrinksSpecialIngredients();
         }
-        
+
+        /// <summary>
+        /// Event handler for the done button. Switches screen back to menu buttons.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+           buttons.SwitchScreen(4, name);
+        }
+
+
         /// <summary>
         /// Method displaying the correct special ingredients
         /// </summary>
         void DrinksSpecialIngredients()
         {
             RadioButton small = new RadioButton();
-            small.FontFamily = new FontFamily("arial");
-            small.FontSize = 20;
             small.Content = "Small";
-            ingredients.Items.Add(small);
+            specialInstructions.Items.Add(small);
 
             RadioButton medium = new RadioButton();
-            medium.FontFamily = new FontFamily("arial");
-            medium.FontSize = 20;
             medium.Content = "Medium";
-            ingredients.Items.Add(medium);
+            specialInstructions.Items.Add(medium);
 
             RadioButton large = new RadioButton();
-            large.FontFamily = new FontFamily("arial");
-            large.FontSize = 20;
             large.Content = "Large";
-            ingredients.Items.Add(large);
-
-            SpaceAdder();
+            specialInstructions.Items.Add(large);
 
             CheckBox ice = new CheckBox();
             ice.Content = "Ice";
-            ice.FontFamily = new FontFamily("arial");
-            ice.FontSize = 20;
-            ingredients.Items.Add(ice);
-
-            if (itemName == "sodaButton")
+            specialInstructions.Items.Add(ice);
+            
+            if (name == "onSailorSoda")
             {
-                SpaceAdder();
 
                 RadioButton blackberry = new RadioButton();
-                blackberry.FontFamily = new FontFamily("arial");
-                blackberry.FontSize = 20;
                 blackberry.Content = "Blackberry";
-                ingredients.Items.Add(blackberry);
+                specialInstructions.Items.Add(blackberry);
 
                 RadioButton cherry = new RadioButton();
-                cherry.FontFamily = new FontFamily("arial");
-                cherry.FontSize = 20;
                 cherry.Content = "Cherry";
-                ingredients.Items.Add(cherry);
+                specialInstructions.Items.Add(cherry);
 
                 RadioButton grapefruit = new RadioButton();
-                grapefruit.FontFamily = new FontFamily("arial");
-                grapefruit.FontSize = 20;
                 grapefruit.Content = "Grapefruit";
-                ingredients.Items.Add(grapefruit);
+                specialInstructions.Items.Add(grapefruit);
 
                 RadioButton lemon = new RadioButton();
-                lemon.FontFamily = new FontFamily("arial");
-                lemon.FontSize = 20;
                 lemon.Content = "Lemon";
-                ingredients.Items.Add(lemon);
+                specialInstructions.Items.Add(lemon);
 
                 RadioButton peach = new RadioButton();
-                peach.FontFamily = new FontFamily("arial");
-                peach.FontSize = 20;
                 peach.Content = "Peach";
-                ingredients.Items.Add(peach);
+                specialInstructions.Items.Add(peach);
 
                 RadioButton watermelon = new RadioButton();
-                watermelon.FontFamily = new FontFamily("arial");
-                watermelon.FontSize = 20;
                 watermelon.Content = "Watermelon";
-                ingredients.Items.Add(watermelon);
+                specialInstructions.Items.Add(watermelon);
             }
 
-            else if (itemName == "coffeeButton")
+            else if (name == "onCandlehearthCoffee")
             {
                 CheckBox decaf = new CheckBox();
-                decaf.FontFamily = new FontFamily("arial");
-                decaf.FontSize = 20;
                 decaf.Content = "Decaf";
-                ingredients.Items.Add(decaf);
+                specialInstructions.Items.Add(decaf);
 
                 CheckBox cream = new CheckBox();
-                cream.FontFamily = new FontFamily("arial");
-                cream.FontSize = 20;
                 cream.Content = "Cream";
-                ingredients.Items.Add(cream);
+                specialInstructions.Items.Add(cream);
             }
 
-            else if (itemName == "waterButton")
+            else if (name == "onWarriorWater")
             {
                 CheckBox lemon = new CheckBox();
-                lemon.FontFamily = new FontFamily("arial");
-                lemon.FontSize = 20;
                 lemon.Content = "Lemon";
-                ingredients.Items.Add(lemon);
+                specialInstructions.Items.Add(lemon);
             }
-        }
-        
-        /// <summary>
-        /// Method for adding a space between different check boxes / radio buttons.
-        /// </summary>
-        private void SpaceAdder()
-        {
-            TextBlock space = new TextBlock();
-            space.Text = "";
-            space.FontSize = 5;
-            ingredients.Items.Add(space);
         }
     }
 }
