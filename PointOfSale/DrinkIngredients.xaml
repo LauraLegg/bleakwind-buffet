@@ -9,18 +9,23 @@
     <Grid>
         <!--The grid is 1 colum by 2 rows-->
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition Height="6*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!--Where the list of special instructions will be displayed-->
-        <ListView Name ="specialInstructions"/>
+        <!--Displays the name of the drink-->
+        <Label Name="drinkNameLabel" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="2"/>
 
+        <!--Where the list of special instructions will be displayed-->
+        <ListView Name ="specialInstructions" Grid.ColumnSpan="2" Grid.Row="1"/>
+        
         <!--Button that will be used to apply changes to the menu item and add it to the order.-->
-        <Button Name="applyButton" Click="DoneButton_Click" Grid.Row="1" FontSize="20" FontFamily="arial">
+        <Button Name="applyButton" Click="DoneButton_Click" Grid.Column="1" Grid.Row="2" FontSize="18">
             Done
         </Button>
     </Grid>

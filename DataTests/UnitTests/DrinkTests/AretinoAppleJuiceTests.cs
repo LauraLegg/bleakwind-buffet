@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -105,6 +106,70 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             AretinoAppleJuice drink = new AretinoAppleJuice();
             Assert.IsAssignableFrom<IOrderItem>(drink);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(drink);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSize()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+
+            Assert.PropertyChanged(drink, "Size", () =>
+            {
+                drink.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(drink, "Size", () =>
+            {
+                drink.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(drink, "Size", () =>
+            {
+                drink.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnIce()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+
+            Assert.PropertyChanged(drink, "Ice", () =>
+            {
+                drink.Ice = true;
+            });
+
+            Assert.PropertyChanged(drink, "Ice", () =>
+            {
+                drink.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+            drink.Size = Size.Medium;
+            Assert.PropertyChanged(drink, "Price", () => drink.Price.Equals(0.87));
+            drink.Size = Size.Large;
+            Assert.PropertyChanged(drink, "Price", () => drink.Price.Equals(1.01));
+            drink.Size = Size.Small;
+            Assert.PropertyChanged(drink, "Price", () => drink.Price.Equals(0.62));
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+            drink.Ice = true;
+            Assert.PropertyChanged(drink, "SpecialInstructions", () => drink.SpecialInstructions.Contains("Add ice"));
         }
     }
 }

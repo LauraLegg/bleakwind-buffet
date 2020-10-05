@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -84,6 +85,46 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             MadOtarGrits grits = new MadOtarGrits();
             Assert.IsAssignableFrom<IOrderItem>(grits);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            MadOtarGrits grits = new MadOtarGrits();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(grits);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSize()
+        {
+            MadOtarGrits grits = new MadOtarGrits();
+
+            Assert.PropertyChanged(grits, "Size", () =>
+            {
+                grits.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(grits, "Size", () =>
+            {
+                grits.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(grits, "Size", () =>
+            {
+                grits.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            MadOtarGrits grits = new MadOtarGrits();
+            grits.Size = Size.Medium;
+            Assert.PropertyChanged(grits, "Price", () => grits.Price.Equals(1.58));
+            grits.Size = Size.Large;
+            Assert.PropertyChanged(grits, "Price", () => grits.Price.Equals(1.93));
+            grits.Size = Size.Small;
+            Assert.PropertyChanged(grits, "Price", () => grits.Price.Equals(1.22));
         }
     }
 }

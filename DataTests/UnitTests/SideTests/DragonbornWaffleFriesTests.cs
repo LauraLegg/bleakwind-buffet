@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -84,6 +85,46 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             DragonbornWaffleFries fries = new DragonbornWaffleFries();
             Assert.IsAssignableFrom<IOrderItem>(fries);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            DragonbornWaffleFries fries = new DragonbornWaffleFries();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(fries);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSize()
+        {
+            DragonbornWaffleFries fries = new DragonbornWaffleFries();
+
+            Assert.PropertyChanged(fries, "Size", () =>
+            {
+                fries.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(fries, "Size", () =>
+            {
+                fries.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(fries, "Size", () =>
+            {
+                fries.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            DragonbornWaffleFries fries = new DragonbornWaffleFries();
+            fries.Size = Size.Medium;
+            Assert.PropertyChanged(fries, "Price", () => fries.Price.Equals(0.76));
+            fries.Size = Size.Large;
+            Assert.PropertyChanged(fries, "Price", () => fries.Price.Equals(0.96));
+            fries.Size = Size.Small;
+            Assert.PropertyChanged(fries, "Price", () => fries.Price.Equals(0.42));
         }
     }
 }

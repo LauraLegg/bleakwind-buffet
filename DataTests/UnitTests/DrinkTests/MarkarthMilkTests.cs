@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
@@ -105,6 +106,70 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             MarkarthMilk milk = new MarkarthMilk();
             Assert.IsAssignableFrom<IOrderItem>(milk);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(milk);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSize()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+
+            Assert.PropertyChanged(milk, "Size", () =>
+            {
+                milk.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(milk, "Size", () =>
+            {
+                milk.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(milk, "Size", () =>
+            {
+                milk.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnIce()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+
+            Assert.PropertyChanged(milk, "Ice", () =>
+            {
+                milk.Ice = true;
+            });
+
+            Assert.PropertyChanged(milk, "Ice", () =>
+            {
+                milk.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+            milk.Size = Size.Medium;
+            Assert.PropertyChanged(milk, "Price", () => milk.Price.Equals(1.11));
+            milk.Size = Size.Large;
+            Assert.PropertyChanged(milk, "Price", () => milk.Price.Equals(1.22));
+            milk.Size = Size.Small;
+            Assert.PropertyChanged(milk, "Price", () => milk.Price.Equals(1.05));
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+            milk.Ice = true;
+            Assert.PropertyChanged(milk, "SpecialInstructions", () => milk.SpecialInstructions.Contains("Add ice"));
         }
     }
 }

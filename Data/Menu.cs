@@ -10,11 +10,17 @@ using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data
 {
-    public static class Menu
+    public class Menu : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// A method that returns a list of instances of each entree item 
         /// </summary>

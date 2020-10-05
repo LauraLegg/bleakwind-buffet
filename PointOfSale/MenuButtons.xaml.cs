@@ -18,46 +18,52 @@ namespace PointOfSale
     /// </summary>
     public partial class MenuButtons : UserControl
     {
+        /// <summary>
+        /// Constructor for menu buttons partial class
+        /// </summary>
         public MenuButtons()
         {
             InitializeComponent();
         }
         
         /// <summary>
-        /// Event handler for switching to entree ingredients
+        /// Switches to entree ingredients control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void Entree_Click(object sender, RoutedEventArgs e)
         {
-            Button s = (Button)sender;
-            SwitchScreen(1, s.Name);   
+            if (sender is Button s)
+                SwitchScreen(1, (string)s.Content);   
         }
 
         /// <summary>
-        /// Event handler for switching to drink ingredients
+        /// Switches to drink ingredients control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void Drinks_Click(object sender, RoutedEventArgs e)
         {
-            Button s = (Button)sender;
-            SwitchScreen(2, s.Name);
+            if (sender is Button s)
+                SwitchScreen(2, (string)s.Content);
         }
 
         /// <summary>
-        /// Event handler for switching to side ingredients
+        /// Switches to side ingredients control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void Sides_Click(object sender, RoutedEventArgs e)
         {
-            Button s = (Button)sender;
-            SwitchScreen(3, s.Name);
+            if (sender is Button s)
+            {
+                if (s.Name == "onDragonBornWaffleFries") SwitchScreen(3, "Dragonborn Waffle Fries");
+                else SwitchScreen(3, (string)s.Content);
+            }
         }
 
         /// <summary>
-        /// Method for changing the screen to display the correct child.
+        /// Method for changing the screen to display the correct control.
         /// </summary>
         /// <param name="i"></param>
         public void SwitchScreen(int i, string name)
@@ -65,13 +71,12 @@ namespace PointOfSale
             if (i == 1)
                 menuButtonsControl.Child = new EntreeIngredients(this, name);
             else if (i == 2)
-                menuButtonsControl.Child = new DrinkIngredients(this, name);
+                if (name == "Aretino Apple Juice") menuButtonsControl.Child = new AretinoAppleJuiceControl(this);
+                else menuButtonsControl.Child = new DrinkIngredients(this, name);
             else if (i == 3)
                 menuButtonsControl.Child = new SideIngredients(this, name);
             else
                 menuButtonsControl.Child = new MenuButtons();
         }
-
-
     }
 }

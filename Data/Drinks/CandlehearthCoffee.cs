@@ -7,11 +7,22 @@ using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class CandlehearthCoffee : Drink, IOrderItem
+    public class CandlehearthCoffee : Drink, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Private backing variable for Price property
+        /// </summary>
+        private double price = 0.75;
+
         /// <summary>
         /// Gets the price of the drink based on the size.
         /// </summary>
@@ -22,12 +33,23 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 0.75;
-                if (Size == Size.Medium) return 1.25;
-                if (Size == Size.Large) return 1.75;
-                throw new NotImplementedException($"Price for {Size} Candlehearth Coffee not found");
+                double p = 0;
+                if (Size == Size.Small) p = 0.75;
+                if (Size == Size.Medium) p = 1.25;
+                if (Size == Size.Large) p = 1.75;
+                if (price != p)
+                {
+                    price = p;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                return price;
             }
         }
+
+        /// <summary>
+        /// Private backing variable for Calories property
+        /// </summary>
+        private uint cal = 7;
 
         /// <summary>
         /// Gets the number of calories based on the size.
@@ -39,32 +61,102 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 7;
-                if (Size == Size.Medium) return 10;
-                if (Size == Size.Large) return 20;
-                throw new NotImplementedException($"Calories for {Size} Candlehearth Coffee not found");
+                uint c = 0;
+                if (Size == Size.Small) c = 7;
+                if (Size == Size.Medium) c = 10;
+                if (Size == Size.Large) c = 20;
+                if (cal != c)
+                {
+                    cal = c;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                return cal;
             }
         }
 
         /// <summary>
-        /// The size of the drink.
+        /// Private backing variable for Size property
         /// </summary>
-        public override Size Size { get; set; } = Size.Small;
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// The size of the side.
+        /// </summary>
+        public override Size Size
+        {
+            get => size;
+            set
+            {
+                if (size != value)
+                {
+                    size = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Ice property
+        /// </summary>
+        private bool ice = false;
 
         /// <summary>
         /// Property is true when ice is included in the drink.
         /// </summary>
-        public bool Ice { get; set; } = false;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                if (ice != value)
+                {
+                    ice = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for RoomForCream property
+        /// </summary>
+        private bool roomForCream = false;
 
         /// <summary>
         /// Property is true when cream is included in the drink.
         /// </summary>
-        public bool RoomForCream { get; set; } = false;
+        public bool RoomForCream
+        {
+            get => roomForCream;
+            set
+            {
+                if (roomForCream != value)
+                {
+                    roomForCream = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Decaf property
+        /// </summary>
+        private bool decaf = false;
 
         /// <summary>
         /// Property is true when the drink is decaf.
         /// </summary>
-        public bool Decaf { get; set; } = false;
+        public bool Decaf
+        {
+            get => decaf;
+            set
+            {
+                if (decaf != value)
+                {
+                    decaf = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Decaf"));
+                }
+            }
+        }
 
         /// <summary>
         /// If any of the ingredients are set to true, an add 
@@ -77,6 +169,7 @@ namespace BleakwindBuffet.Data.Drinks
                 List<string> instructions = new List<string>();
                 if (Ice) instructions.Add("Add ice");
                 if (RoomForCream) instructions.Add("Add cream");
+                if (instructions.Count > 0) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 return instructions;
             }
         }

@@ -7,6 +7,7 @@
 using Xunit;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -266,6 +267,199 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             ThalmorTriple burger = new ThalmorTriple();
             Assert.IsAssignableFrom<IOrderItem>(burger);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(burger);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnBun()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Bun", () =>
+            {
+                burger.Bun = false;
+            });
+
+            Assert.PropertyChanged(burger, "Bun", () =>
+            {
+                burger.Bun = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnKetchup()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Ketchup", () =>
+            {
+                burger.Ketchup = false;
+            });
+
+            Assert.PropertyChanged(burger, "Ketchup", () =>
+            {
+                burger.Ketchup = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnMustard()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Mustard", () =>
+            {
+                burger.Mustard = false;
+            });
+
+            Assert.PropertyChanged(burger, "Mustard", () =>
+            {
+                burger.Mustard = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPickle()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Pickle", () =>
+            {
+                burger.Pickle = false;
+            });
+
+            Assert.PropertyChanged(burger, "Pickle", () =>
+            {
+                burger.Pickle = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCheese()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Cheese", () =>
+            {
+                burger.Cheese = false;
+            });
+
+            Assert.PropertyChanged(burger, "Cheese", () =>
+            {
+                burger.Cheese = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnTomato()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Tomato", () =>
+            {
+                burger.Tomato = false;
+            });
+
+            Assert.PropertyChanged(burger, "Tomato", () =>
+            {
+                burger.Tomato = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnLettuce()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Lettuce", () =>
+            {
+                burger.Lettuce = false;
+            });
+
+            Assert.PropertyChanged(burger, "Lettuce", () =>
+            {
+                burger.Lettuce = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnMayo()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Mayo", () =>
+            {
+                burger.Mayo = false;
+            });
+
+            Assert.PropertyChanged(burger, "Mayo", () =>
+            {
+                burger.Mayo = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnBacon()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Bacon", () =>
+            {
+                burger.Bacon = false;
+            });
+
+            Assert.PropertyChanged(burger, "Bacon", () =>
+            {
+                burger.Bacon = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnEgg()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "Egg", () =>
+            {
+                burger.Egg = false;
+            });
+
+            Assert.PropertyChanged(burger, "Egg", () =>
+            {
+                burger.Egg = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+            burger.Bun = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold bun"));
+            burger.Ketchup = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold ketchup"));
+            burger.Mustard = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mustard"));
+            burger.Pickle = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold pickle"));
+            burger.Cheese = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold cheese"));
+            burger.Tomato = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold tomato"));
+            burger.Lettuce = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold lettuce"));
+            burger.Mayo = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mayo"));
+            burger.Bacon = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold bacon"));
+            burger.Egg = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold egg"));
         }
     }
 }

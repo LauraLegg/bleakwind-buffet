@@ -6,11 +6,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class BriarheartBurger : Entree, IOrderItem
+    public class BriarheartBurger : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price of the entree.
         /// </summary>
@@ -22,29 +28,109 @@ namespace BleakwindBuffet.Data.Entrees
         public override uint Calories => 743;
 
         /// <summary>
+        /// Private backing variable for Bun property
+        /// </summary>
+        private bool bun = true;
+
+        /// <summary>
         /// Property is true when the bun is to be added to the entree.
         /// </summary>
-        public bool Bun { get; set; } = true;
+        public bool Bun
+        {
+            get => bun;
+            set
+            {
+                if (bun != value)
+                {
+                    bun = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bun"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Ketchup property
+        /// </summary>
+        private bool ketchup = true;
 
         /// <summary>
         /// Property is true when ketchup is to be added to the entree.
         /// </summary>
-        public bool Ketchup { get; set; } = true;
+        public bool Ketchup
+        {
+            get => ketchup;
+            set
+            {
+                if (ketchup != value)
+                {
+                    ketchup = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ketchup"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Mustard property
+        /// </summary>
+        private bool mustard = true;
 
         /// <summary>
         /// Property is true when mustard is to be added to the entree.
         /// </summary>
-        public bool Mustard { get; set; } = true;
+        public bool Mustard
+        {
+            get => mustard;
+            set
+            {
+                if (mustard != value)
+                {
+                    mustard = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mustard"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Pickle property
+        /// </summary>
+        private bool pickle = true;
 
         /// <summary>
         /// Property is true when pickles are to be added to the entree.
         /// </summary>
-        public bool Pickle { get; set; } = true;
+        public bool Pickle
+        {
+            get => pickle;
+            set
+            {
+                if (pickle != value)
+                {
+                    pickle = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pickle"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Cheese property
+        /// </summary>
+        private bool cheese = true;
 
         /// <summary>
         /// Property is true when cheese is to be added to the entree.
         /// </summary>
-        public bool Cheese { get; set; } = true;
+        public bool Cheese
+        {
+            get => cheese;
+            set
+            {
+                if (cheese != value)
+                {
+                    cheese = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
+                }
+            }
+        }
 
         /// <summary>
         /// If any of the ingredients are set to false, a hold 
@@ -60,6 +146,7 @@ namespace BleakwindBuffet.Data.Entrees
                 if (!Mustard) instructions.Add("Hold mustard");
                 if (!Pickle) instructions.Add("Hold pickle");
                 if (!Cheese) instructions.Add("Hold cheese");
+                if (instructions.Count > 0) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 return instructions;
             }
         }

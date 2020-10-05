@@ -6,11 +6,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmelette : Entree, IOrderItem
+    public class GardenOrcOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price for the entree.
         /// </summary>
@@ -22,24 +28,88 @@ namespace BleakwindBuffet.Data.Entrees
         public override  uint Calories => 404;
 
         /// <summary>
+        /// Private backing variable for Broccoli property
+        /// </summary>
+        private bool broccoli = true;
+
+        /// <summary>
         /// Property is true when broccoli is to be added to the entree.
         /// </summary>
-        public bool Broccoli { get; set; } = true;
+        public bool Broccoli
+        {
+            get => broccoli;
+            set
+            {
+                if(broccoli != value)
+                {
+                    broccoli = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Mushrooms property
+        /// </summary>
+        private bool mushrooms = true;
 
         /// <summary>
         /// Property is true when mushrooms are to be added to the entree.
         /// </summary>
-        public bool Mushrooms { get; set; } = true;
+        public bool Mushrooms
+        {
+            get => mushrooms;
+            set
+            {
+                if (mushrooms != value)
+                {
+                    mushrooms = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Tomato property
+        /// </summary>
+        private bool tomato = true;
 
         /// <summary>
         /// Property is true when tomato is to be added to the entree.
         /// </summary>
-        public bool Tomato { get; set; } = true;
+        public bool Tomato
+        {
+            get => tomato;
+            set
+            {
+                if (tomato != value)
+                {
+                    tomato = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Cheddar property
+        /// </summary>
+        private bool cheddar = true;
 
         /// <summary>
         /// Property is true when cheddar is to be added to the entree.
         /// </summary>
-        public bool Cheddar { get; set; } = true;
+        public bool Cheddar
+        {
+            get => cheddar;
+            set
+            {
+                if (cheddar != value)
+                {
+                    cheddar = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+                }
+            }
+        }
 
         /// <summary>
         /// If any of the ingredients are set to false, a hold instruction is added to the special instructions list.
@@ -53,6 +123,7 @@ namespace BleakwindBuffet.Data.Entrees
                 if (!Mushrooms) instructions.Add("Hold mushrooms");
                 if (!Tomato) instructions.Add("Hold tomato");
                 if (!Cheddar) instructions.Add("Hold cheddar");
+                if (instructions.Count > 0) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 return instructions;
             }
         }

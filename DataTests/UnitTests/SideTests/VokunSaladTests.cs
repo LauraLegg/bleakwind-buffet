@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -84,6 +85,46 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             VokunSalad salad = new VokunSalad();
             Assert.IsAssignableFrom<IOrderItem>(salad);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            VokunSalad salad = new VokunSalad();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(salad);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSize()
+        {
+            VokunSalad salad = new VokunSalad();
+
+            Assert.PropertyChanged(salad, "Size", () =>
+            {
+                salad.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(salad, "Size", () =>
+            {
+                salad.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(salad, "Size", () =>
+            {
+                salad.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            VokunSalad salad = new VokunSalad();
+            salad.Size = Size.Medium;
+            Assert.PropertyChanged(salad, "Price", () => salad.Price.Equals(1.28));
+            salad.Size = Size.Large;
+            Assert.PropertyChanged(salad, "Price", () => salad.Price.Equals(1.82));
+            salad.Size = Size.Small;
+            Assert.PropertyChanged(salad, "Price", () => salad.Price.Equals(0.93));
         }
     }
 }

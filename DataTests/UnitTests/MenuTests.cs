@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests
 {

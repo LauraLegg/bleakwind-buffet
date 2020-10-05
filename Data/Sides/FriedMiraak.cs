@@ -7,11 +7,22 @@ using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class FriedMiraak : Side, IOrderItem
+    public class FriedMiraak : Side, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Private backing variable for Price property
+        /// </summary>
+        private double price = 1.78;
+
         /// <summary>
         /// Gets the price of the side based on the size.
         /// </summary>
@@ -22,12 +33,23 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (Size == Size.Small) return 1.78;
-                if (Size == Size.Medium) return 2.01;
-                if (Size == Size.Large) return 2.88;
-                throw new NotImplementedException($"Price for {Size} Fried Miraak not found");
+                double p = 0;
+                if (Size == Size.Small) p = 1.78;
+                if (Size == Size.Medium) p = 2.01;
+                if (Size == Size.Large) p = 2.88;
+                if (price != p)
+                {
+                    price = p;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                return price;
             }
         }
+
+        /// <summary>
+        /// Private backing variable for Calories property
+        /// </summary>
+        private uint cal = 151;
 
         /// <summary>
         /// Gets the number of calories based on the size.
@@ -39,17 +61,39 @@ namespace BleakwindBuffet.Data.Sides
         {
             get 
             {
-                if (Size == Size.Small) return 151;
-                if (Size == Size.Medium) return 236;
-                if (Size == Size.Large) return 306;
-                throw new NotImplementedException($"Calories for {Size} Fried Miraak not found");
+                uint c = 0;
+                if (Size == Size.Small) c = 151;
+                if (Size == Size.Medium) c = 236;
+                if (Size == Size.Large) c = 306;
+                if (cal != c)
+                {
+                    cal = c;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                return cal;
             }
         }
 
         /// <summary>
+        /// Private backing variable for Size property
+        /// </summary>
+        private Size size = Size.Small;
+
+        /// <summary>
         /// The size of the side.
         /// </summary>
-        public override Size Size { get; set; } = Size.Small;
+        public override Size Size
+        {
+            get => size;
+            set
+            {
+                if (size != value)
+                {
+                    size = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                }
+            }
+        }
 
         /// <summary>
         /// If any of the ingredients are set to false, 

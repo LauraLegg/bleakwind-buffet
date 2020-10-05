@@ -8,6 +8,7 @@ using Xunit;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -84,6 +85,46 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         {
             FriedMiraak miraak = new FriedMiraak();
             Assert.IsAssignableFrom<IOrderItem>(miraak);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            FriedMiraak miraak = new FriedMiraak();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(miraak);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSize()
+        {
+            FriedMiraak miraak = new FriedMiraak();
+
+            Assert.PropertyChanged(miraak, "Size", () =>
+            {
+                miraak.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(miraak, "Size", () =>
+            {
+                miraak.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(miraak, "Size", () =>
+            {
+                miraak.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            FriedMiraak miraak = new FriedMiraak();
+            miraak.Size = Size.Medium;
+            Assert.PropertyChanged(miraak, "Price", () => miraak.Price.Equals(2.01));
+            miraak.Size = Size.Large;
+            Assert.PropertyChanged(miraak, "Price", () => miraak.Price.Equals(2.88));
+            miraak.Size = Size.Small;
+            Assert.PropertyChanged(miraak, "Price", () => miraak.Price.Equals(1.78));
         }
     }
 }

@@ -6,11 +6,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class ThugsTBone : Entree, IOrderItem
+    public class ThugsTBone : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price for the entree.
         /// </summary>
@@ -25,14 +31,7 @@ namespace BleakwindBuffet.Data.Entrees
         ///  It has no boolean properties. The SpecialInstructions 
         ///  property should always return an emplty list.
         /// </summary>
-        public override List<string> SpecialInstructions
-        {
-            get
-            {
-                List<string> instructions = new List<string>();
-                return instructions;
-            }
-        }
+        public override List<string> SpecialInstructions => new List<string>();
 
         /// <summary>
         /// Overrides ToString() to return the name of the entree.

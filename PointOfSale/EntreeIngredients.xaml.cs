@@ -18,8 +18,15 @@ namespace PointOfSale
     /// </summary>
     public partial class EntreeIngredients : UserControl
     {
+        /// <summary>
+        /// Reference the the Menubuttons so the screen can be switched back
+        /// </summary>
         MenuButtons buttons;
-        private string itemName;
+
+        /// <summary>
+        /// Holds the name of the entree
+        /// </summary>
+        private string name;
 
         /// <summary>
         /// Contructor for the entree control.
@@ -29,18 +36,19 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.buttons = buttons;
-            itemName = name;
+            this.name = name;
             EntreeSpecialInstructions();
+            entreeNameLabel.Content = name;
         }
 
         /// <summary>
-        /// Event handler for the done button. Switches screen back to menu buttons.
+        /// Switches screen back to menu buttons.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            buttons.SwitchScreen(4, itemName);
+            buttons.SwitchScreen(4, name);
         }
 
         /// <summary>
@@ -48,7 +56,7 @@ namespace PointOfSale
         /// </summary>
         void EntreeSpecialInstructions()
         {
-            if (itemName == "onBriarheart" || itemName == "onDoubleDraugr" || itemName == "onThalmorTriple")
+            if (name == "Briarheart Burger" || name == "Double Draugr" || name == "Thalmor Triple")
             {
                 CheckBox bun = new CheckBox();
                 bun.Content = "Bun";
@@ -70,7 +78,7 @@ namespace PointOfSale
                 cheese.Content = "Cheese";
                 specialInstructions.Items.Add(cheese);
 
-                if (itemName == "onThalmorTriple" || itemName == "onDoubleDraugr")
+                if (name == "Double Draugr" || name == "Thalmor Triple")
                 {
                     CheckBox tomato = new CheckBox();
                     tomato.Content = "Tomato";
@@ -84,7 +92,7 @@ namespace PointOfSale
                     mayo.Content = "Mayo";
                     specialInstructions.Items.Add(mayo);
 
-                    if (itemName == "onThalmorTriple")
+                    if (name == "onThalmorTriple")
                     {
                         CheckBox bacon = new CheckBox();
                         bacon.Content = "Bacon";
@@ -97,7 +105,7 @@ namespace PointOfSale
                 }
             }
 
-            else if (itemName == "onSmokehouseSkeleton")
+            else if (name == "Smokehouse Skeleton")
             {
                 CheckBox sausage = new CheckBox();
                 sausage.Content = "Sausage Link";
@@ -116,7 +124,7 @@ namespace PointOfSale
                 specialInstructions.Items.Add(pancake);
             }
 
-            else if (itemName == "onGardenOrcOmelette")
+            else if (name == "Garden Orc Omelette")
             {
                 CheckBox broccoli = new CheckBox();
                 broccoli.Content = "Broccoli";
@@ -135,7 +143,7 @@ namespace PointOfSale
                 specialInstructions.Items.Add(cheddar);
             }
 
-            else if (itemName == "onPhillyPoacher")
+            else if (name == "Philly Poacher")
             {
                 CheckBox sirloin = new CheckBox();
                 sirloin.Content = "Sirloin";
@@ -148,6 +156,11 @@ namespace PointOfSale
                 CheckBox roll = new CheckBox();
                 roll.Content = "Roll";
                 specialInstructions.Items.Add(roll);
+            }
+
+            foreach (Control c in specialInstructions.Items)
+            {
+                c.FontSize = 15;
             }
         }
     }

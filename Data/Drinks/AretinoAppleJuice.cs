@@ -7,11 +7,22 @@ using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class AretinoAppleJuice : Drink, IOrderItem
+    public class AretinoAppleJuice : Drink, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Private backing variable for Price property
+        /// </summary>
+        private double price = 0.62;
+
         /// <summary>
         /// Gets the price of the drink based on the size.
         /// </summary>
@@ -22,12 +33,23 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get 
             {
-                if (Size == Size.Small) return 0.62;
-                if (Size == Size.Medium) return 0.87;
-                if (Size == Size.Large) return 1.01;
-                throw new NotImplementedException($"Price for {Size} Aretino Apple Juice not found");
+                double p = 0;
+                if (Size == Size.Small) p =  0.62;
+                if (Size == Size.Medium) p = 0.87;
+                if (Size == Size.Large) p = 1.01;
+                if (price != p)
+                {
+                    price = p;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                return price;
             }
         }
+
+        /// <summary>
+        /// Private backing variable for Calories property
+        /// </summary>
+        private uint cal = 44;
 
         /// <summary>
         /// Gets the number of calories based on the size.
@@ -39,22 +61,60 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get 
             {
-                if (Size == Size.Small) return 44;
-                if (Size == Size.Medium) return 88;
-                if (Size == Size.Large) return 132;
-                throw new NotImplementedException($"Calories for {Size} Aretino Apple Juice not found");
+                uint c = 0;
+                if (Size == Size.Small) c = 44;
+                if (Size == Size.Medium) c = 88;
+                if (Size == Size.Large) c = 132;
+                if ( cal != c)
+                {
+                    cal = c;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                return cal;
             }
         }
 
         /// <summary>
-        /// The size of the drink.
+        /// Private backing variable for Size property
         /// </summary>
-        public override Size Size { get; set; } = Size.Small;
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// The size of the side.
+        /// </summary>
+        public override Size Size
+        {
+            get => size;
+            set
+            {
+                if (size != value)
+                {
+                    size = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Ice property
+        /// </summary>
+        private bool ice = false;
 
         /// <summary>
         /// Property is true when ice is included in the drink.
         /// </summary>
-        public bool Ice { get; set; } = false;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                if (ice != value)
+                {
+                    ice = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                }
+            }
+        }
 
         /// <summary>
         /// If any of the ingredients are set to true, an add instruction is added to the special instructions list.
@@ -65,6 +125,7 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 List<string> instructions = new List<string>();
                 if (Ice) instructions.Add("Add ice");
+                if (instructions.Count > 0) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 return instructions;
             }
         }

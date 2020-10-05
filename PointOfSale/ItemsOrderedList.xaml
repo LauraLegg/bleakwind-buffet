@@ -10,18 +10,22 @@
         <!--Size of the grid is 1 column by 2 rows-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         
         <!--A textbox containing the order number and a spot for the list of ordered items.-->
-        <Border>
-            <TextBlock Name="orderNumber" TextAlignment="Center" FontFamily="arial" FontWeight="Bold" FontSize="25">
+        <TextBlock Name="orderNumber" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25" Grid.ColumnSpan="2">
                 Order #___
-            </TextBlock>
-        </Border>
-        <ListView Name="orderList" Grid.Row="1"/>
+        </TextBlock>
+        <ListView Name="orderList" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+        <!--Buttons for completing or canceling an order-->
+        <Button Grid.Row="2" Content="Finish" FontSize="18" Margin="3"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Cancel" FontSize="18" Margin="3"/>
     </Grid>
 </UserControl> 

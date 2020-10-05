@@ -7,11 +7,17 @@ using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class WarriorWater : Drink, IOrderItem
+    public class WarriorWater : Drink, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price of the drink.
         /// </summary>
@@ -23,19 +29,67 @@ namespace BleakwindBuffet.Data.Drinks
         public override uint Calories => 0;
 
         /// <summary>
-        /// The size of the drink.
+        /// Private backing variable for Size property
         /// </summary>
-        public override Size Size { get; set; } = Size.Small;
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// The size of the side.
+        /// </summary>
+        public override Size Size
+        {
+            get => size;
+            set
+            {
+                if (size != value)
+                {
+                    size = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Ice property
+        /// </summary>
+        private bool ice = true;
 
         /// <summary>
         /// Property is true when ice is included in the drink.
         /// </summary>
-        public bool Ice { get; set; } = true;
+        public bool Ice
+        {
+            get => ice;
+            set
+            {
+                if (ice != value)
+                {
+                    ice = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Private backing variable for Lemon property
+        /// </summary>
+        private bool lemon = false;
 
         /// <summary>
         /// Property is true when lemon is included in the drink.
         /// </summary>
-        public bool Lemon { get; set; } = false;
+        public bool Lemon
+        {
+            get => lemon;
+            set
+            {
+                if (lemon != value)
+                {
+                    lemon = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lemon"));
+                }
+            }
+        }
 
         /// <summary>
         /// If any of the ingredients are set to false, a hold instruction is 
@@ -48,6 +102,7 @@ namespace BleakwindBuffet.Data.Drinks
                 List<string> instructions = new List<string>();
                 if (!Ice) instructions.Add("Hold ice");
                 if (Lemon) instructions.Add("Add lemon");
+                if (instructions.Count > 0) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 return instructions;
             }
         }

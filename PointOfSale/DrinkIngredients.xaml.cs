@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -19,8 +21,14 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkIngredients : UserControl
     {
+        /// <summary>
+        /// Reference the the Menubuttons so the screen can be switched back
+        /// </summary>
         MenuButtons buttons;
 
+        /// <summary>
+        /// Holds the name of the drink
+        /// </summary>
         private string name;
 
         /// <summary>
@@ -33,10 +41,11 @@ namespace PointOfSale
             this.name = name;
             this.buttons = buttons;
             DrinksSpecialIngredients();
+            drinkNameLabel.Content = name;
         }
 
         /// <summary>
-        /// Event handler for the done button. Switches screen back to menu buttons.
+        /// Switches screen back to menu buttons.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -67,9 +76,8 @@ namespace PointOfSale
             ice.Content = "Ice";
             specialInstructions.Items.Add(ice);
             
-            if (name == "onSailorSoda")
+            if (name == "Sailor Soda")
             {
-
                 RadioButton blackberry = new RadioButton();
                 blackberry.Content = "Blackberry";
                 specialInstructions.Items.Add(blackberry);
@@ -95,7 +103,7 @@ namespace PointOfSale
                 specialInstructions.Items.Add(watermelon);
             }
 
-            else if (name == "onCandlehearthCoffee")
+            else if (name == "Candlehearth Coffee")
             {
                 CheckBox decaf = new CheckBox();
                 decaf.Content = "Decaf";
@@ -106,11 +114,16 @@ namespace PointOfSale
                 specialInstructions.Items.Add(cream);
             }
 
-            else if (name == "onWarriorWater")
+            else if (name == "Warrior Water")
             {
                 CheckBox lemon = new CheckBox();
                 lemon.Content = "Lemon";
                 specialInstructions.Items.Add(lemon);
+            }
+
+            foreach (Control c in specialInstructions.Items)
+            {
+                c.FontSize = 15;
             }
         }
     }

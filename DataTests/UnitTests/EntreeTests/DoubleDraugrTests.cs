@@ -7,6 +7,7 @@
 using Xunit;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
@@ -223,6 +224,163 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             DoubleDraugr burger = new DoubleDraugr();
             Assert.IsAssignableFrom<IOrderItem>(burger);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyPropertyChangedInterface()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(burger);
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnBun()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Bun", () =>
+            {
+                burger.Bun = false;
+            });
+
+            Assert.PropertyChanged(burger, "Bun", () =>
+            {
+                burger.Bun = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnKetchup()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Ketchup", () =>
+            {
+                burger.Ketchup = false;
+            });
+
+            Assert.PropertyChanged(burger, "Ketchup", () =>
+            {
+                burger.Ketchup = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnMustard()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Mustard", () =>
+            {
+                burger.Mustard = false;
+            });
+
+            Assert.PropertyChanged(burger, "Mustard", () =>
+            {
+                burger.Mustard = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPickle()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Pickle", () =>
+            {
+                burger.Pickle = false;
+            });
+
+            Assert.PropertyChanged(burger, "Pickle", () =>
+            {
+                burger.Pickle = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCheese()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Cheese", () =>
+            {
+                burger.Cheese = false;
+            });
+
+            Assert.PropertyChanged(burger, "Cheese", () =>
+            {
+                burger.Cheese = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnTomato()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Tomato", () =>
+            {
+                burger.Tomato = false;
+            });
+
+            Assert.PropertyChanged(burger, "Tomato", () =>
+            {
+                burger.Tomato = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnLettuce()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Lettuce", () =>
+            {
+                burger.Lettuce = false;
+            });
+
+            Assert.PropertyChanged(burger, "Lettuce", () =>
+            {
+                burger.Lettuce = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnMayo()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+
+            Assert.PropertyChanged(burger, "Mayo", () =>
+            {
+                burger.Mayo = false;
+            });
+
+            Assert.PropertyChanged(burger, "Mayo", () =>
+            {
+                burger.Mayo = true;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            DoubleDraugr burger = new DoubleDraugr();
+            burger.Bun = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold bun"));
+            burger.Ketchup = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold ketchup"));
+            burger.Mustard = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mustard"));
+            burger.Pickle = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold pickle"));
+            burger.Cheese = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold cheese"));
+            burger.Tomato = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold tomato"));
+            burger.Lettuce = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold lettuce"));
+            burger.Mayo = false;
+            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mayo"));
         }
     }
 }

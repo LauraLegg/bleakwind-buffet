@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BleakwindBuffet.Data.Sides;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,17 +19,26 @@ namespace PointOfSale
     /// </summary>
     public partial class SideIngredients : UserControl
     {
+        /// <summary>
+        /// Reference the the Menubuttons so the screen can be switched back
+        /// </summary>
         MenuButtons buttons;
 
+        /// <summary>
+        /// Holds the name of the side
+        /// </summary>
         private string name;
 
+        public object SpecialInstructions { get; private set; }
+
         /// <summary>
-        /// Constructor for the sides
+        /// Constructor for the sides partial class
         /// </summary>
         public SideIngredients(MenuButtons buttons, string name)
         {
             InitializeComponent();
             this.name = name;
+            sideNameLabel.Content = name;
             this.buttons = buttons;
             SideSizeSetter();
         }
@@ -38,6 +48,7 @@ namespace PointOfSale
         /// </summary>
         void SideSizeSetter()
         {
+
             RadioButton small = new RadioButton();
             small.Content = "Small";
             specialInstructions.Items.Add(small);
@@ -49,10 +60,15 @@ namespace PointOfSale
             RadioButton large = new RadioButton();
             large.Content = "Large";
             specialInstructions.Items.Add(large);
+
+            foreach (RadioButton b in specialInstructions.Items)
+            {
+                b.FontSize = 15;
+            }
         }
 
         /// <summary>
-        /// Event handler for done button. Switches the screen back to the menu buttons.
+        /// Switches the screen back to the menu buttons.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
