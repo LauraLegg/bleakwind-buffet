@@ -1,4 +1,9 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿/*
+ * Author: Laura Legg
+ * Class name: GardenOrcOmeletteControl.cs
+ * Purpose: Partial Class for GardenOrcOmeletteControl xaml class.
+ */
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;

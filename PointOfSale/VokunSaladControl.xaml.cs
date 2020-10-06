@@ -1,4 +1,9 @@
-﻿using BleakwindBuffet.Data.Sides;
+﻿/*
+ * Author: Laura Legg
+ * Class name: VokunSaladControl.xaml.cs
+ * Purpose: Partial Class for VokunSaladControl xaml class.
+ */
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;

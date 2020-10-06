@@ -1,4 +1,9 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿/*
+ * Author: Laura Legg
+ * Class name: SailorSodaControl.xaml.cs
+ * Purpose: Partial Class for SailorSodaControl xaml class.
+ */
+using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author: Laura Legg
+ * Class name: MainWindow.cs
+ * Purpose: Partial Class for the main window.
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

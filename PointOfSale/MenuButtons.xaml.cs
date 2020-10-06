@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author: Laura Legg
+ * Class name: MenuButtons.xaml.cs
+ * Purpose: Partial Class for MenuButtons xaml class.
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
