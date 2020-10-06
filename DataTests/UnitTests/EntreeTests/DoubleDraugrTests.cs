@@ -360,27 +360,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 burger.Mayo = true;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            DoubleDraugr burger = new DoubleDraugr();
-            burger.Bun = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold bun"));
-            burger.Ketchup = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold ketchup"));
-            burger.Mustard = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mustard"));
-            burger.Pickle = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold pickle"));
-            burger.Cheese = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold cheese"));
-            burger.Tomato = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold tomato"));
-            burger.Lettuce = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold lettuce"));
-            burger.Mayo = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mayo"));
-        }
     }
 }

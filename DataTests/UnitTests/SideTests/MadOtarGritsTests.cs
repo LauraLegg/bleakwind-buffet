@@ -114,17 +114,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 grits.Size = Size.Small;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnPrice()
-        {
-            MadOtarGrits grits = new MadOtarGrits();
-            grits.Size = Size.Medium;
-            Assert.PropertyChanged(grits, "Price", () => grits.Price.Equals(1.58));
-            grits.Size = Size.Large;
-            Assert.PropertyChanged(grits, "Price", () => grits.Price.Equals(1.93));
-            grits.Size = Size.Small;
-            Assert.PropertyChanged(grits, "Price", () => grits.Price.Equals(1.22));
-        }
     }
 }

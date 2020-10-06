@@ -18,6 +18,9 @@ namespace PointOfSale
     /// </summary>
     public partial class ItemsOrderedList : UserControl
     {
+        /// <summary>
+        /// Constructor for ItemsOrdered Control
+        /// </summary>
         public ItemsOrderedList()
         {
             InitializeComponent();

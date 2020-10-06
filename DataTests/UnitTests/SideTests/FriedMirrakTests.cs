@@ -114,17 +114,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 miraak.Size = Size.Small;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnPrice()
-        {
-            FriedMiraak miraak = new FriedMiraak();
-            miraak.Size = Size.Medium;
-            Assert.PropertyChanged(miraak, "Price", () => miraak.Price.Equals(2.01));
-            miraak.Size = Size.Large;
-            Assert.PropertyChanged(miraak, "Price", () => miraak.Price.Equals(2.88));
-            miraak.Size = Size.Small;
-            Assert.PropertyChanged(miraak, "Price", () => miraak.Price.Equals(1.78));
-        }
     }
 }

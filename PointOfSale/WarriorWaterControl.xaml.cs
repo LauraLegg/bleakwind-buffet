@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for AretinoAppleJuiceControl.xaml
+    /// Interaction logic for WarriorWaterControl.xaml
     /// </summary>
-    public partial class AretinoAppleJuiceControl : UserControl
+    public partial class WarriorWaterControl : UserControl
     {
         /// <summary>
         /// Reference to the menu buttons control
@@ -30,13 +30,13 @@ namespace PointOfSale
         /// <summary>
         /// Constructor for the control
         /// </summary>
-        /// <param name="buttons"></param>
-        public AretinoAppleJuiceControl(MenuButtons buttons)
+        /// <param name="buttons">the MenuButtons control that call this control</param>
+        public WarriorWaterControl(MenuButtons buttons)
         {
             InitializeComponent();
             this.buttons = buttons;
-            AretinoAppleJuice drink = new AretinoAppleJuice();
-            buttons.DataContext = drink;
+            WarriorWater water = new WarriorWater();
+            buttons.DataContext = water;
         }
 
         /// <summary>

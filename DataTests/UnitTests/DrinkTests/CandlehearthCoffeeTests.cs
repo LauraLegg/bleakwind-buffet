@@ -226,27 +226,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 coffee.Decaf = false;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnPrice()
-        {
-            CandlehearthCoffee coffee = new CandlehearthCoffee();
-            coffee.Size = Size.Medium;
-            Assert.PropertyChanged(coffee, "Price", () => coffee.Price.Equals(1.25));
-            coffee.Size = Size.Large;
-            Assert.PropertyChanged(coffee, "Price", () => coffee.Price.Equals(1.75));
-            coffee.Size = Size.Small;
-            Assert.PropertyChanged(coffee, "Price", () => coffee.Price.Equals(0.75));
-        }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            CandlehearthCoffee coffee= new CandlehearthCoffee();
-            coffee.Ice = true;
-            Assert.PropertyChanged(coffee, "SpecialInstructions", () => coffee.SpecialInstructions.Contains("Add ice"));
-            coffee.RoomForCream = true;
-            Assert.PropertyChanged(coffee, "SpecialInstructions", () => coffee.SpecialInstructions.Contains("Add cream"));
-        }
     }
 }

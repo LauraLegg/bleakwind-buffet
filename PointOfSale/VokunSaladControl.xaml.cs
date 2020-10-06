@@ -1,4 +1,4 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for AretinoAppleJuiceControl.xaml
+    /// Interaction logic for VokunSaladControl.xaml
     /// </summary>
-    public partial class AretinoAppleJuiceControl : UserControl
+    public partial class VokunSaladControl : UserControl
     {
         /// <summary>
         /// Reference to the menu buttons control
@@ -30,13 +30,13 @@ namespace PointOfSale
         /// <summary>
         /// Constructor for the control
         /// </summary>
-        /// <param name="buttons"></param>
-        public AretinoAppleJuiceControl(MenuButtons buttons)
+        /// <param name="buttons">the MenuButtons control that call this control</param>
+        public VokunSaladControl(MenuButtons buttons)
         {
             InitializeComponent();
             this.buttons = buttons;
-            AretinoAppleJuice drink = new AretinoAppleJuice();
-            buttons.DataContext = drink;
+            VokunSalad salad = new VokunSalad();
+            buttons.DataContext = salad;
         }
 
         /// <summary>

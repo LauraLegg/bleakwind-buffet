@@ -25,40 +25,19 @@ namespace PointOfSale
         {
             InitializeComponent();
         }
-        
-        /// <summary>
-        /// Switches to entree ingredients control
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Entree_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button s)
-                SwitchScreen(1, (string)s.Content);   
-        }
 
         /// <summary>
-        /// Switches to drink ingredients control
+        /// Allows the buttons to switch between the appropriate screens
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Drinks_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button s)
-                SwitchScreen(2, (string)s.Content);
-        }
-
-        /// <summary>
-        /// Switches to side ingredients control
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Sides_Click(object sender, RoutedEventArgs e)
+        void menuButtonClick (object sender, RoutedEventArgs e)
         {
             if (sender is Button s)
             {
-                if (s.Name == "onDragonBornWaffleFries") SwitchScreen(3, "Dragonborn Waffle Fries");
-                else SwitchScreen(3, (string)s.Content);
+                if (s.Name == "onDragonBornWaffleFries")
+                    SwitchScreen("Dragonborn Waffle Fries");
+                else SwitchScreen((string)s.Content);
             }
         }
 
@@ -66,17 +45,66 @@ namespace PointOfSale
         /// Method for changing the screen to display the correct control.
         /// </summary>
         /// <param name="i"></param>
-        public void SwitchScreen(int i, string name)
+        public void SwitchScreen(string name)
         {
-            if (i == 1)
-                menuButtonsControl.Child = new EntreeIngredients(this, name);
-            else if (i == 2)
-                if (name == "Aretino Apple Juice") menuButtonsControl.Child = new AretinoAppleJuiceControl(this);
-                else menuButtonsControl.Child = new DrinkIngredients(this, name);
-            else if (i == 3)
-                menuButtonsControl.Child = new SideIngredients(this, name);
-            else
-                menuButtonsControl.Child = new MenuButtons();
+            switch (name)
+            {
+                case "Briarheart Burger":
+                    menuButtonsControl.Child = new BriarheartBurgerControl(this);
+                    break;
+                case "Double Draugr":
+                    menuButtonsControl.Child = new DoubleDraugrControl(this);
+                    break;
+                case "Thalmor Triple":
+                    menuButtonsControl.Child = new ThalmorTripleControl(this);
+                    break;
+                case "Garden Orc Omelette":
+                    menuButtonsControl.Child = new GardenOrcOmelettControl(this);
+                    break;
+                case "Philly Poacher":
+                    menuButtonsControl.Child = new PhillyPoacherControl(this);
+                    break;
+                case "Smokehouse Skeleton":
+                    menuButtonsControl.Child = new SmokehouseSkeletonControl(this);
+                    break;
+                case "Thugs T-Bone":
+                    menuButtonsControl.Child = new ThugsTBoneControl(this);
+                    break;
+
+                case "Aretino Apple Juice":
+                    menuButtonsControl.Child = new AretinoAppleJuiceControl(this);
+                    break;
+                case "Candlehearth Coffee":
+                    menuButtonsControl.Child = new CandlehearthCoffeeControl(this);
+                    break;
+                case "Markarth Milk":
+                    menuButtonsControl.Child = new MarkarthMilkControl(this);
+                    break;
+                case "Sailor Soda":
+                    menuButtonsControl.Child = new SailorSodaControl(this);
+                    break;
+                case "Warrior Water":
+                    menuButtonsControl.Child = new WarriorWaterControl(this);
+                    break;
+
+                case "Dragonborn Waffle Fries":
+                    menuButtonsControl.Child = new DragonWaffleFriesControl(this);
+                    break;
+                case "Fried Miraak":
+                    menuButtonsControl.Child = new FriedMiraakControl(this);
+                    break;
+                case "Mad Otar Grits":
+                    menuButtonsControl.Child = new MadOtarGritsControl(this);
+                    break;
+                case "Vokun Salad":
+                    menuButtonsControl.Child = new VokunSaladControl(this);
+                    break;
+
+                default:
+                    menuButtonsControl.Child = new MenuButtons();
+                    break;
+            }
+
         }
     }
 }

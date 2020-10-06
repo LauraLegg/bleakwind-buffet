@@ -18,11 +18,6 @@ namespace BleakwindBuffet.Data.Sides
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Private backing variable for Price property
-        /// </summary>
-        private double price = 0.93;
-
-        /// <summary>
         /// Gets the price of the side based on the size.
         /// </summary>
         /// <exception cref="System.NotImplementedException">
@@ -32,23 +27,12 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                double p = 0;
-                if (Size == Size.Small) p = 0.93;
-                if (Size == Size.Medium) p = 1.28;
-                if (Size == Size.Large) p = 1.82;
-                if (price != p)
-                {
-                    price = p;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
-                }
-                return price;
+                if (Size == Size.Small) return 0.93;
+                if (Size == Size.Medium) return 1.28;
+                if (Size == Size.Large) return 1.82;
+                throw new NotImplementedException($"Price for {Size} does not exsist");
             }
         }
-
-        /// <summary>
-        /// Private backing variable for Calories property
-        /// </summary>
-        private uint cal = 41;
 
         /// <summary>
         /// Gets the number of calories based on the size.
@@ -60,16 +44,10 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                uint c = 0;
-                if (Size == Size.Small) c = 41;
-                if (Size == Size.Medium) c = 52;
-                if (Size == Size.Large) c = 73;
-                if (cal != c)
-                {
-                    cal = c;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
-                }
-                return cal;
+                if (Size == Size.Small) return 41;
+                if (Size == Size.Medium) return 52;
+                if (Size == Size.Large) return 73;
+                throw new NotImplementedException($"Calories for {Size} does not exsist");
             }
         }
 
@@ -90,6 +68,8 @@ namespace BleakwindBuffet.Data.Sides
                 {
                     size = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
                 }
             }
         }

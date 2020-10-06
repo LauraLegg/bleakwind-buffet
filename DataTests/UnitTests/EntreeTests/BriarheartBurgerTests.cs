@@ -248,21 +248,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 burger.Cheese = true;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            BriarheartBurger burger = new BriarheartBurger();
-            burger.Bun = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold bun"));
-            burger.Ketchup = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold ketchup"));
-            burger.Mustard = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold mustard"));
-            burger.Pickle = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold pickle"));
-            burger.Cheese = false;
-            Assert.PropertyChanged(burger, "SpecialInstructions", () => burger.SpecialInstructions.Contains("Hold cheese"));
-        }
     }
 }

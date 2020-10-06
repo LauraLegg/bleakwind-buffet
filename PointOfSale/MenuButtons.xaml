@@ -39,28 +39,28 @@
             </Border>
 
             <!--Entree Buttons-->
-            <Button Name="onBriarheart" Click="Entree_Click" Grid.Row="1" Content="Briarheart Burger" Background="LightCoral"/>
-            <Button Name="onDoubleDraugr" Click="Entree_Click" Grid.Row="2" Content="Double Draugr" Background="LightCoral"/>
-            <Button Name="onThalmorTriple" Click="Entree_Click" Grid.Row="3" Content="Thalmor Triple" Background="LightCoral"/>
-            <Button Name="onGardenOrcOmelette" Click="Entree_Click" Grid.Row="4" Content="Garden Orc Omelette" Background="LightCoral"/>
-            <Button Name="onPhillyPoacher" Click="Entree_Click" Grid.Row="5" Content="Philly Poacher" Background="LightCoral"/>
-            <Button Name="onSmokehouseSkeleton" Click="Entree_Click" Grid.Row="6" Content="Smokehouse Skeleton" Background="LightCoral"/>
-            <Button Name="onThugsTBone" Click="Entree_Click" Grid.Row="7" Content="Thugs T-Bone" Background="LightCoral"/>
+            <Button Name="onBriarheart" Click="menuButtonClick" Grid.Row="1" Content="Briarheart Burger" Background="LightCoral"/>
+            <Button Name="onDoubleDraugr" Click="menuButtonClick" Grid.Row="2" Content="Double Draugr" Background="LightCoral"/>
+            <Button Name="onThalmorTriple" Click="menuButtonClick" Grid.Row="3" Content="Thalmor Triple" Background="LightCoral"/>
+            <Button Name="onGardenOrcOmelette" Click="menuButtonClick" Grid.Row="4" Content="Garden Orc Omelette" Background="LightCoral"/>
+            <Button Name="onPhillyPoacher" Click="menuButtonClick" Grid.Row="5" Content="Philly Poacher" Background="LightCoral"/>
+            <Button Name="onSmokehouseSkeleton" Click="menuButtonClick" Grid.Row="6" Content="Smokehouse Skeleton" Background="LightCoral"/>
+            <Button Name="onThugsTBone" Click="menuButtonClick" Grid.Row="7" Content="Thugs T-Bone" Background="LightCoral"/>
 
             <!--Drink Buttons-->
-            <Button Name="onAppleJuice" Click="Drinks_Click" Grid.Column="1" Grid.Row="1" Content="Aretino Apple Juice" Background="LightBlue"/>
-            <Button Name="onCandlehearthCoffee" Click="Drinks_Click" Grid.Column="1" Grid.Row="2" Content="Candlehearth Coffee" Background="LightBlue"/>
-            <Button Name="onMarkarthMilk" Click="Drinks_Click" Grid.Column="1" Grid.Row="3" Content="Markarth Milk" Background="LightBlue"/>
-            <Button Name="onSailorSoda" Click="Drinks_Click" Grid.Column="1" Grid.Row="4" Content="Sailor Soda" Background="LightBlue"/>
-            <Button Name="onWarriorWater" Click="Drinks_Click" Grid.Column="1" Grid.Row="5" Content="Warrior Water" Background="LightBlue"/>
+            <Button Name="onAppleJuice" Click="menuButtonClick" Grid.Column="1" Grid.Row="1" Content="Aretino Apple Juice" Background="LightBlue"/>
+            <Button Name="onCandlehearthCoffee" Click="menuButtonClick" Grid.Column="1" Grid.Row="2" Content="Candlehearth Coffee" Background="LightBlue"/>
+            <Button Name="onMarkarthMilk" Click="menuButtonClick" Grid.Column="1" Grid.Row="3" Content="Markarth Milk" Background="LightBlue"/>
+            <Button Name="onSailorSoda" Click="menuButtonClick" Grid.Column="1" Grid.Row="4" Content="Sailor Soda" Background="LightBlue"/>
+            <Button Name="onWarriorWater" Click="menuButtonClick" Grid.Column="1" Grid.Row="5" Content="Warrior Water" Background="LightBlue"/>
 
             <!--Side Buttons-->
-            <Button Name="onDragonBornWaffleFries" Click="Sides_Click"  Grid.Column="2" Grid.Row="1" FontSize="16" Background="LightGreen">
+            <Button Name="onDragonBornWaffleFries" Click="menuButtonClick"  Grid.Column="2" Grid.Row="1" FontSize="16" Background="LightGreen">
                 <TextBlock TextAlignment="Center">Dragonborn Waffle <LineBreak/>Fries</TextBlock>
             </Button>
-            <Button Name="onFriedMiraak" Click="Sides_Click"  Grid.Column="2" Grid.Row="2" Content="Fried Miraak" Background="LightGreen"/>
-            <Button Name="onMadOtarGrits" Click="Sides_Click" Grid.Column="2" Grid.Row="3" Content="Mad Otar Grits" Background="LightGreen"/>
-            <Button Name="onVokun" Click="Sides_Click" Grid.Column="2" Grid.Row="4" Content="Vokun Salad" Background="LightGreen"/>
+            <Button Name="onFriedMiraak" Click="menuButtonClick"  Grid.Column="2" Grid.Row="2" Content="Fried Miraak" Background="LightGreen"/>
+            <Button Name="onMadOtarGrits" Click="menuButtonClick" Grid.Column="2" Grid.Row="3" Content="Mad Otar Grits" Background="LightGreen"/>
+            <Button Name="onVokun" Click="menuButtonClick" Grid.Column="2" Grid.Row="4" Content="Vokun Salad" Background="LightGreen"/>
 
         </Grid>
     </Border>

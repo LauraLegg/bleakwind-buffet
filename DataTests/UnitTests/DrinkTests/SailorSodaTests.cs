@@ -235,25 +235,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 soda.Flavor = SodaFlavor.Watermelon;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnPrice()
-        {
-            SailorSoda soda = new SailorSoda();
-            soda.Size = Size.Medium;
-            Assert.PropertyChanged(soda, "Price", () => soda.Price.Equals(1.74));
-            soda.Size = Size.Large;
-            Assert.PropertyChanged(soda, "Price", () => soda.Price.Equals(2.07));
-            soda.Size = Size.Small;
-            Assert.PropertyChanged(soda, "Price", () => soda.Price.Equals(1.42));
-        }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            SailorSoda soda = new SailorSoda();
-            soda.Ice = false;
-            Assert.PropertyChanged(soda, "SpecialInstructions", () => soda.SpecialInstructions.Contains("Hold ice"));
-        }
     }
 }

@@ -151,25 +151,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 drink.Ice = false;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnPrice()
-        {
-            AretinoAppleJuice drink = new AretinoAppleJuice();
-            drink.Size = Size.Medium;
-            Assert.PropertyChanged(drink, "Price", () => drink.Price.Equals(0.87));
-            drink.Size = Size.Large;
-            Assert.PropertyChanged(drink, "Price", () => drink.Price.Equals(1.01));
-            drink.Size = Size.Small;
-            Assert.PropertyChanged(drink, "Price", () => drink.Price.Equals(0.62));
-        }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            AretinoAppleJuice drink = new AretinoAppleJuice();
-            drink.Ice = true;
-            Assert.PropertyChanged(drink, "SpecialInstructions", () => drink.SpecialInstructions.Contains("Add ice"));
-        }
     }
 }

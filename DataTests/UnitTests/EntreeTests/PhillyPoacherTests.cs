@@ -174,17 +174,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 pp.Roll = true;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            PhillyPoacher pp = new PhillyPoacher();
-            pp.Sirloin = false;
-            Assert.PropertyChanged(pp, "SpecialInstructions", () => pp.SpecialInstructions.Contains("Hold sirloin"));
-            pp.Onion = false;
-            Assert.PropertyChanged(pp, "SpecialInstructions", () => pp.SpecialInstructions.Contains("Hold onions"));
-            pp.Roll = false;
-            Assert.PropertyChanged(pp, "SpecialInstructions", () => pp.SpecialInstructions.Contains("Hold roll"));
-        }
     }
 }

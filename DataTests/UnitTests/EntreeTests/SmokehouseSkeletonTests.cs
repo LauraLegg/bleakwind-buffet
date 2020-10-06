@@ -211,19 +211,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 ss.Pancake = true;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            SmokehouseSkeleton ss = new SmokehouseSkeleton();
-            ss.SausageLink = false;
-            Assert.PropertyChanged(ss, "SpecialInstructions", () => ss.SpecialInstructions.Contains("Hold sausage"));
-            ss.Egg = false;
-            Assert.PropertyChanged(ss, "SpecialInstructions", () => ss.SpecialInstructions.Contains("Hold eggs"));
-            ss.HashBrowns = false;
-            Assert.PropertyChanged(ss, "SpecialInstructions", () => ss.SpecialInstructions.Contains("Hold hash browns"));
-            ss.Pancake = false;
-            Assert.PropertyChanged(ss, "SpecialInstructions", () => ss.SpecialInstructions.Contains("Hold pancakes"));
-        }
     }
 }

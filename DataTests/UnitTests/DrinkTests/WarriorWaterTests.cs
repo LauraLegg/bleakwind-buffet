@@ -163,15 +163,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 water.Lemon = false;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
-        {
-            WarriorWater water = new WarriorWater();
-            water.Ice = false;
-            Assert.PropertyChanged(water, "SpecialInstructions", () => water.SpecialInstructions.Contains("Hold ice"));
-            water.Lemon = true;
-            Assert.PropertyChanged(water, "SpecialInstructions", () => water.SpecialInstructions.Contains("Add lemon"));
-        }
     }
 }

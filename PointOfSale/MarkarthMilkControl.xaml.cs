@@ -1,5 +1,4 @@
-﻿using BleakwindBuffet.Data.Drinks;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,13 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleakwindBuffet.Data.Drinks;
 
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for AretinoAppleJuiceControl.xaml
+    /// Interaction logic for MarkarthMilkControl.xaml
     /// </summary>
-    public partial class AretinoAppleJuiceControl : UserControl
+    public partial class MarkarthMilkControl : UserControl
     {
         /// <summary>
         /// Reference to the menu buttons control
@@ -30,13 +30,13 @@ namespace PointOfSale
         /// <summary>
         /// Constructor for the control
         /// </summary>
-        /// <param name="buttons"></param>
-        public AretinoAppleJuiceControl(MenuButtons buttons)
+        /// <param name="buttons">the MenuButtons control that call this control</param>
+        public MarkarthMilkControl(MenuButtons buttons)
         {
             InitializeComponent();
             this.buttons = buttons;
-            AretinoAppleJuice drink = new AretinoAppleJuice();
-            buttons.DataContext = drink;
+            MarkarthMilk milk = new MarkarthMilk();
+            buttons.DataContext = milk;
         }
 
         /// <summary>

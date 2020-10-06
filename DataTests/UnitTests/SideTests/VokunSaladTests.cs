@@ -114,17 +114,5 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 salad.Size = Size.Small;
             });
         }
-
-        [Fact]
-        public void PropertyChangedShouldBeInvokedOnPrice()
-        {
-            VokunSalad salad = new VokunSalad();
-            salad.Size = Size.Medium;
-            Assert.PropertyChanged(salad, "Price", () => salad.Price.Equals(1.28));
-            salad.Size = Size.Large;
-            Assert.PropertyChanged(salad, "Price", () => salad.Price.Equals(1.82));
-            salad.Size = Size.Small;
-            Assert.PropertyChanged(salad, "Price", () => salad.Price.Equals(0.93));
-        }
     }
 }
