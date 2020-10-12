@@ -45,7 +45,6 @@ namespace BleakwindBuffet.Data.Sides
         {
             get 
             {
-                uint c = 0;
                 if (Size == Size.Small) return 151;
                 if (Size == Size.Medium) return 236;
                 if (Size == Size.Large) return 306;

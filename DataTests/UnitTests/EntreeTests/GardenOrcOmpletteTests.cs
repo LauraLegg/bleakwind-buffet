@@ -211,5 +211,30 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 omelette.Cheddar = true;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            GardenOrcOmelette omelette = new GardenOrcOmelette();
+            Assert.PropertyChanged(omelette, "SpecialInstructions", () =>
+            {
+                omelette.Broccoli = false;
+            });
+
+            Assert.PropertyChanged(omelette, "SpecialInstructions", () =>
+            {
+                omelette.Mushrooms = false;
+            });
+
+            Assert.PropertyChanged(omelette, "SpecialInstructions", () =>
+            {
+                omelette.Tomato = false;
+            });
+
+            Assert.PropertyChanged(omelette, "SpecialInstructions", () =>
+            {
+                omelette.Cheddar = false;
+            });
+        }
     }
 }

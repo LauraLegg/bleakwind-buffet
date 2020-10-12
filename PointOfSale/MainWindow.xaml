@@ -25,7 +25,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Border Name="orderListColumn" Grid.Column="4" Grid.RowSpan="8"/>
+        <Border Name="orderListColumn" Grid.Column="4" Grid.RowSpan="8">
+            <local:ItemsOrderedList x:Name="ItemsOrdered"/>
+        </Border>
         <Border Name="mainBorder" Grid.ColumnSpan="3" Grid.RowSpan="8">
             <local:MenuButtons x:Name="MenuButtons"/>
         </Border>

@@ -211,5 +211,30 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 ss.Pancake = true;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+            Assert.PropertyChanged(ss, "SpecialInstructions", () =>
+            {
+                ss.SausageLink = false;
+            });
+
+            Assert.PropertyChanged(ss, "SpecialInstructions", () =>
+            {
+                ss.Egg = false;
+            });
+
+            Assert.PropertyChanged(ss, "SpecialInstructions", () =>
+            {
+                ss.HashBrowns = false;
+            });
+
+            Assert.PropertyChanged(ss, "SpecialInstructions", () =>
+            {
+                ss.Pancake = false;
+            });
+        }
     }
 }

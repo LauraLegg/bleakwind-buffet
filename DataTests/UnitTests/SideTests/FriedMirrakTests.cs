@@ -114,5 +114,45 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 miraak.Size = Size.Small;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            FriedMiraak miraak = new FriedMiraak();
+            Assert.PropertyChanged(miraak, "Price", () =>
+            {
+                miraak.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(miraak, "Price", () =>
+            {
+                miraak.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(miraak, "Price", () =>
+            {
+                miraak.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCalories()
+        {
+            FriedMiraak miraak = new FriedMiraak();
+            Assert.PropertyChanged(miraak, "Calories", () =>
+            {
+                miraak.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(miraak, "Calories", () =>
+            {
+                miraak.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(miraak, "Calories", () =>
+            {
+                miraak.Size = Size.Small;
+            });
+        }
     }
 }

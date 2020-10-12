@@ -174,5 +174,25 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 pp.Roll = true;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            PhillyPoacher pp = new PhillyPoacher();
+            Assert.PropertyChanged(pp, "SpecialInstructions", () =>
+            {
+                pp.Sirloin = false;
+            });
+
+            Assert.PropertyChanged(pp, "SpecialInstructions", () =>
+            {
+                pp.Onion = false;
+            });
+
+            Assert.PropertyChanged(pp, "SpecialInstructions", () =>
+            {
+                pp.Roll = false;
+            });
+        }
     }
 }

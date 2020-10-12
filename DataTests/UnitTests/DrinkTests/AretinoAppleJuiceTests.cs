@@ -151,5 +151,55 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 drink.Ice = false;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+            Assert.PropertyChanged(drink, "Price", () =>
+            {
+                drink.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(drink, "Price", () =>
+            {
+                drink.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(drink, "Price", () =>
+            {
+                drink.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCalories()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+            Assert.PropertyChanged(drink, "Calories", () =>
+            {
+                drink.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(drink, "Calories", () =>
+            {
+                drink.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(drink, "Calories", () =>
+            {
+                drink.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            AretinoAppleJuice drink = new AretinoAppleJuice();
+            Assert.PropertyChanged(drink, "SpecialInstructions", () =>
+            {
+                drink.Ice = true;
+            });
+        }
     }
 }

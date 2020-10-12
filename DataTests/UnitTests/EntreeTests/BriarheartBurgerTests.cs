@@ -248,5 +248,35 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 burger.Cheese = true;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            BriarheartBurger burger = new BriarheartBurger();
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Bun = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Ketchup = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Mustard = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Pickle = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Cheese = false;
+            });
+        }
     }
 }

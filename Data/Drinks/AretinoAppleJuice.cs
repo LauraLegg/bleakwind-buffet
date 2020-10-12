@@ -45,7 +45,6 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get 
             {
-                uint c = 0;
                 if (Size == Size.Small) return 44;
                 if (Size == Size.Medium) return 88;
                 if (Size == Size.Large) return 132;

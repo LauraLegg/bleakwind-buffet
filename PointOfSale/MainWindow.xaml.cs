@@ -3,6 +3,7 @@
  * Class name: MainWindow.cs
  * Purpose: Partial Class for the main window.
  */
+using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,7 +33,7 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-            orderListColumn.Child = new ItemsOrderedList();
+            ItemsOrdered.DataContext = new Order();
         }
 
     }

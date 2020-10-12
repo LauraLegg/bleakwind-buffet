@@ -114,5 +114,45 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 fries.Size = Size.Small;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            DragonbornWaffleFries fries = new DragonbornWaffleFries();
+            Assert.PropertyChanged(fries, "Price", () =>
+            {
+                fries.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(fries, "Price", () =>
+            {
+                fries.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(fries, "Price", () =>
+            {
+                fries.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCalories()
+        {
+            DragonbornWaffleFries fries = new DragonbornWaffleFries();
+            Assert.PropertyChanged(fries, "Calories", () =>
+            {
+                fries.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(fries, "Calories", () =>
+            {
+                fries.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(fries, "Calories", () =>
+            {
+                fries.Size = Size.Small;
+            });
+        }
     }
 }

@@ -3,6 +3,7 @@
  * Class name: AretinoAppleJuiceControl.xaml.cs
  * Purpose: Partial Class for AretinoAppleJuiceControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace PointOfSale
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
-        {
+        {   
             buttons.SwitchScreen("");
         }
     }

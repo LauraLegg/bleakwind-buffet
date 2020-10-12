@@ -3,6 +3,10 @@
  * Class name: ItemsOrderedList.cs
  * Purpose: Partial Class for ItemsOrderedList xaml class.
  */
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Entrees;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,6 +33,11 @@ namespace PointOfSale
         public ItemsOrderedList()
         {
             InitializeComponent();
+        }
+
+        void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new Order();
         }
     }
 }

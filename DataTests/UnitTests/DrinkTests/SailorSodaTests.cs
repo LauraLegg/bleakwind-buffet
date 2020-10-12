@@ -109,7 +109,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             if (!includeIce) Assert.Contains("Hold ice", soda.SpecialInstructions);
             else Assert.Empty(soda.SpecialInstructions);
         }
-        
+
         [Theory]
         [InlineData(SodaFlavor.Cherry, Size.Small, "Small Cherry Sailor Soda")]
         [InlineData(SodaFlavor.Cherry, Size.Medium, "Medium Cherry Sailor Soda")]
@@ -233,6 +233,56 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.PropertyChanged(soda, "Flavor", () =>
             {
                 soda.Flavor = SodaFlavor.Watermelon;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            SailorSoda soda = new SailorSoda();
+            Assert.PropertyChanged(soda, "Price", () =>
+            {
+                soda.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(soda, "Price", () =>
+            {
+                soda.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(soda, "Price", () =>
+            {
+                soda.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCalories()
+        {
+            SailorSoda soda = new SailorSoda();
+            Assert.PropertyChanged(soda, "Calories", () =>
+            {
+                soda.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(soda, "Calories", () =>
+            {
+                soda.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(soda, "Calories", () =>
+            {
+                soda.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            SailorSoda soda = new SailorSoda();
+            Assert.PropertyChanged(soda, "SpecialInstructions", () =>
+            {
+                soda.Ice = false;
             });
         }
     }

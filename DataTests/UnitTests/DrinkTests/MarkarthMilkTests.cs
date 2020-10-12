@@ -151,5 +151,55 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 milk.Ice = false;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnPrice()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+            Assert.PropertyChanged(milk, "Price", () =>
+            {
+                milk.Size = Size.Large;            
+            });
+
+            Assert.PropertyChanged(milk, "Price", () =>
+            {
+                milk.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(milk, "Price", () =>
+            {
+                milk.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnCalories()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+            Assert.PropertyChanged(milk, "Calories", () =>
+            {
+                milk.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(milk, "Calories", () =>
+            {
+                milk.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(milk, "Calories", () =>
+            {
+                milk.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            MarkarthMilk milk = new MarkarthMilk();
+            Assert.PropertyChanged(milk, "SpecialInstructions", () =>
+            {
+                milk.Ice = true;
+            });
+        }
     }
 }

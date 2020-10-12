@@ -435,5 +435,36 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 burger.Egg = true;
             });
         }
+
+        [Fact]
+        public void PropertyChangedShouldBeInvokedOnSpecialInstructions()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Bun = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Ketchup = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Mustard = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Tomato = false;
+            });
+
+            Assert.PropertyChanged(burger, "SpecialInstructions", () =>
+            {
+                burger.Egg = false;
+            });
+        }
     }
 }

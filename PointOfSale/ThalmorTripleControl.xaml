@@ -68,7 +68,7 @@
 
         <!--Button that will be used to apply changes to the menu item and add it to the order.-->
         <Button Name="applyButton" Click="DoneButton_Click" Grid.Column="1" Grid.Row="2" FontSize="18">
-            Done
+            Apply
         </Button>
     </Grid>
 </UserControl>
