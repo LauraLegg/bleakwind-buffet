@@ -26,19 +26,19 @@
             </TextBlock>
             <TextBlock Name="number" FontWeight="Bold" FontSize="25" Text="{Binding Path=Number}"/>
         </StackPanel>
-        <ListView Name="orderList" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding}"/>    
+        <ListView Name="orderList" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding}"/>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="subtotalBlock1" FontWeight="Bold" FontSize="14" Text="Subtotal: "/>
+                <TextBlock Name="subtotalBlock1" FontWeight="Bold" FontSize="14" Text="Subtotal: $"/>
                 <TextBlock Name="subTotalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Subtotal}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="totalBlock1" FontWeight="Bold" FontSize="14" Text="Total: "/>
-                <TextBlock Name="totalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Total}"/>
+                <TextBlock Name="taxBlock1" FontWeight="Bold" FontSize="14" Text="Tax: $"/>
+                <TextBlock Name="taxBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Tax}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="taxBlock1" FontWeight="Bold" FontSize="14" Text="Total: "/>
-                <TextBlock Name="taxBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Tax}"/>
+                <TextBlock Name="totalBlock1" FontWeight="Bold" FontSize="14" Text="Total: $"/>
+                <TextBlock Name="totalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Total}"/>
             </StackPanel>
         </StackPanel>
 

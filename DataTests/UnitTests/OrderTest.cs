@@ -157,26 +157,5 @@ namespace BleakwindBuffet.DataTests.UnitTests
                 order.Remove(new VokunSalad());
             });
         }
-
-        [Fact]
-        public void PropertyChangedEventForGetCollectionWhenItemIsAdded()
-        {
-            Order order = new Order();
-            Assert.PropertyChanged(order, "GetCollection", () =>
-            {
-                order.Add(new VokunSalad());
-            });
-        }
-
-        [Fact]
-        public void PropertyChangedEventForGetCollectionWhenItemIsRemoved()
-        {
-            Order order = new Order();
-            order.Add(new VokunSalad());
-            Assert.PropertyChanged(order, "GetCollection", () =>
-            {
-                order.Remove(new VokunSalad());
-            });
-        }
     }
 }

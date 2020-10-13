@@ -33,8 +33,7 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-            ItemsOrdered.DataContext = new Order();
+            DataContext = new Order();
         }
-
     }
 }

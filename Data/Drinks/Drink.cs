@@ -11,7 +11,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public abstract class Drink
+    public abstract class Drink : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets and sets the size of the drink
@@ -32,5 +32,10 @@ namespace BleakwindBuffet.Data.Drinks
         /// Gets a list of special instructions
         /// </summary>
         public abstract List<string> SpecialInstructions { get; }
+
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

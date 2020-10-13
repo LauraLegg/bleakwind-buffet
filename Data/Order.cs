@@ -20,6 +20,9 @@ namespace BleakwindBuffet.Data
     /// </summary>
     public class Order : ICollection, INotifyCollectionChanged, INotifyPropertyChanged
     {
+        /// <summary>
+        /// The collection
+        /// </summary>
         public Collection<IOrderItem> collection = new Collection<IOrderItem>();
 
         /// <summary>
@@ -35,8 +38,18 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// Sum of all the calories of the items in the order
         /// </summary>
-        private uint calories = 0;
-        public uint Calories => calories;
+        public uint Calories
+        {
+            get
+            {
+                uint calories = 0;
+                foreach (IOrderItem item in this)
+                {
+                    calories += item.Calories;
+                }
+                return calories;
+            }
+        }
 
         /// <summary>
         /// The order number
@@ -51,8 +64,18 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// Represents the total price for all items in the order.
         /// </summary>
-        private double subtotal = 0;
-        public double Subtotal => subtotal;
+        public double Subtotal
+        {
+            get
+            {
+                double subtotal = 0;
+                foreach (IOrderItem item in this)
+                {
+                    subtotal += item.Price;
+                }
+                return subtotal;
+            }
+        }
 
         /// <summary>
         /// Represents the Subtotal multiplied by the SalesTaxRate
@@ -88,14 +111,12 @@ namespace BleakwindBuffet.Data
         public void Add(IOrderItem item)
         {
             collection.Add(item);
-            calories += item.Calories;
-            subtotal += item.Price;
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+            item.PropertyChanged += ItemChangedListener;
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GetCollection"));
         }
 
         /// <summary>
@@ -103,25 +124,39 @@ namespace BleakwindBuffet.Data
         /// </summary>
         public void Remove(IOrderItem item)
         {
+            int index = collection.IndexOf(item);
             collection.Remove(item);
-            calories -= item.Calories;
-            subtotal -= item.Price;
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            item.PropertyChanged -= ItemChangedListener;
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GetCollection"));
         }
 
         public void CopyTo(Array array, int index)
         {
-            throw new NotFiniteNumberException();
+            throw new NotImplementedException();
         }
 
         public IEnumerator GetEnumerator()
         {
             return collection.GetEnumerator();
+        }
+
+        void ItemChangedListener(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Calories")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+            }
+
+            if (e.PropertyName == "Price")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
+            }
         }
     }
 }

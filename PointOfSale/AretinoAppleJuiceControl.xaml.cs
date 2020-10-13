@@ -51,7 +51,13 @@ namespace PointOfSale
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
-        {   
+        {
+            if (DataContext is Order order)
+            {
+                var item = new AretinoAppleJuice();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

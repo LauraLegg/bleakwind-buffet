@@ -91,6 +91,7 @@ namespace BleakwindBuffet.Data
             get => entree;
             set
             {
+                //entree.PropertyChanged -= PropertyChangedListener;
                 entree = value;
                 //entree.PropertyChanged += PropertyChangedListener;
                 NotifyItemChanged("Entree");
@@ -106,6 +107,7 @@ namespace BleakwindBuffet.Data
             get => drink;
             set
             {
+                //drink.PropertyChanged -= PropertyChangedListener;
                 drink = value;
                 //drink.PropertyChanged += PropertyChangedListener;
                 NotifyItemChanged("Drink");
@@ -121,7 +123,9 @@ namespace BleakwindBuffet.Data
             get => side;
             set
             {
+                //side.PropertyChanged -= PropertyChangedListener;
                 side = value;
+                //side.PropertyChanged += PropertyChangedListener;
                 NotifyItemChanged("Side");
             }
         }

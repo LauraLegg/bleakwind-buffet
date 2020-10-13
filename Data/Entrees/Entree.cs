@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public abstract class Entree
+    public abstract class Entree : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets the price of the entree
@@ -26,5 +26,10 @@ namespace BleakwindBuffet.Data.Entrees
         /// Gets a list of special instructions
         /// </summary>
         public abstract List<string> SpecialInstructions { get; }
+
+        /// <summary>
+        /// Event that keeps track of when properties are changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
