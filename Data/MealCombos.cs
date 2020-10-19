@@ -91,10 +91,10 @@ namespace BleakwindBuffet.Data
             get => entree;
             set
             {
-                //entree.PropertyChanged -= PropertyChangedListener;
+                if (entree != null) entree.PropertyChanged -= PropertyChangedListener;
                 entree = value;
-                //entree.PropertyChanged += PropertyChangedListener;
                 NotifyItemChanged("Entree");
+                entree.PropertyChanged += PropertyChangedListener;
             }
         }
 
@@ -107,10 +107,10 @@ namespace BleakwindBuffet.Data
             get => drink;
             set
             {
-                //drink.PropertyChanged -= PropertyChangedListener;
+                if (drink != null) drink.PropertyChanged -= PropertyChangedListener;
                 drink = value;
-                //drink.PropertyChanged += PropertyChangedListener;
                 NotifyItemChanged("Drink");
+                drink.PropertyChanged += PropertyChangedListener;
             }
         }
 
@@ -123,13 +123,18 @@ namespace BleakwindBuffet.Data
             get => side;
             set
             {
-                //side.PropertyChanged -= PropertyChangedListener;
+                if (side != null) PropertyChanged -= PropertyChangedListener;
                 side = value;
-                //side.PropertyChanged += PropertyChangedListener;
                 NotifyItemChanged("Side");
+                side.PropertyChanged += PropertyChangedListener;
             }
         }
 
+        /// <summary>
+        /// Invokes property change on for price, calories, 
+        /// and special instructions when IOrderItem is added
+        /// </summary>
+        /// <param name="name">The name of the property being changed</param>
         private void NotifyItemChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -138,11 +143,20 @@ namespace BleakwindBuffet.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
         }
 
+
+        /// <summary>
+        /// Event listener for when Price and Calories of an IOrderItem change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void PropertyChangedListener(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "Size")
+            if(e.PropertyName == "Price")
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+            }
+            if (e.PropertyName == "Calories")
+            {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }
         }

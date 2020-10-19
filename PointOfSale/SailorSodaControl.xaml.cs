@@ -3,6 +3,7 @@
  * Class name: SailorSodaControl.xaml.cs
  * Purpose: Partial Class for SailorSodaControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             SailorSoda soda = new SailorSoda();
-            buttons.DataContext = soda;
+            specialInstructions.DataContext = soda;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new SailorSoda();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 
 namespace PointOfSale
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             MarkarthMilk milk = new MarkarthMilk();
-            buttons.DataContext = milk;
+            specialInstructions.DataContext = milk;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new MarkarthMilk();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

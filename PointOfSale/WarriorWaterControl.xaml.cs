@@ -3,6 +3,7 @@
  * Class name: WarriorWaterControl.xaml.cs
  * Purpose: Partial Class for WarriorWaterControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             WarriorWater water = new WarriorWater();
-            buttons.DataContext = water;
+            specialInstructions.DataContext = water;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new WarriorWater();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

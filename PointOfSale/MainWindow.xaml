@@ -6,13 +6,20 @@
         xmlns:local="clr-namespace:PointOfSale"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+    <Grid Name="mainGrid">
         <!--Creating the grid-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.66*"/>
+            <ColumnDefinition Width="0.66*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -24,12 +31,15 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
+        <local:ItemsOrderedList x:Name="ItemsOrdered" Grid.ColumnSpan="2" Grid.Column="3" Grid.RowSpan="7"/>
 
-        <Border Name="orderListColumn" Grid.Column="4" Grid.RowSpan="8">
-            <local:ItemsOrderedList x:Name="ItemsOrdered"/>
-        </Border>
-        <Border Name="mainBorder" Grid.ColumnSpan="3" Grid.RowSpan="8">
-            <local:MenuButtons x:Name="MenuButtons"/>
-        </Border>
+        <local:MenuButtons x:Name="MenuButtons" Grid.ColumnSpan="3" Grid.RowSpan="8"/>
+
+        <Border Name="mainBorder" Grid.ColumnSpan="3" Grid.RowSpan="8"/>
+
+        <!--Buttons for completing or canceling an order-->
+        <Button Name="finishButton" Grid.Column="3" Grid.Row="8" Content="Finish" Click="FinishButton_Click"/>
+        <Button Name="canelButton" Grid.Column="8" Grid.Row="8" Content="Cancel" Click="CancelButton_Click"/>
     </Grid>
 </Window>

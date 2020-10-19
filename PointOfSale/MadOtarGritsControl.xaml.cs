@@ -3,6 +3,7 @@
  * Class name: MadOtarGritsControl.cs
  * Purpose: Partial Class for MadOtarGritsControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             MadOtarGrits grits = new MadOtarGrits();
-            buttons.DataContext = grits;
+            specialInstructions.DataContext = grits;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new MadOtarGrits();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

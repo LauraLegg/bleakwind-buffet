@@ -3,6 +3,7 @@
  * Class name: GardenOrcOmeletteControl.cs
  * Purpose: Partial Class for GardenOrcOmeletteControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             GardenOrcOmelette omelette = new GardenOrcOmelette();
-            buttons.DataContext = omelette;
+            specialInstructions.DataContext = omelette;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new GardenOrcOmelette();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

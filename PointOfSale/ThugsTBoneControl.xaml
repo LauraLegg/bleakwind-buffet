@@ -11,6 +11,7 @@
         <Style x:Name="checkBoxStyle" TargetType="CheckBox">
             <Setter Property="FontSize" Value="15"/>
         </Style>
+        <BitmapImage UriSource="Images/background2.jpg" x:Key="background2"/>
     </UserControl.Resources>
     <Grid>
         <!--The grid is 1 colum by 2 rows-->
@@ -23,6 +24,11 @@
             <RowDefinition Height="6*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <!--The Background Picture-->
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource background2}"/>
+        </Grid.Background>
 
         <!--Displays the name of the drink-->
         <Label Content="Thugs T-Bone" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="2"/>

@@ -3,6 +3,7 @@
  * Class name: BriarheartBurger.xaml.cs
  * Purpose: Partial Class for BriarheartBurger xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             BriarheartBurger burger = new BriarheartBurger();
-            buttons.DataContext = burger;
+            specialInstructions.DataContext = burger;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new BriarheartBurger();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

@@ -6,6 +6,15 @@
              xmlns:local="clr-namespace:PointOfSale"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="GhostWhite"/>
+        </Style>
+        <BitmapImage UriSource="Images/background2.jpg" x:Key="background2"/>
+    </UserControl.Resources>
     <Grid>
         <!--Size of the grid is 1 column by 2 rows-->
         <Grid.ColumnDefinitions>
@@ -13,11 +22,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.75*"/>
-            <RowDefinition Height="4.5*"/>
+            <RowDefinition Height="0.87*"/>
+            <RowDefinition Height="4.3*"/>
             <RowDefinition/>
-            <RowDefinition/>
+            <!--<RowDefinition/>-->
         </Grid.RowDefinitions>
+
+        <!--The Background Picture-->
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource background2}"/>
+        </Grid.Background>
 
         <!--A textbox containing the order number and a spot for the list of ordered items.-->
         <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -26,24 +40,38 @@
             </TextBlock>
             <TextBlock Name="number" FontWeight="Bold" FontSize="25" Text="{Binding Path=Number}"/>
         </StackPanel>
-        <ListView Name="orderList" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding}"/>
+        
+        <!--ListView for items in the order-->
+        <ListView x:Name="orderList" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Name="priceBlock">
+                            <Run Text="{Binding Mode=OneWay}"/>
+                            <Run Text="{Binding Path=Price, Mode=OneTime, StringFormat=c}"/>
+                        </TextBlock>
+                        <!--<ListView Name="specialInstructions" ItemsSource="{Binding Path=SpecialInstructions}"/>-->
+                        <Button Name="removeButton" Click="RemoveButton_Click"  Content="Remove"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--Displays the Subtotal, Tax, and Total of the order-->
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="subtotalBlock1" FontWeight="Bold" FontSize="14" Text="Subtotal: $"/>
-                <TextBlock Name="subTotalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Subtotal}"/>
+                <TextBlock Name="subtotalBlock1" FontWeight="Bold" FontSize="14" Text="Subtotal: "/>
+                <TextBlock Name="subTotalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Subtotal, StringFormat=c}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="taxBlock1" FontWeight="Bold" FontSize="14" Text="Tax: $"/>
-                <TextBlock Name="taxBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Tax}"/>
+                <TextBlock Name="taxBlock1" FontWeight="Bold" FontSize="14" Text="Tax: "/>
+                <TextBlock Name="taxBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Tax, StringFormat=c}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="totalBlock1" FontWeight="Bold" FontSize="14" Text="Total: $"/>
-                <TextBlock Name="totalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Total}"/>
+                <TextBlock Name="totalBlock1" FontWeight="Bold" FontSize="14" Text="Total: "/>
+                <TextBlock Name="totalBlock2" FontWeight="Bold" FontSize="14" Text="{Binding Path=Total, StringFormat=c}"/>
             </StackPanel>
         </StackPanel>
-
-        <!--Buttons for completing or canceling an order-->
-        <Button Grid.Row="3" Content="Finish" FontSize="18" Margin="3"/>
-        <Button Grid.Column="1" Grid.Row="3" Content="Cancel" FontSize="18" Margin="3" Click="CancelButton_Click"/>
+        
     </Grid>
 </UserControl>

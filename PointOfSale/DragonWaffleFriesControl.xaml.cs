@@ -3,6 +3,7 @@
  * Class name: DragonWaffelFriesControl.xaml.cs
  * Purpose: Partial Class for DragonWaffelFriesControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             DragonbornWaffleFries fries = new DragonbornWaffleFries();
-            buttons.DataContext = fries;
+            specialInstructions.DataContext = fries;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new DragonbornWaffleFries();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

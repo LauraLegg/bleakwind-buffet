@@ -23,7 +23,7 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// The collection
         /// </summary>
-        public Collection<IOrderItem> collection = new Collection<IOrderItem>();
+        private Collection<IOrderItem> collection = new Collection<IOrderItem>();
 
         /// <summary>
         /// Event that keeps track of when properties are changed
@@ -61,6 +61,7 @@ namespace BleakwindBuffet.Data
         /// Property that handles the order's sales tax
         /// </summary>
         public double SalesTaxRate { get; set; } = 0.12;
+
         /// <summary>
         /// Represents the total price for all items in the order.
         /// </summary>
@@ -80,12 +81,26 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// Represents the Subtotal multiplied by the SalesTaxRate
         /// </summary>
-        public double Tax => Subtotal * SalesTaxRate;
+        public double Tax
+        {
+            get
+            {
+                double tax = Subtotal* SalesTaxRate;
+                return Convert.ToDouble(String.Format("{0:00.00}", tax));
+            }
+        }
 
         /// <summary>
         /// The total is the sum of the Subtotal and Tax.
         /// </summary>
-        public double Total => Subtotal + Tax;
+        public double Total
+        {
+            get
+            {
+                double total = Subtotal + Tax; ;
+                return Convert.ToDouble(String.Format("{0:000.00}", total));
+            }
+        }
 
         /// <summary>
         /// The number of elements in the collection

@@ -11,6 +11,7 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="4"/>
         </Style>
+        <BitmapImage UriSource="Images/background2.jpg" x:Key="background2"/>
     </UserControl.Resources>
     <Border Name="menuButtonsControl">
         <Grid>
@@ -31,6 +32,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <!--The Background Picture-->
+            <Grid.Background>
+                <ImageBrush ImageSource="{StaticResource background2}"/>
+            </Grid.Background>
+            
             <!--Menu label-->
             <Border Grid.ColumnSpan="3">
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="arial" FontSize="25" FontWeight="Bold">
@@ -44,7 +50,7 @@
             <Button Name="onThalmorTriple" Click="menuButtonClick" Grid.Row="3" Content="Thalmor Triple" Background="LightCoral"/>
             <Button Name="onGardenOrcOmelette" Click="menuButtonClick" Grid.Row="4" Content="Garden Orc Omelette" Background="LightCoral"/>
             <Button Name="onPhillyPoacher" Click="menuButtonClick" Grid.Row="5" Content="Philly Poacher" Background="LightCoral"/>
-            <Button Name="onSmokehouseSkeleton" Click="menuButtonClick" Grid.Row="6" Content="Smokehouse Skeleton" Background="LightCoral"/>
+            <Button Name="onSmokehouseSkeleton" Click="menuButtonClick" Grid.Row="6" Content="Smokehouse Skeleton" Background="LightCoral" FontSize="17"/>
             <Button Name="onThugsTBone" Click="menuButtonClick" Grid.Row="7" Content="Thugs T-Bone" Background="LightCoral"/>
 
             <!--Drink Buttons-->
@@ -61,6 +67,9 @@
             <Button Name="onFriedMiraak" Click="menuButtonClick"  Grid.Column="2" Grid.Row="2" Content="Fried Miraak" Background="LightGreen"/>
             <Button Name="onMadOtarGrits" Click="menuButtonClick" Grid.Column="2" Grid.Row="3" Content="Mad Otar Grits" Background="LightGreen"/>
             <Button Name="onVokun" Click="menuButtonClick" Grid.Column="2" Grid.Row="4" Content="Vokun Salad" Background="LightGreen"/>
+            
+            <!--Create Combo Button-->
+            <Button Name="onCombo" Grid.Column="2" Grid.Row="5" Content="Create Combo" Background="Wheat"/>
 
         </Grid>
     </Border>

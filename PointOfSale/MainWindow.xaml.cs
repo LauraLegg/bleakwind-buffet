@@ -27,12 +27,36 @@ namespace PointOfSale
     /// </summary>
     public partial class MainWindow : Window
     {
+
         /// <summary>
         /// Constructor for the main window partial class
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new Order();
+        }
+
+        /// <summary>
+        /// Button for completeing the order.When pressed 
+        /// it will redirect the user to a payment screen.
+        /// </summary>
+        /// <param name = "sender" ></ param >
+        /// < param name="e"></param>
+        void FinishButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainBorder.Child = new PaymentOptionsControl(mainBorder);
+        }
+
+        /// <summary>
+        /// When pressed, this button will clear 
+        /// the last order and start a new order.
+        /// </summary>
+        /// <param name = "sender" ></ param >
+        /// < param name="e"></param>
+        void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainBorder.Child = null;
             DataContext = new Order();
         }
     }

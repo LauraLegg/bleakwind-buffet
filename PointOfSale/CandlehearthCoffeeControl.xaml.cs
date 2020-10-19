@@ -3,6 +3,7 @@
  * Class name: CandlehearthCoffeeControl.xaml.cs
  * Purpose: Partial Class for CandlehearthCoffeeControl xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             CandlehearthCoffee coffee = new CandlehearthCoffee();
-            buttons.DataContext = coffee;
+            specialInstructions.DataContext = coffee;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new CandlehearthCoffee();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

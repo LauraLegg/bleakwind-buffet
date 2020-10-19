@@ -3,6 +3,7 @@
  * Class name: SmokehouseSkeletonControl.xaml.cs
  * Purpose: Partial Class for SmokehouseSkeleton xaml class.
  */
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             SmokehouseSkeleton ss = new SmokehouseSkeleton();
-            buttons.DataContext = ss;
+            specialInstructions.DataContext = ss;
         }
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DataContext is Order order)
+            {
+                var item = new SmokehouseSkeleton();
+                order.Add(item);
+            }
+
             buttons.SwitchScreen("");
         }
     }

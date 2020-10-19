@@ -5,6 +5,7 @@
  */
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,7 +43,7 @@ namespace PointOfSale
             InitializeComponent();
             this.buttons = buttons;
             AretinoAppleJuice drink = new AretinoAppleJuice();
-            buttons.DataContext = drink;
+            specialInstructions.DataContext = drink;
         }
 
         /// <summary>
@@ -54,8 +55,8 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                var item = new AretinoAppleJuice();
-                order.Add(item);
+                AretinoAppleJuice drink = new AretinoAppleJuice();
+                order.Add(drink);
             }
 
             buttons.SwitchScreen("");
