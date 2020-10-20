@@ -71,7 +71,8 @@ namespace PointOfSale
                     case CardTransactionResult.Approved:
                         messageBox.Text = "Approved!";
                         //Print recipt -------------------------------------------------
-                        //Create new order
+                        // Create new order --------------------------------------------
+                        //border.Child = null;
                         break;
                     case CardTransactionResult.Declined:
                         messageBox.Text = "Declined";

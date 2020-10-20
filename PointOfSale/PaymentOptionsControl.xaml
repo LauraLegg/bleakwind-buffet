@@ -43,7 +43,7 @@
             <TextBlock Text="Total: " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBlock Text="{Binding Path=Total, StringFormat=c}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
-        <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Background="GhostWhite" Margin="4">
+        <Border BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Background="GhostWhite" Margin="4">
             <TextBlock Name="messageBox" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
 

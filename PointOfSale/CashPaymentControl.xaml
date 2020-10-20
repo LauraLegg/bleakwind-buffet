@@ -12,22 +12,22 @@
             <Setter Property="Margin" Value="3"/>
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="4"/>
         </Style>
         <BitmapImage UriSource="Images/background2.jpg" x:Key="background2"/>
     </UserControl.Resources>
     <Grid>
         <!--7 columns by 10 rows-->
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition Width=".15*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <!--<ColumnDefinition/>-->
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
@@ -38,8 +38,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height=".75*"/>
+            <RowDefinition Height="1.35*"/>
         </Grid.RowDefinitions>
 
         <!--The Background Picture-->
@@ -50,37 +50,37 @@
         <!--Display for amount due and amount owed-->
         <TextBlock Text="Total: "/>
         <TextBlock Name="total" Text="{Binding Path=Total, StringFormat=c}" FontSize="18" VerticalAlignment="Bottom"/>
-        <TextBlock Text="Amount Due: " Grid.Column="3" Background="LightCoral"/>
-        <TextBlock Name="amountDue"  Text="$_____________" Grid.Column="3" VerticalAlignment="Bottom"/>
-        <TextBlock Text="Change Owed: " Grid.Column="6" Background="LightGreen"/>
-        <TextBlock Name="changeOwned" Text="$_____________" Grid.Column="6" VerticalAlignment="Bottom"/>
+        <TextBlock Text="Amount Due: " Grid.Row="2" Grid.RowSpan="2" Background="LightCoral"/>
+        <TextBlock Name="amountDue"  Text="$_____________" Grid.Row="3" VerticalAlignment="Bottom"/>
+        <TextBlock Text="Change Owed: " Grid.Row="5" Grid.RowSpan="2" Background="LightGreen"/>
+        <TextBlock Name="changeOwned" Text="$_____________" Grid.Row="6" VerticalAlignment="Bottom"/>
         
         <!--Display for adding cash from customer and giving change to customer-->
-        <!--Bills--><!--
-        <TextBlock Text="Bills"  TextDecorations="Underline" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" FontSize="25"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <local:ChangeQuantityControl x:Name="hundreds" Grid.Column="1"  Grid.ColumnSpan="2" Grid.Row="2"/>
-        <local:ChangeQuantityControl x:Name="fifties" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
-        <local:ChangeQuantityControl x:Name="twenties" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"/>
-        <local:ChangeQuantityControl x:Name="tens" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5"/>
-        <local:ChangeQuantityControl x:Name="fives" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6"/>
-        <local:ChangeQuantityControl x:Name="twos" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7"/>
-        <local:ChangeQuantityControl x:Name="ones" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8"/>
+        <!--Bills-->
+        <TextBlock Text="Bills"  TextDecorations="Underline" Grid.Column="1" Grid.ColumnSpan="2" FontSize="25"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <local:ChangeQuantityControl x:Name="hundreds" Grid.Column="1"  Grid.ColumnSpan="2" Grid.Row="1"/>
+        <local:ChangeQuantityControl x:Name="fifties" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"/>
+        <local:ChangeQuantityControl x:Name="twenties" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
+        <local:ChangeQuantityControl x:Name="tens" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"/>
+        <local:ChangeQuantityControl x:Name="fives" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5"/>
+        <local:ChangeQuantityControl x:Name="twos" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6"/>
+        <local:ChangeQuantityControl x:Name="ones" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7"/>
         
-        --><!--Coins--><!--
-        <TextBlock Text="Coins " TextDecorations="Underline" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" FontSize="25"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <local:ChangeQuantityControl x:Name="onesCoin" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2"/>
-        <local:ChangeQuantityControl x:Name="fiftyCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3"/>
-        <local:ChangeQuantityControl x:Name="twentyfiveCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4"/>
-        <local:ChangeQuantityControl x:Name="tenCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="5"/>
-        <local:ChangeQuantityControl x:Name="fiveCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6"/>
-        <local:ChangeQuantityControl x:Name="oneCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="7"/>-->
-        
+        <!--Coins-->
+        <TextBlock Text="Coins " TextDecorations="Underline" Grid.Column="4" Grid.ColumnSpan="2" FontSize="25"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <local:ChangeQuantityControl x:Name="onesCoin" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <local:ChangeQuantityControl x:Name="fiftyCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2"/>
+        <local:ChangeQuantityControl x:Name="twentyfiveCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3"/>
+        <local:ChangeQuantityControl x:Name="tenCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4"/>
+        <local:ChangeQuantityControl x:Name="fiveCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="5"/>
+        <local:ChangeQuantityControl x:Name="oneCent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6"/>
+                
         <!--Buttons for returning to order and finalizing-->
         <Button Name="returnToOrder" Grid.Row="9" Grid.ColumnSpan="2" Click="ReturnButton_Click">
-            Return to Order <!--<TextBlock TextAlignment="Center">Return to <LineBreak/>Order</TextBlock>-->
+            Return to Order 
         </Button>
-        <Button Name="completeOrder" Grid.Row="9" Grid.Column="5"  Grid.ColumnSpan="2" Click="CompleteButton_Click">
-            Complete Order <!--<TextBlock TextAlignment="Center">Complete <LineBreak/>Order</TextBlock>-->
+        <Button Name="completeOrder" Grid.Row="9" Grid.Column="4"  Grid.ColumnSpan="2" Click="CompleteButton_Click">
+            Finalize Order 
         </Button>
     </Grid>
 </UserControl>

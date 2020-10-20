@@ -35,6 +35,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.border = border;
+            labelControls();
         }
 
         /// <summary>
@@ -56,6 +57,24 @@ namespace PointOfSale
         void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
             border.Child = null;
+        }
+
+        void labelControls()
+        {
+            hundreds.cashAmount.Content = "$100";
+            fifties.cashAmount.Content = "$50";
+            twenties.cashAmount.Content = "$20";
+            tens.cashAmount.Content = "$10";
+            fives.cashAmount.Content = "$5";
+            twos.cashAmount.Content = "$2";
+            ones.cashAmount.Content = "$1";
+
+            onesCoin.cashAmount.Content = "$1";
+            fiftyCent.cashAmount.Content = "50c";
+            twentyfiveCent.cashAmount.Content = "25c";
+            tenCent.cashAmount.Content = "10c";
+            fiveCent.cashAmount.Content = "5c";
+            oneCent.cashAmount.Content = "1c";
         }
     }
 }
