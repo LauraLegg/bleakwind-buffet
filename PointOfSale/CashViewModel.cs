@@ -14,11 +14,15 @@ namespace PointOfSale
     public class CashViewModel : INotifyPropertyChanged
     {
         /// <summary>
-        /// 
+        /// Handles when one of properties changes
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         //Properties to represent the quantity of each kind of currency in the drawer
+
+        /// <summary>
+        /// Represents how many hundred dollar bills are in the drawer
+        /// </summary>
         public int HundredsInDrawer
         {
             get => CashDrawer.Hundreds;
@@ -32,6 +36,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many fifty dollar bills are in the drawer
+        /// </summary>
         public int FiftiesInDrawer
         {
             get => CashDrawer.Fifties;
@@ -45,6 +52,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many twenty dollar bills are in the drawer
+        /// </summary>
         public int TwentiesInDrawer
         {
             get => CashDrawer.Twenties;
@@ -58,6 +68,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many ten dollar bills are in the drawer
+        /// </summary>
         public int TensInDrawer
         {
             get => CashDrawer.Tens;
@@ -71,6 +84,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many five dollar bills are in the drawer
+        /// </summary>
         public int FivesInDrawer
         {
             get => CashDrawer.Fives;
@@ -84,6 +100,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many two dollar bills are in the drawer
+        /// </summary>
         public int TwosInDrawer
         {
             get => CashDrawer.Twos;
@@ -97,6 +116,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many one dollar bills are in the drawer
+        /// </summary>
         public int OnesInDrawer
         {
             get => CashDrawer.Ones;
@@ -110,6 +132,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many dollar coins are in the drawer
+        /// </summary>
         public int DollarsInDrawer
         {
             get => CashDrawer.Dollars;
@@ -123,6 +148,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many half dollars are in the drawer
+        /// </summary>
         public int HalfDollarsInDrawer
         {
             get => CashDrawer.HalfDollars;
@@ -136,6 +164,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many quarters are in the drawer
+        /// </summary>
         public int QuartersInDrawer
         {
             get => CashDrawer.Quarters;
@@ -149,6 +180,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many dimes are in the drawer
+        /// </summary>
         public int DimesInDrawer
         {
             get => CashDrawer.Dimes;
@@ -162,6 +196,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many nickles are in the drawer
+        /// </summary>
         public int NicklesInDrawer
         {
             get => CashDrawer.Nickels;
@@ -175,6 +212,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many pennies are in the drawer
+        /// </summary>
         public int PenniesInDrawer
         {
             get => CashDrawer.Pennies;
@@ -190,6 +230,9 @@ namespace PointOfSale
 
         //Properties to represent the quantity of each kind of currency the customer is using to pay
 
+        /// <summary>
+        /// Represents how many hundred dollar bills are recived from the custromer
+        /// </summary>
         private int hundreds = 0;
         public int Hundreds
         {
@@ -206,6 +249,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many fifty dollar bills are recived from the custromer
+        /// </summary>
         private int fifties = 0;
         public int Fifties
         {
@@ -222,6 +268,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many twenty dollar bills are recived from the custromer
+        /// </summary>
         private int twenties = 0;
         public int Twenties
         {
@@ -238,6 +287,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many ten dollar bills are recived from the custromer
+        /// </summary>
         private int tens = 0;
         public int Tens
         {
@@ -254,6 +306,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many five dollar bills are recived from the custromer
+        /// </summary>
         private int fives = 0;
         public int Fives
         {
@@ -270,6 +325,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many two dollar bills are recived from the custromer
+        /// </summary>
         private int twos = 0;
         public int Twos
         {
@@ -286,6 +344,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many one dollar bills are recived from the custromer
+        /// </summary>
         private int ones = 0;
         public int Ones
         {
@@ -302,6 +363,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many dollar coins are recived from the custromer
+        /// </summary>
         private int dollars = 0;
         public int Dollars
         {
@@ -318,6 +382,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many half dollars are recived from the custromer
+        /// </summary>
         private int halfDollars = 0;
         public int HalfDollars
         {
@@ -334,6 +401,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many quarters are recived from the custromer
+        /// </summary>
         private int quarters = 0;
         public int Quarters
         {
@@ -350,6 +420,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many dimes are recived from the custromer
+        /// </summary>
         private int dimes = 0;
         public int Dimes
         {
@@ -366,6 +439,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many nickles are recived from the custromer
+        /// </summary>
         private int nickles = 0;
         public int Nickles
         {
@@ -382,6 +458,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Represents how many pennies are recived from the custromer
+        /// </summary>
         private int pennies = 0;
         public int Pennies
         {
@@ -400,11 +479,18 @@ namespace PointOfSale
 
         //Properties to represent the quantity of each kind of currency that should be provided to the customer as change for the transaction.
         
+        /// <summary>
+        /// returns the total from the view model class
+        /// </summary>
         public double Total
         {
             get => CashDrawer.Total;
         }
 
+        /// <summary>
+        /// method that totals how much was recieved from the customer
+        /// </summary>
+        /// <returns></returns>
         private double TotalRecieved()
         {
             double r = 0;

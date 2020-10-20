@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author: Laura Legg
+ * Class name: ComboControl
+ * Purpose: Used to create a combo meal
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,8 +23,18 @@ namespace PointOfSale
     /// </summary>
     public partial class ComboControl : UserControl
     {
+        /// <summary>
+        /// Reference to the menu buttons control
+        /// </summary>
+        /// <remarks>
+        /// Used to set the data context and return the the buttons screen.
+        /// </remarks>
         MenuButtons buttons;
 
+        /// <summary>
+        /// the constructor for the combo control partial class
+        /// </summary>
+        /// <param name="buttons"></param>
         public ComboControl(MenuButtons buttons)
         {
             InitializeComponent();

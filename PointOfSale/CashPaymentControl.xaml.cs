@@ -24,9 +24,9 @@ namespace PointOfSale
     public partial class CashPaymentControl : UserControl
     {
         /// <summary>
-        /// 
+        /// The border containing the payment screens
         /// </summary>
-        Border border;
+        private Border border;
 
         /// <summary>
         /// Contructor for CashPaymentControl partial class
@@ -35,7 +35,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.border = border;
-            labelControls();
+            LabelControls();
         }
 
         /// <summary>
@@ -59,7 +59,10 @@ namespace PointOfSale
             border.Child = null;
         }
 
-        void labelControls()
+        /// <summary>
+        /// Adds content to each control's cashAmount label
+        /// </summary>
+        private void LabelControls()
         {
             hundreds.cashAmount.Content = "$100";
             fifties.cashAmount.Content = "$50";

@@ -26,9 +26,9 @@ namespace PointOfSale
     /// </summary>
     public partial class PaymentOptionsControl : UserControl
     {
-       /// <summary>
-       /// 
-       /// </summary>
+        /// <summary>
+        /// The border containing the payment screens
+        /// </summary>
         Border border;
 
         /// <summary>
