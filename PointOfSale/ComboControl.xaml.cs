@@ -3,6 +3,10 @@
  * Class name: ComboControl
  * Purpose: Used to create a combo meal
  */
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Entrees;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +36,11 @@ namespace PointOfSale
         MenuButtons buttons;
 
         /// <summary>
+        /// The combo that will be added to the order
+        /// </summary>
+        private MealCombos combo = new MealCombos();
+
+        /// <summary>
         /// the constructor for the combo control partial class
         /// </summary>
         /// <param name="buttons"></param>
@@ -46,13 +55,44 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void comboButtonClick(object sender, RoutedEventArgs e)
+        void comboButtonClick(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is Button s)
+            if (sender is ComboBox s)
             {
-                if (s.Name == "onDragonBornWaffleFries")
-                    SwitchScreen("Dragonborn Waffle Fries");
-                else SwitchScreen((string)s.Content);
+                if (s.SelectedItem == BBurger)
+                    SwitchScreen("BriarheartBurger");
+                else if (s.SelectedItem == DDraugr)
+                    SwitchScreen("DoubleDraugr");
+                else if (s.SelectedItem == TTriple)
+                    SwitchScreen("ThalmorTriple");
+                else if (s.SelectedItem == OrcOmlette)
+                    SwitchScreen("GardenOrcOmelette");
+                else if (s.SelectedItem == PPoacher)
+                    SwitchScreen("PhillyPoacher");
+                else if (s.SelectedItem == SSkeleton)
+                    SwitchScreen("SmokehouseSkeleton");
+                else if (s.SelectedItem == TTBone)
+                    SwitchScreen("ThugsTBone");
+
+                else if (s.SelectedItem == AAJuice)
+                    SwitchScreen("ArentinoAppleJuice");
+                else if (s.SelectedItem == Coffee)
+                    SwitchScreen("CandlehearthCoffee");
+                else if (s.SelectedItem == Milk)
+                    SwitchScreen("MarkarthMilk");
+                else if (s.SelectedItem == Soda)
+                    SwitchScreen("SailorSoda");
+                else if (s.SelectedItem == Water)
+                    SwitchScreen("WarriorWater");
+
+                else if (s.SelectedItem == DBWaffleFries)
+                    SwitchScreen("DragonbornWaffleFries");
+                else if (s.SelectedItem == Miraak)
+                    SwitchScreen("FriedMiraak");
+                else if (s.SelectedItem == Grits)
+                    SwitchScreen("MadOtarGrits");
+                else if (s.SelectedItem == Salad)
+                    SwitchScreen("VokunSalad");
             }
         }
 
@@ -64,55 +104,89 @@ namespace PointOfSale
         {
             switch (name)
             {
-                case "Briarheart Burger":
-                    comboControl.Child = new BriarheartBurgerControl(buttons);
+                case "BriarheartBurger":
+                    BriarheartSpecialInstructions b = new BriarheartSpecialInstructions();
+                    controlBox.Child = b;
+                    combo.Entree = b.specialInstructions.DataContext as BriarheartBurger;
                     break;
-                case "Double Draugr":
-                    comboControl.Child = new DoubleDraugrControl(buttons);
+                case "DoubleDraugr":
+                    DraugerSpecialInstructions draugr = new DraugerSpecialInstructions();
+                    controlBox.Child = draugr;
+                    combo.Entree = draugr.specialInstructions.DataContext as DoubleDraugr;
                     break;
-                case "Thalmor Triple":
-                    comboControl.Child = new ThalmorTripleControl(buttons);
+                case "ThalmorTriple":
+                    TripleSpecialInstructions thalmor = new TripleSpecialInstructions();
+                    controlBox.Child = thalmor;
+                    combo.Entree = thalmor.specialInstructions.DataContext as ThalmorTriple;
                     break;
-                case "Garden Orc Omelette":
-                    comboControl.Child = new GardenOrcOmelettControl(buttons);
+                case "GardenOrcOmelette":
+                    GOOmeletteSpecialInstructions omelette = new GOOmeletteSpecialInstructions();
+                    controlBox.Child = omelette;
+                    combo.Entree = omelette.specialInstructions.DataContext as GardenOrcOmelette;
                     break;
-                case "Philly Poacher":
-                    comboControl.Child = new PhillyPoacherControl(buttons);
+                case "PhillyPoacher":
+                    PPoacherSpecialInstructions poacher = new PPoacherSpecialInstructions();
+                    controlBox.Child = poacher;
+                    combo.Entree = poacher.specialInstructions.DataContext as PhillyPoacher;
                     break;
-                case "Smokehouse Skeleton":
-                    comboControl.Child = new SmokehouseSkeletonControl(buttons);
+                case "SmokehouseSkeleton":
+                    SkeletonSpecialInstructions skeleton = new SkeletonSpecialInstructions();
+                    controlBox.Child = skeleton;
+                    combo.Entree = skeleton.specialInstructions.DataContext as SmokehouseSkeleton;
                     break;
-                case "Thugs T-Bone":
-                    comboControl.Child = new ThugsTBoneControl(buttons);
-                    break;
-
-                case "Aretino Apple Juice":
-                    comboControl.Child = new AretinoAppleJuiceControl(buttons);
-                    break;
-                case "Candlehearth Coffee":
-                    comboControl.Child = new CandlehearthCoffeeControl(buttons);
-                    break;
-                case "Markarth Milk":
-                    comboControl.Child = new MarkarthMilkControl(buttons);
-                    break;
-                case "Sailor Soda":
-                    comboControl.Child = new SailorSodaControl(buttons);
-                    break;
-                case "Warrior Water":
-                    comboControl.Child = new WarriorWaterControl(buttons);
+                case "ThugsTBone":
+                    TBoneSpecialInstructions tBone = new TBoneSpecialInstructions();
+                    controlBox.Child = tBone;
+                    combo.Entree = tBone.specialInstructions.DataContext as ThugsTBone;
                     break;
 
-                case "Dragonborn Waffle Fries":
-                    comboControl.Child = new DragonWaffleFriesControl(buttons);
+
+                case "ArentinoAppleJuice":
+                    AretinoAppleJuiceSpecialInstructions drink = new AretinoAppleJuiceSpecialInstructions();
+                    controlBox.Child = drink;
+                    combo.Drink = drink.specialInstructions.DataContext as AretinoAppleJuice;
                     break;
-                case "Fried Miraak":
-                    comboControl.Child = new FriedMiraakControl(buttons);
+                case "CandlehearthCoffee":
+                    CoffeeSpecialInstructions coffee = new CoffeeSpecialInstructions();
+                    controlBox.Child = coffee;
+                    combo.Drink = coffee.specialInstructions.DataContext as CandlehearthCoffee;
                     break;
-                case "Mad Otar Grits":
-                    comboControl.Child = new MadOtarGritsControl(buttons);
+                case "MarkarthMilk":
+                    MilkSpecialInstructions milk = new MilkSpecialInstructions();
+                    controlBox.Child = milk;
+                    combo.Drink = milk.specialInstructions.DataContext as MarkarthMilk;
                     break;
-                case "Vokun Salad":
-                    comboControl.Child = new VokunSaladControl(buttons);
+                case "SailorSoda":
+                    SodaSpecialInstructions soda = new SodaSpecialInstructions();
+                    controlBox.Child = soda;
+                    combo.Drink = soda.specialInstructions.DataContext as SailorSoda;
+                    break;
+                case "WarriorWater":
+                    WaterSpecialInstructions water = new WaterSpecialInstructions();
+                    controlBox.Child = water;
+                    combo.Drink = water.specialInstructions.DataContext as WarriorWater;
+                    break;
+
+
+                case "DragonbornWaffleFries":
+                    DBWFriesSpecialInstructions fries = new DBWFriesSpecialInstructions();
+                    controlBox.Child = fries;
+                    combo.Side = fries.specialInstructions.DataContext as DragonbornWaffleFries;
+                    break;
+                case "FriedMiraak":
+                    FriedMiraakSpecialInstructions miraak = new FriedMiraakSpecialInstructions();
+                    controlBox.Child = miraak;
+                    combo.Side = miraak.specialInstructions.DataContext as FriedMiraak;
+                    break;
+                case "MadOtarGrits":
+                    MOGritsSpecialInstructions grits = new MOGritsSpecialInstructions();
+                    controlBox.Child = grits;
+                    combo.Side = grits.specialInstructions.DataContext as MadOtarGrits;
+                    break;
+                case "VokunSalad":
+                    VokunSaladSpecialInstructions salad = new VokunSaladSpecialInstructions();
+                    controlBox.Child = salad;
+                    combo.Side = salad.specialInstructions.DataContext as VokunSalad;
                     break;
 
                 default:
@@ -120,6 +194,21 @@ namespace PointOfSale
                     break;
             }
 
+        }
+
+        /// <summary>
+        /// Switches the screen back when done button is clicked and adds the combo to the order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                order.Add(combo);
+            }
+
+            buttons.SwitchScreen("");
         }
     }
 }

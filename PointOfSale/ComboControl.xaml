@@ -11,6 +11,9 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="4"/>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
         <BitmapImage UriSource="Images/background2.jpg" x:Key="background2"/>
     </UserControl.Resources>
     <Border Name="comboControl">
@@ -43,33 +46,55 @@
                     Create a Combo
                 </Label>
             </Border>
-
-            <!--Entree Buttons-->
-            <Button Name="onBriarheart" Click="comboButtonClick" Grid.Row="1" Content="Briarheart Burger" Background="LightCoral"/>
-            <Button Name="onDoubleDraugr" Click="comboButtonClick" Grid.Row="2" Content="Double Draugr" Background="LightCoral"/>
-            <Button Name="onThalmorTriple" Click="comboButtonClick" Grid.Row="3" Content="Thalmor Triple" Background="LightCoral"/>
-            <Button Name="onGardenOrcOmelette" Click="comboButtonClick" Grid.Row="4" Content="Garden Orc Omelette" Background="LightCoral"/>
-            <Button Name="onPhillyPoacher" Click="comboButtonClick" Grid.Row="5" Content="Philly Poacher" Background="LightCoral"/>
-            <Button Name="onSmokehouseSkeleton" Click="comboButtonClick" Grid.Row="6" Content="Smokehouse Skeleton" Background="LightCoral" FontSize="17"/>
-            <Button Name="onThugsTBone" Click="comboButtonClick" Grid.Row="7" Content="Thugs T-Bone" Background="LightCoral"/>
             
-            <!--Drink Buttons-->
-            <Button Name="onAppleJuice" Click="comboButtonClick" Grid.Column="1" Grid.Row="1" Content="Aretino Apple Juice" Background="LightBlue"/>
-            <Button Name="onCandlehearthCoffee" Click="comboButtonClick" Grid.Column="1" Grid.Row="2" Content="Candlehearth Coffee" Background="LightBlue"/>
-            <Button Name="onMarkarthMilk" Click="comboButtonClick" Grid.Column="1" Grid.Row="3" Content="Markarth Milk" Background="LightBlue"/>
-            <Button Name="onSailorSoda" Click="comboButtonClick" Grid.Column="1" Grid.Row="4" Content="Sailor Soda" Background="LightBlue"/>
-            <Button Name="onWarriorWater" Click="comboButtonClick" Grid.Column="1" Grid.Row="5" Content="Warrior Water" Background="LightBlue"/>
-
-            <!--Side Buttons-->
-            <Button Name="onDragonBornWaffleFries" Click="comboButtonClick"  Grid.Column="2" Grid.Row="1" FontSize="16" Background="LightGreen">
-                <TextBlock TextAlignment="Center">Dragonborn Waffle <LineBreak/>Fries</TextBlock>
+            <!--Listview that holds a label and combobox for the entrees, drinks, and sides-->
+            <ListView Grid.Row="1" Grid.RowSpan="6">
+                
+                <!--Code representing the entree items in the list view-->
+                <Label Content="Pick an Entree: "/>
+                <ComboBox Width="150" Name="pickEntree" SelectionChanged="comboButtonClick">
+                    <ComboBoxItem Name="BBurger" Content="Briarheart Burger"/>
+                    <ComboBoxItem Name="DDraugr" Content="Double Draugr"/>
+                    <ComboBoxItem Name="TTriple" Content="Thalmor Triple"/>
+                    <ComboBoxItem Name="OrcOmlette" Content="Garden Orc Omlette"/>
+                    <ComboBoxItem Name="PPoacher" Content="Philly Poacher"/>
+                    <ComboBoxItem Name="SSkeleton" Content="Smokehouse Skeleton"/>
+                    <ComboBoxItem Name="TTBone" Content="Thugs T-Bone"/>
+                </ComboBox>
+                
+                <!--Lable to create a space-->
+                <Label/>
+                
+                <!--Code representing the drinks in the list view-->
+                <Label Content="Pick a Drink: "/>
+                <ComboBox Width="150" Name="pickDrink" SelectionChanged="comboButtonClick">
+                    <ComboBoxItem Name="AAJuice" Content="Arentino Apple Juice"/>
+                    <ComboBoxItem Name="Coffee" Content="Candlehearth Coffee"/>
+                    <ComboBoxItem Name="Milk" Content="Markarth Milk"/>
+                    <ComboBoxItem Name="Soda" Content="Sailor Soda"/>
+                    <ComboBoxItem Name="Water" Content="Warrior Water"/>
+                </ComboBox>
+                
+                <!--Lable to create a space-->
+                <Label/>
+                
+                <!--Code representing the sides in the list view-->
+                <Label Content="Pick a Side: "/>
+                <ComboBox Width="150" Name="pickSide" SelectionChanged="comboButtonClick">
+                    <ComboBoxItem Name="DBWaffleFries" Content="Dragonborn Waffle Fries"/>
+                    <ComboBoxItem Name="Miraak" Content="Fried Miraak"/>
+                    <ComboBoxItem Name="Grits" Content="Mad Otar Grits"/>
+                    <ComboBoxItem Name="Salad" Content="Vokun Salad"/>
+                </ComboBox>
+            </ListView>
+            
+            <!--Border to hold the special instructions control for the current selceted item-->
+            <Border Name="controlBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="6"/>
+            
+            <!--Button to add the combo to the order-->
+            <Button Name="applyButton" Click="DoneButton_Click" Grid.Column="2" Grid.Row="7" FontSize="18">
+                Apply
             </Button>
-            <Button Name="onFriedMiraak" Click="comboButtonClick"  Grid.Column="2" Grid.Row="2" Content="Fried Miraak" Background="LightGreen"/>
-            <Button Name="onMadOtarGrits" Click="comboButtonClick" Grid.Column="2" Grid.Row="3" Content="Mad Otar Grits" Background="LightGreen"/>
-            <Button Name="onVokun" Click="comboButtonClick" Grid.Column="2" Grid.Row="4" Content="Vokun Salad" Background="LightGreen"/>
-
-            <Button Name="applyButton"/>
-
         </Grid>
     </Border>
 </UserControl>

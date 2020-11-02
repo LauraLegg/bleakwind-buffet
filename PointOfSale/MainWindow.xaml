@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PointOfSale"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="950">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="18"/>
@@ -32,10 +32,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
+        <!--Adds an instance of the ItemsOrdered control to the main window-->
         <local:ItemsOrderedList x:Name="ItemsOrdered" Grid.ColumnSpan="2" Grid.Column="3" Grid.RowSpan="7"/>
 
+        <!--Adds the menu buttons to the main window-->
         <local:MenuButtons x:Name="MenuButtons" Grid.ColumnSpan="3" Grid.RowSpan="8"/>
 
+        <!--Border for displaying different screens-->
         <Border Name="mainBorder" Grid.ColumnSpan="3" Grid.RowSpan="8"/>
 
         <!--Buttons for completing or canceling an order-->

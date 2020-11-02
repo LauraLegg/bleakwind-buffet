@@ -35,6 +35,11 @@ namespace PointOfSale
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Click event that removes an item from the order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             if (DataContext is Order order && sender is Button button && button.DataContext is IOrderItem item)

@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="75" d:DesignWidth="300">
     <Grid>
+        <!--4 Columns by 1 Row-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -14,18 +15,26 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
+        
+        <!--Label that will display the bill amount or a coin amount that this control represents-->
         <Border Background="LightGreen" Margin="3">
             <Label Name="cashAmount" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
         </Border>
+        
+        <!--The add button-->
         <Button Name="add" Grid.Column="1" Content="+" FontSize="20" Click="AddButton_Click"/>
+        
+        <!--Label that represents number of bill / coins recieved from the customer-->
         <Border Background="GhostWhite" Grid.Column="2">
             <TextBlock Name="numberBox" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
         </Border>
+        
+        <!--The subtract button-->
         <Button Name="subtract"  Content="-" Grid.Column="3" FontSize="20" Click="MinusButton_Click"/>
+        
+        <!--Label that represents the number of bills / coins of this type that need to be returned to the customer-->
         <Border Grid.Column="4" Background="GhostWhite" BorderBrush="LightGreen" BorderThickness="2">
             <TextBlock Name="returnToCust" Text="X" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
         </Border>
-        
     </Grid>
 </UserControl>

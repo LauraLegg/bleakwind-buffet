@@ -51,17 +51,26 @@ namespace BleakwindBuffet.Data
                 {
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 sides.Add(new FriedMiraak()
                 {
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 sides.Add(new MadOtarGrits()
                 {
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 sides.Add(new VokunSalad()
                 {
                     Size = size
@@ -83,24 +92,36 @@ namespace BleakwindBuffet.Data
                 {
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 drinks.Add(new CandlehearthCoffee()
                 {
                     Decaf = false,
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 drinks.Add(new CandlehearthCoffee()
                 {
                     Decaf = true,
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 drinks.Add(new MarkarthMilk()
                 {
                     Size = size
                 });
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 foreach (SodaFlavor flavor in Enum.GetValues(typeof(SodaFlavor)))
                 {
                     drinks.Add(new SailorSoda()
@@ -109,7 +130,10 @@ namespace BleakwindBuffet.Data
                         Flavor = flavor
                     });
                 }
+            }
 
+            foreach (Size size in Enum.GetValues(typeof(Size)))
+            {
                 drinks.Add(new WarriorWater()
                 {
                     Size = size

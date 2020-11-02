@@ -52,13 +52,36 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is Order order)
+            if (DataContext is Order order && specialInstructions.DataContext is VokunSalad item)
             {
-                var item = new VokunSalad();
                 order.Add(item);
             }
 
             buttons.SwitchScreen("");
+        }
+
+        /// <summary>
+        /// Handles when a different size is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (specialInstructions.DataContext is VokunSalad side)
+            {
+                if (comboBox.SelectedItem == Small)
+                {
+                    side.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                else if (comboBox.SelectedItem == Medium)
+                {
+                    side.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                else if (comboBox.SelectedItem == Large)
+                {
+                    side.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+            }
         }
     }
 }

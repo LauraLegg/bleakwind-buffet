@@ -105,6 +105,10 @@ namespace PointOfSale
                     menuButtonsControl.Child = new VokunSaladControl(this);
                     break;
 
+                case "Create Combo":
+                    menuButtonsControl.Child = new ComboControl(this);
+                    break;
+
                 default:
                     menuButtonsControl.Child = new MenuButtons();
                     break;

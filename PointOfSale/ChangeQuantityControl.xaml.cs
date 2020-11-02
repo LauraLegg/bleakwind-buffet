@@ -29,7 +29,7 @@ namespace PointOfSale
         private int val = 0;
 
         /// <summary>
-        /// The constructor
+        /// The constructor for the ChangeQuantityControl partial class.
         /// </summary>
         public ChangeQuantityControl()
         {

@@ -131,6 +131,15 @@ namespace BleakwindBuffet.Data
         }
 
         /// <summary>
+        /// Overrides ToString() to return the combo.
+        /// </summary>
+        /// <returns>Returns the size and name of the drink.</returns>
+        public override string ToString()
+        {
+            return "Combo Item \t";
+        }
+
+        /// <summary>
         /// Invokes property change on for price, calories, 
         /// and special instructions when IOrderItem is added
         /// </summary>

@@ -5,6 +5,7 @@
  */
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -52,13 +53,72 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is Order order)
+            if (DataContext is Order order && specialInstructions.DataContext is SailorSoda item)
             {
-                var item = new SailorSoda();
                 order.Add(item);
             }
 
             buttons.SwitchScreen("");
+        }
+
+        /// <summary>
+        /// Handles when a different size is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (specialInstructions.DataContext is SailorSoda drink)
+            {
+                if (comboBox.SelectedItem == Small)
+                {
+                    drink.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                else if (comboBox.SelectedItem == Medium)
+                {
+                    drink.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                else if (comboBox.SelectedItem == Large)
+                {
+                    drink.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles when a different flavor is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Flavor_ComboBoxSelection(object sender, SelectionChangedEventArgs e)
+        {
+            if (specialInstructions.DataContext is SailorSoda drink)
+            {
+                if (flavorComboBox.SelectedItem == Blackberry)
+                {
+                    drink.Flavor = SodaFlavor.Blackberry;
+                }
+                else if (flavorComboBox.SelectedItem == Cherry)
+                {
+                    drink.Flavor = SodaFlavor.Cherry;
+                }
+                else if (flavorComboBox.SelectedItem == Grapefuit)
+                {
+                    drink.Flavor = SodaFlavor.Grapefruit;
+                }
+                else if (flavorComboBox.SelectedItem == Lemon)
+                {
+                    drink.Flavor = SodaFlavor.Lemon;
+                }
+                else if (flavorComboBox.SelectedItem == Peach)
+                {
+                    drink.Flavor = SodaFlavor.Peach;
+                }
+                else if (flavorComboBox.SelectedItem == Watermelon)
+                {
+                    drink.Flavor = SodaFlavor.Watermelon;
+                }
+            }
         }
     }
 }

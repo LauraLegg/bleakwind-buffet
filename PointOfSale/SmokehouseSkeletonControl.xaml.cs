@@ -52,9 +52,8 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is Order order)
+            if (DataContext is Order order && specialInstructions.DataContext is SmokehouseSkeleton item)
             {
-                var item = new SmokehouseSkeleton();
                 order.Add(item);
             }
 

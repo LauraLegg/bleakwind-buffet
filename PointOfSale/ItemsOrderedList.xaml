@@ -50,7 +50,7 @@
                             <Run Text="{Binding Mode=OneWay}"/>
                             <Run Text="{Binding Path=Price, Mode=OneTime, StringFormat=c}"/>
                         </TextBlock>
-                        <!--<ListView Name="specialInstructions" ItemsSource="{Binding Path=SpecialInstructions}"/>-->
+                        <ListView Name="specialInstructions" ItemsSource="{Binding Path=SpecialInstructions}"/>
                         <Button Name="removeButton" Click="RemoveButton_Click"  Content="Remove"/>
                     </StackPanel>
                 </DataTemplate>

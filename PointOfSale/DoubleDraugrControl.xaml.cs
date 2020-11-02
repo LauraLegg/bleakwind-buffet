@@ -46,15 +46,15 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Switches the screen back when done button is clicked
+        /// Switches the screen back when done button is 
+        /// clicked and add the item to the order
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is Order order)
+            if (DataContext is Order order && specialInstructions.DataContext is DoubleDraugr item)
             {
-                var item = new DoubleDraugr();
                 order.Add(item);
             }
 

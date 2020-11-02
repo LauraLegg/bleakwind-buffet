@@ -1,0 +1,65 @@
+﻿@page
+@model IndexModel
+
+@using BleakwindBuffet.Data;
+
+@{
+    <!--The title is set to "Home page"-->
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <!--Bleakwind Buffet's welcome message-->
+    <h1 class="display-4">Welcome to Bleakwind Buffet!</h1>
+    <p>
+        We at Bleakwind Buffet are proud to bring you authentic
+        fantasy meals straight from the world of Skyrim. Shake the
+        blood off your sword and sake your thirst with one of our old-fashioned
+        sailor sodas. Hack into a Smokehouse Skeleton with your dagger.
+        Or vanquish the the mighty Thalmor Triple Burger! You’ve had a hard
+        adventure and earned your loot, so spend it with us!
+    </p>
+
+    <!--Label and list of all entree menu items-->
+    <h2 class="category">Entrees</h2>
+    @foreach (IOrderItem entree in Menu.Entrees())
+    {
+        <div class="details">
+            <div class="name">@(entree.ToString() + ": ")</div>
+            <div class="price">Price: @("- $" + entree.Price)</div>
+            <div class="calories">Calories: @("- " + entree.Calories)</div>
+        </div>
+    }
+
+    <!--Label and list of all drink menu items-->
+    <h2 class="category">Drinks</h2>
+    @foreach (IOrderItem drink in Menu.Drinks())
+    {
+        <div class="details">
+            <div class="name">@(drink.ToString() + ": ")</div>
+            <div class="price">Price: @("- $" + drink.Price)</div>
+            <div class="calories">Calories: @("- " + drink.Calories)</div>
+        </div>
+    }
+
+    <!--Label and list of all side menu items-->
+    <h2 class="category">Sides</h2>
+    @foreach (IOrderItem side in Menu.Sides())
+    {
+        <div class="details">
+            <div class="name">@(side.ToString() + ": ")</div>
+            <div class="price">Price: @("- $" + side.Price)</div>
+            <div class="calories">Calories: @("- " + side.Calories)</div>
+        </div>
+    }
+
+    <!--Label for the combo option-->
+    <h2 class="category">Create a Combo!</h2>
+    <div>Combine any entree, drink, and side for a $1 discount!</div>
+
+    <!--Label to display all soda flavors-->
+    <h2 class="category">Soda Flavors: </h2>
+    <div>
+        <p>Blackberry, Cherry, Grapefruit, Lemon, Peach, Watermelon</p>
+    </div>
+</div>

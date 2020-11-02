@@ -52,10 +52,9 @@ namespace PointOfSale
         /// <param name="e"></param>
         void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is Order order)
+            if (DataContext is Order order && specialInstructions.DataContext is GardenOrcOmelette omelette)
             {
-                var item = new GardenOrcOmelette();
-                order.Add(item);
+                order.Add(omelette);
             }
 
             buttons.SwitchScreen("");

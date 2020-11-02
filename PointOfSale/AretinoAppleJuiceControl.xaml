@@ -36,7 +36,7 @@
             <Label FontSize="20" FontWeight="DemiBold">
                 Size:
             </Label>
-            <ComboBox Width="80" Name="comboBox">
+            <ComboBox Width="100" Name="comboBox" SelectionChanged="comboBox_SelectionChanged">
                 <ComboBoxItem Name="Small" IsSelected="{Binding Path=Size}" Content="Small"/>
                 <ComboBoxItem Name="Medium" IsSelected="{Binding Path=Size}" Content="Medium"/>
                 <ComboBoxItem Name="Large" IsSelected="{Binding Path=Size}" Content="Large"/>
