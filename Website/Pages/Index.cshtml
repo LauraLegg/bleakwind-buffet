@@ -8,58 +8,121 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <!--Bleakwind Buffet's welcome message-->
-    <h1 class="display-4">Welcome to Bleakwind Buffet!</h1>
-    <p>
-        We at Bleakwind Buffet are proud to bring you authentic
-        fantasy meals straight from the world of Skyrim. Shake the
-        blood off your sword and sake your thirst with one of our old-fashioned
-        sailor sodas. Hack into a Smokehouse Skeleton with your dagger.
-        Or vanquish the the mighty Thalmor Triple Burger! You’ve had a hard
-        adventure and earned your loot, so spend it with us!
-    </p>
-
-    <!--Label and list of all entree menu items-->
-    <h2 class="category">Entrees</h2>
-    @foreach (IOrderItem entree in Menu.Entrees())
-    {
-        <div class="details">
-            <div class="name">@(entree.ToString() + ": ")</div>
-            <div class="price">Price: @("- $" + entree.Price)</div>
-            <div class="calories">Calories: @("- " + entree.Calories)</div>
-        </div>
-    }
-
-    <!--Label and list of all drink menu items-->
-    <h2 class="category">Drinks</h2>
-    @foreach (IOrderItem drink in Menu.Drinks())
-    {
-        <div class="details">
-            <div class="name">@(drink.ToString() + ": ")</div>
-            <div class="price">Price: @("- $" + drink.Price)</div>
-            <div class="calories">Calories: @("- " + drink.Calories)</div>
-        </div>
-    }
-
-    <!--Label and list of all side menu items-->
-    <h2 class="category">Sides</h2>
-    @foreach (IOrderItem side in Menu.Sides())
-    {
-        <div class="details">
-            <div class="name">@(side.ToString() + ": ")</div>
-            <div class="price">Price: @("- $" + side.Price)</div>
-            <div class="calories">Calories: @("- " + side.Calories)</div>
-        </div>
-    }
-
-    <!--Label for the combo option-->
-    <h2 class="category">Create a Combo!</h2>
-    <div>Combine any entree, drink, and side for a $1 discount!</div>
-
-    <!--Label to display all soda flavors-->
-    <h2 class="category">Soda Flavors: </h2>
+<!--Form for searching menu items-->
+<form>
+    <h2 class="category">Let us help you!</h2>
+    <!--Code for the search bar-->
     <div>
-        <p>Blackberry, Cherry, Grapefruit, Lemon, Peach, Watermelon</p>
+        <input type="text" name="SearchItems" value="@Model.SearchTerms" />
+        <input type="submit" value="Search" />
     </div>
+
+    <!--Checkboxes for the different categories-->
+    <div>
+        <h4>Choose the category: </h4>
+        <label>
+            <input type="checkbox" name="Categories" value="Entree" checked="@Model.Categories.Contains("Entree")" />
+            Entree
+        </label>
+
+        <label>
+            <input type="checkbox" name="Categories" value="Drink" checked="@Model.Categories.Contains("Drink")" />
+            Drink
+        </label>
+
+        <label>
+            <input type="checkbox" name="Categories" value="Side" checked="@Model.Categories.Contains("Side")" />
+            Side
+        </label>
+    </div>
+
+    <!--The number boxes for the price range-->
+    <h4 class="PClabel">Select price range: </h4>
+    <div>
+        <input type="number" name="PriceMin" min="0" max="999" step="0.01" placeholder="min" />
+        to
+        <input type="number" name="PriceMax" min="0" max="999" step="0.01" placeholder="max" />
+    </div>
+
+    <!--The number boxes for the calories range-->
+    <h4 class="PClabel">Select calorie range: </h4>
+    <div>
+        <input type="number" name="CalorieMin" min="0" max="999" step="1" placeholder="min" />
+        to
+        <input type="number" name="CalorieMax" min="0" max="999" step="1" placeholder="max" />
+    </div>
+</form>
+
+
+
+<!--Bleakwind Buffet's welcome message-->
+<h1 class="display-4">Welcome to Bleakwind Buffet!</h1>
+<p>
+    We at Bleakwind Buffet are proud to bring you authentic
+    fantasy meals straight from the world of Skyrim. Shake the
+    blood off your sword and sake your thirst with one of our old-fashioned
+    sailor sodas. Hack into a Smokehouse Skeleton with your dagger.
+    Or vanquish the the mighty Thalmor Triple Burger! You’ve had a hard
+    adventure and earned your loot, so spend it with us!
+</p>
+
+<!--Label and list of all entree menu items. If there are none to display it will display a 'no results' message-->
+<h2 class="category">Entrees</h2>
+@if (Model.EntreeItems.Count() == 0)
+{
+    <div>
+        ~ No Results ~
+    </div>
+}
+@foreach (IOrderItem entree in Model.EntreeItems)
+{
+    <div class="details">
+        <div class="name">@(entree.ToString() + ": ")</div>
+        <div class="price">Price: @("- $" + entree.Price)</div>
+        <div class="calories">Calories: @("- " + entree.Calories)</div>
+    </div>
+}
+
+<!--Label and list of all drink menu items. If there are none to display it will display a 'no results' message-->
+<h2 class="category">Drinks</h2>
+@if (Model.DrinkItems.Count() == 0)
+{
+    <div>
+        ~ No Results ~
+    </div>
+}
+@foreach (IOrderItem drink in Model.DrinkItems)
+{
+    <div class="details">
+        <div class="name">@(drink.ToString() + ": ")</div>
+        <div class="price">Price: @("- $" + drink.Price)</div>
+        <div class="calories">Calories: @("- " + drink.Calories)</div>
+    </div>
+}
+
+<!--Label and list of all side menu items. If there are none to display it will display a 'no results' message-->
+<h2 class="category">Sides</h2>
+@if (Model.SideItems.Count() == 0)
+{
+    <div>
+        ~ No Results ~
+    </div>
+}
+@foreach (IOrderItem side in Model.SideItems)
+{
+    <div class="details">
+        <div class="name">@(side.ToString() + ": ")</div>
+        <div class="price">Price: @("- $" + side.Price)</div>
+        <div class="calories">Calories: @("- " + side.Calories)</div>
+    </div>
+}
+
+<!--Label for the combo option-->
+<h2 class="category">Create a Combo!</h2>
+<div>Combine any entree, drink, and side for a $1 discount!</div>
+
+<!--Label to display all soda flavors-->
+<h2 class="category">Soda Flavors: </h2>
+<div>
+    <p>Blackberry, Cherry, Grapefruit, Lemon, Peach, Watermelon</p>
 </div>

@@ -58,39 +58,47 @@ namespace BleakwindBuffet.DataTests.UnitTests
             List<IOrderItem> drinkItems = (List<IOrderItem>)Menu.Drinks();
             Assert.Collection(drinkItems,
                 item => Assert.Contains("Small Aretino Apple Juice", item.ToString()),
-                item => Assert.Contains("Small Candlehearth Coffee", item.ToString()),
-                item => Assert.Contains("Small Decaf Candlehearth Coffee", item.ToString()),
-                item => Assert.Contains("Small Markarth Milk", item.ToString()),
-                item => Assert.Contains("Small Blackberry Sailor Soda", item.ToString()),
-                item => Assert.Contains("Small Cherry Sailor Soda", item.ToString()),
-                item => Assert.Contains("Small Grapefruit Sailor Soda", item.ToString()),
-                item => Assert.Contains("Small Lemon Sailor Soda", item.ToString()),
-                item => Assert.Contains("Small Peach Sailor Soda", item.ToString()),
-                item => Assert.Contains("Small Watermelon Sailor Soda", item.ToString()),
-                item => Assert.Contains("Small Warrior Water", item.ToString()),
-
                 item => Assert.Contains("Medium Aretino Apple Juice", item.ToString()),
-                item => Assert.Contains("Medium Candlehearth Coffee", item.ToString()),
-                item => Assert.Contains("Medium Decaf Candlehearth Coffee", item.ToString()),
-                item => Assert.Contains("Medium Markarth Milk", item.ToString()),
-                item => Assert.Contains("Medium Blackberry Sailor Soda", item.ToString()),
-                item => Assert.Contains("Medium Cherry Sailor Soda", item.ToString()),
-                item => Assert.Contains("Medium Grapefruit Sailor Soda", item.ToString()),
-                item => Assert.Contains("Medium Lemon Sailor Soda", item.ToString()),
-                item => Assert.Contains("Medium Peach Sailor Soda", item.ToString()),
-                item => Assert.Contains("Medium Watermelon Sailor Soda", item.ToString()),
-                item => Assert.Contains("Medium Warrior Water", item.ToString()),
-
                 item => Assert.Contains("Large Aretino Apple Juice", item.ToString()),
+
+                item => Assert.Contains("Small Candlehearth Coffee", item.ToString()),
+                item => Assert.Contains("Medium Candlehearth Coffee", item.ToString()),
                 item => Assert.Contains("Large Candlehearth Coffee", item.ToString()),
+
+                item => Assert.Contains("Small Decaf Candlehearth Coffee", item.ToString()),
+                item => Assert.Contains("Medium Decaf Candlehearth Coffee", item.ToString()),
                 item => Assert.Contains("Large Decaf Candlehearth Coffee", item.ToString()),
+
+                item => Assert.Contains("Small Markarth Milk", item.ToString()),
+                item => Assert.Contains("Medium Markarth Milk", item.ToString()),
                 item => Assert.Contains("Large Markarth Milk", item.ToString()),
+
+                item => Assert.Contains("Small Blackberry Sailor Soda", item.ToString()),
+                item => Assert.Contains("Medium Blackberry Sailor Soda", item.ToString()),
                 item => Assert.Contains("Large Blackberry Sailor Soda", item.ToString()),
+
+                item => Assert.Contains("Small Cherry Sailor Soda", item.ToString()),
+                item => Assert.Contains("Medium Cherry Sailor Soda", item.ToString()),
                 item => Assert.Contains("Large Cherry Sailor Soda", item.ToString()),
+
+                item => Assert.Contains("Small Grapefruit Sailor Soda", item.ToString()),
+                item => Assert.Contains("Medium Grapefruit Sailor Soda", item.ToString()),
                 item => Assert.Contains("Large Grapefruit Sailor Soda", item.ToString()),
+
+                item => Assert.Contains("Small Lemon Sailor Soda", item.ToString()),
+                item => Assert.Contains("Medium Lemon Sailor Soda", item.ToString()),
                 item => Assert.Contains("Large Lemon Sailor Soda", item.ToString()),
+
+                item => Assert.Contains("Small Peach Sailor Soda", item.ToString()),
+                item => Assert.Contains("Medium Peach Sailor Soda", item.ToString()),
                 item => Assert.Contains("Large Peach Sailor Soda", item.ToString()),
+
+                item => Assert.Contains("Small Watermelon Sailor Soda", item.ToString()),
+                item => Assert.Contains("Medium Watermelon Sailor Soda", item.ToString()),
                 item => Assert.Contains("Large Watermelon Sailor Soda", item.ToString()),
+
+                item => Assert.Contains("Small Warrior Water", item.ToString()),
+                item => Assert.Contains("Medium Warrior Water", item.ToString()),
                 item => Assert.Contains("Large Warrior Water", item.ToString())
                 );
         }
