@@ -131,6 +131,11 @@ namespace BleakwindBuffet.Data
         }
 
         /// <summary>
+        /// The description of the combo item
+        /// </summary>
+        public string Description => throw new NotImplementedException();
+
+        /// <summary>
         /// Overrides ToString() to return the combo.
         /// </summary>
         /// <returns>Returns the size and name of the drink.</returns>

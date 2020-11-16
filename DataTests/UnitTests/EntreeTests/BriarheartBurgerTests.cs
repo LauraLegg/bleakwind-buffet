@@ -13,7 +13,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
     public class BriarheartBurgerTests
     {
-        
+
         [Fact]
         public void ShouldIncludeBunByDefault()
         {
@@ -110,7 +110,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         public void ShouldReturnCorrectCalories()
         {
             BriarheartBurger burger = new BriarheartBurger();
-            Assert.Equal((uint) 743, burger.Calories);
+            Assert.Equal((uint)743, burger.Calories);
         }
 
         [Theory]
@@ -136,7 +136,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             if (!includePickle) Assert.Contains("Hold pickle", burger.SpecialInstructions);
             else Assert.DoesNotContain("Hold pickle", burger.SpecialInstructions);
-            
+
             if (!includeCheese) Assert.Contains("Hold cheese", burger.SpecialInstructions);
             else Assert.DoesNotContain("Hold cheese", burger.SpecialInstructions);
         }
@@ -277,6 +277,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             {
                 burger.Cheese = false;
             });
+        }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            BriarheartBurger burger = new BriarheartBurger();
+            Assert.True(burger.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            BriarheartBurger burger = new BriarheartBurger();
+            Assert.Equal("Single patty burger on a brioche bun. Comes with ketchup, mustard, pickle, and cheese.", burger.Description);
         }
     }
 }

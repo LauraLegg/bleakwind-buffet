@@ -167,22 +167,30 @@ namespace BleakwindBuffet.Data
         /// <param name="filteredMenu">the filterd menu</param>
         /// <param name="terms">term being searched</param>
         /// <returns></returns>
-        public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> filteredMenu, string terms)
+        public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> filteredMenu, string term)
         {
             List<IOrderItem> results = new List<IOrderItem>();
-
+                        
             // null check
-            if (terms == null) return filteredMenu;
+            if (term == null) return filteredMenu;
+
+            char[] spearator = { ',', ' ' };
+            var terms = term.Split(spearator);
 
             foreach (IOrderItem item in filteredMenu)
             {
-                //item.ToString().Contains(terms), StringComparison.InvariantCultureIgnoreCase
-                if (item.ToString().Contains(terms))
+                foreach (string word in terms)
                 {
-                    results.Add(item);
+                    string menuItem = item.ToString().ToUpper();
+                    string searchTerm = word.ToUpper();
+                    string description = item.Description.ToUpper();
+
+                    if (menuItem.Contains(searchTerm) || description.Contains(searchTerm))
+                    {
+                        results.Add(item);
+                    }
                 }
             }
-
             return results;
         }
 

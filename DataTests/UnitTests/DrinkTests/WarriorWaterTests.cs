@@ -179,5 +179,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 water.Lemon = true;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            WarriorWater drink = new WarriorWater();
+            Assert.True(drink.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            WarriorWater drink = new WarriorWater();
+            Assert.Equal("It’s water. Just water.", drink.Description);
+        }
     }
 }

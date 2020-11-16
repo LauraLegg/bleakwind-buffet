@@ -29,6 +29,11 @@ namespace BleakwindBuffet.Data.Drinks
         public override uint Calories => 0;
 
         /// <summary>
+        /// The description of the Warrior Water
+        /// </summary>
+        public override string Description => "It’s water. Just water.";
+
+        /// <summary>
         /// Private backing variable for Size property
         /// </summary>
         private Size size = Size.Small;

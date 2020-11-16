@@ -236,5 +236,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 ss.Pancake = false;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+            Assert.True(ss.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+            Assert.Equal("Put some meat on those bones with a small stack of pancakes. Includes sausage links, eggs, and hash browns on the side. Topped with the syrup of your choice.", ss.Description);
+        }
     }
 }

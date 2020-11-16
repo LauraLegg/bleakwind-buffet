@@ -236,5 +236,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 omelette.Cheddar = false;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            GardenOrcOmelette omelette = new GardenOrcOmelette();
+            Assert.True(omelette.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            GardenOrcOmelette omelette = new GardenOrcOmelette();
+            Assert.Equal("Vegetarian. Two egg omelette packed with a mix of broccoli, mushrooms, and tomatoes. Topped with cheddar cheese.", omelette.Description);
+        }
     }
 }

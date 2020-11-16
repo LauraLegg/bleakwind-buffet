@@ -28,6 +28,11 @@ namespace BleakwindBuffet.Data.Entrees
         public override uint Calories => 982;
 
         /// <summary>
+        /// The description of the Thugs T-Bone
+        /// </summary>
+        public override string Description => "Juicy T-Bone, not much else to say.";
+
+        /// <summary>
         ///  It has no boolean properties. The SpecialInstructions 
         ///  property should always return an emplty list.
         /// </summary>

@@ -84,9 +84,44 @@ namespace Website.Pages
         {
             SearchTerms = Request.Query["SearchItems"];
             Categories = Request.Query["Categories"];
-            MenuResults = Menu.Search(Menu.FullMenu(), SearchTerms);
-            MenuResults = Menu.FilterByCategory(MenuResults, Categories);
+
+            MenuResults = Menu.FullMenu();
+            //Search bar
+            if (SearchTerms != null)
+            {
+                MenuResults = MenuResults.Where(item =>
+                item != null && item.ToString().Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase) || item.Description.Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase));
+            }
+            //Filter By Categories
+            if (Categories != null && Categories.Length > 0)
+            {
+                var results = new List<IOrderItem>();
+                if (Categories.Contains("Entree"))
+                {
+                    foreach (IOrderItem item in MenuResults.Where(item => item != null && item is Entree))
+                    {
+                        results.Add(item);
+                    }
+                }
+                if (Categories.Contains("Drink"))
+                {
+                    foreach (IOrderItem item in MenuResults.Where(item => item != null && item is Drink))
+                    {
+                        results.Add(item);
+                    }
+                }
+                if (Categories.Contains("Side"))
+                {
+                    foreach (IOrderItem item in MenuResults.Where(item => item != null && item is Side))
+                    {
+                        results.Add(item);
+                    };
+                }
+                MenuResults = results;
+            }
+            //Filter By Price
             MenuResults = Menu.FilterByPrice(MenuResults, PriceMin, PriceMax);
+            //Filter By Calories
             MenuResults = Menu.FilterByCalories(MenuResults, CalorieMin, CalorieMax);
             Organize();
         }

@@ -53,6 +53,11 @@ namespace BleakwindBuffet.Data.Sides
         }
 
         /// <summary>
+        /// The description of the Fried Miraak
+        /// </summary>
+        public override string Description => "Perfectly prepared hash brown pancakes.";
+
+        /// <summary>
         /// Private backing variable for Size property
         /// </summary>
         private Size size = Size.Small;

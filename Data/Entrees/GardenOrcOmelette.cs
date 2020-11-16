@@ -28,6 +28,11 @@ namespace BleakwindBuffet.Data.Entrees
         public override  uint Calories => 404;
 
         /// <summary>
+        /// The description of the Garden Orc Omelette
+        /// </summary>
+        public override string Description => "Vegetarian. Two egg omelette packed with a mix of broccoli, mushrooms, and tomatoes. Topped with cheddar cheese.";
+
+        /// <summary>
         /// Private backing variable for Broccoli property
         /// </summary>
         private bool broccoli = true;

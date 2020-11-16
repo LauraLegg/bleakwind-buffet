@@ -31,5 +31,10 @@ namespace BleakwindBuffet.Data.Entrees
         /// Event that keeps track of when properties are changed
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Stores the description of the entree
+        /// </summary>
+        public abstract string Description { get; }
     }
 }

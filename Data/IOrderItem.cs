@@ -35,5 +35,7 @@ namespace BleakwindBuffet.Data
         /// <remarks> Special instructions will say add or hold an ingredient</remarks>
         /// <value>SpecialInstructions outputs a list of strings.</value>
         List<string> SpecialInstructions { get; }
+
+        string Description { get; }
     }
 }

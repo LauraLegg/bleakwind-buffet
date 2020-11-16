@@ -53,6 +53,11 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
+        /// The description of the Candlehearth Coffee
+        /// </summary>
+        public override string Description => "Fair trade, fresh ground dark roast coffee.";
+
+        /// <summary>
         /// Private backing variable for Size property
         /// </summary>
         private Size size = Size.Small;

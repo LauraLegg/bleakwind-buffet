@@ -53,6 +53,11 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
+        /// The description of the Aretino Apple Juice
+        /// </summary>
+        public override string Description => "Fresh squeezed apple juice.";
+
+        /// <summary>
         /// Private backing variable for Size property
         /// </summary>
         private Size size = Size.Small;

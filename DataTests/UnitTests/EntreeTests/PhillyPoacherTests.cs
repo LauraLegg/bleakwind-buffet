@@ -194,5 +194,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 pp.Roll = false;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            PhillyPoacher pp = new PhillyPoacher();
+            Assert.True(pp.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            PhillyPoacher pp = new PhillyPoacher();
+            Assert.Equal("Cheesesteak sandwich made from grilled sirloin, topped with onions on a fried roll.", pp.Description);
+        }
     }
 }

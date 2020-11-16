@@ -154,5 +154,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 fries.Size = Size.Small;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            DragonbornWaffleFries side = new DragonbornWaffleFries();
+            Assert.True(side.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            DragonbornWaffleFries side = new DragonbornWaffleFries();
+            Assert.Equal("Crispy fried potato waffle fries.", side.Description);
+        }
     }
 }

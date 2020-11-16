@@ -56,8 +56,8 @@
 
 
 <!--Bleakwind Buffet's welcome message-->
-<h1 class="display-4">Welcome to Bleakwind Buffet!</h1>
-<p>
+<h1 class="display">Welcome to Bleakwind Buffet!</h1>
+<p class="display-2">
     We at Bleakwind Buffet are proud to bring you authentic
     fantasy meals straight from the world of Skyrim. Shake the
     blood off your sword and sake your thirst with one of our old-fashioned
@@ -66,56 +66,67 @@
     adventure and earned your loot, so spend it with us!
 </p>
 
-<!--Label and list of all entree menu items. If there are none to display it will display a 'no results' message-->
-<h2 class="category">Entrees</h2>
-@if (Model.EntreeItems.Count() == 0)
-{
-    <div>
-        ~ No Results ~
+<div class="flex-columns">
+    <div class="col">
+        <!--Label and list of all entree menu items. If there are none to display it will display a 'no results' message-->
+        <h2 class="category">Entrees</h2>
+        @if (Model.EntreeItems.Count() == 0)
+        {
+            <div>
+                ~ No Results ~
+            </div>
+        }
+        @foreach (IOrderItem entree in Model.EntreeItems)
+        {
+            <div class="details">
+                <div class="name">@(entree.ToString() + " (" + entree.Calories + ")")</div>
+                <div class="description">@("   " + entree.Description)</div>
+                <div class="price">Price: @("$" + entree.Price)</div>
+            </div>
+        }
     </div>
-}
-@foreach (IOrderItem entree in Model.EntreeItems)
-{
-    <div class="details">
-        <div class="name">@(entree.ToString() + ": ")</div>
-        <div class="price">Price: @("- $" + entree.Price)</div>
-        <div class="calories">Calories: @("- " + entree.Calories)</div>
-    </div>
-}
 
-<!--Label and list of all drink menu items. If there are none to display it will display a 'no results' message-->
-<h2 class="category">Drinks</h2>
-@if (Model.DrinkItems.Count() == 0)
-{
-    <div>
-        ~ No Results ~
+    <div class="col">
+        <!--Label and list of all drink menu items. If there are none to display it will display a 'no results' message-->
+        <h2 class="category">Drinks</h2>
+        @if (Model.DrinkItems.Count() == 0)
+        {
+            <div>
+                ~ No Results ~
+            </div>
+        }
+        @foreach (IOrderItem drink in Model.DrinkItems)
+        {
+            <div class="details">
+                <div class="name">@(drink.ToString() + " (" + drink.Calories + ")")</div>
+                <div class="description">@(drink.Description)</div>
+                <div class="price">Price: @("$" + drink.Price)</div>
+            </div>
+        }
     </div>
-}
-@foreach (IOrderItem drink in Model.DrinkItems)
-{
-    <div class="details">
-        <div class="name">@(drink.ToString() + ": ")</div>
-        <div class="price">Price: @("- $" + drink.Price)</div>
-        <div class="calories">Calories: @("- " + drink.Calories)</div>
-    </div>
-}
 
-<!--Label and list of all side menu items. If there are none to display it will display a 'no results' message-->
-<h2 class="category">Sides</h2>
-@if (Model.SideItems.Count() == 0)
-{
-    <div>
-        ~ No Results ~
+    <div class="col">
+        <!--Label and list of all side menu items. If there are none to display it will display a 'no results' message-->
+        <h2 class="category">Sides</h2>
+        @if (Model.SideItems.Count() == 0)
+        {
+            <div>
+                ~ No Results ~
+            </div>
+        }
+        @foreach (IOrderItem side in Model.SideItems)
+        {
+            <div class="details">
+                <div class="name">@(side.ToString() + " (" +side.Calories + ")")</div>
+                <div class="description">@(side.Description)</div>
+                <div class="price">Price: @("$" + side.Price)</div>
+            </div>
+        }
     </div>
-}
-@foreach (IOrderItem side in Model.SideItems)
-{
-    <div class="details">
-        <div class="name">@(side.ToString() + ": ")</div>
-        <div class="price">Price: @("- $" + side.Price)</div>
-        <div class="calories">Calories: @("- " + side.Calories)</div>
-    </div>
-}
+</div>
+
+<!--Added an extra h1 to create a space between these two things-->
+<h1/>
 
 <!--Label for the combo option-->
 <h2 class="category">Create a Combo!</h2>

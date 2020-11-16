@@ -466,5 +466,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 burger.Egg = false;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+            Assert.True(burger.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            ThalmorTriple burger = new ThalmorTriple();
+            Assert.Equal("Think you are strong enough to take on the Thalmor? Inlcudes two 1/4lb patties with a 1/2lb patty inbetween with ketchup, mustard, pickle, cheese, tomato, lettuce, mayo, bacon, and an egg.", burger.Description);
+        }
     }
 }

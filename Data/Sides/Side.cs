@@ -37,5 +37,10 @@ namespace BleakwindBuffet.Data.Sides
         /// Event that keeps track of when properties are changed
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Stores the description of the side
+        /// </summary>
+        public abstract string Description { get; }
     }
 }

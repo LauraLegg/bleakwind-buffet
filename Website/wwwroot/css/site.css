@@ -70,9 +70,16 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-/*------------------------------------------------------*/
+/* Made the formatting look nicer
+------------------------------------------------------*/
 .display{
     text-align: center;
+    font-family:'Gill Sans';
+}
+
+.display-2 {
+    text-align: center;
+    font-size: medium;
 }
 
 .name{
@@ -81,6 +88,17 @@ body {
 }
 
 .category {
-    margin: 1.5rem;
     text-decoration: underline; /*Makes the name of the category pop out more*/
+    text-align: left;
+}
+
+.flex-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 490px) {
+    .flex-columns {
+        flex-direction: column;
+    }
 }

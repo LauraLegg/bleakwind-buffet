@@ -201,5 +201,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 milk.Ice = true;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            MarkarthMilk drink = new MarkarthMilk();
+            Assert.True(drink.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            MarkarthMilk drink = new MarkarthMilk();
+            Assert.Equal("Hormone-free organic 2% milk.", drink.Description);
+        }
     }
 }

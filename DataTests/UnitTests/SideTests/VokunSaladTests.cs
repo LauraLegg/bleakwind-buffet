@@ -154,5 +154,19 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 salad.Size = Size.Small;
             });
         }
+
+        [Fact]
+        public void ShouldHaveDescription()
+        {
+            VokunSalad side = new VokunSalad();
+            Assert.True(side.Description.Length > 0);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            VokunSalad side = new VokunSalad();
+            Assert.Equal("A seasonal fruit salad of mellons, berries, mango, grape, apple, and oranges.", side.Description);
+        }
     }
 }
