@@ -1,0 +1,9 @@
+//File for making sure website is formatted correctly
+[
+    {
+        "outputFileName": "wwwroot/css/site.min.css",
+        "inputFiles": [
+            "wwwroot/css/site.css"
+        ]
+    }
+]

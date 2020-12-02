@@ -89,8 +89,19 @@ namespace Website.Pages
             //Search bar
             if (SearchTerms != null)
             {
-                MenuResults = MenuResults.Where(item =>
-                item != null && item.ToString().Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase) || item.Description.Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase));
+                List<IOrderItem> results = new List<IOrderItem>();
+                char[] seperator = { ',', ' ' };
+                var terms = SearchTerms.Split(seperator);
+
+                foreach (string word in terms)
+                {
+                    foreach (IOrderItem match in MenuResults.Where(item =>
+                    item != null && item.ToString().Contains(word, StringComparison.InvariantCultureIgnoreCase) || item.Description.Contains(word, StringComparison.InvariantCultureIgnoreCase)))
+                    {
+                        results.Add(match);
+                    }
+                }
+                MenuResults = results;
             }
             //Filter By Categories
             if (Categories != null && Categories.Length > 0)

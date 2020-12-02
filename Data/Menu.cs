@@ -174,21 +174,11 @@ namespace BleakwindBuffet.Data
             // null check
             if (term == null) return filteredMenu;
 
-            char[] spearator = { ',', ' ' };
-            var terms = term.Split(spearator);
-
             foreach (IOrderItem item in filteredMenu)
             {
-                foreach (string word in terms)
+                if (item.ToString().Contains(term))
                 {
-                    string menuItem = item.ToString().ToUpper();
-                    string searchTerm = word.ToUpper();
-                    string description = item.Description.ToUpper();
-
-                    if (menuItem.Contains(searchTerm) || description.Contains(searchTerm))
-                    {
-                        results.Add(item);
-                    }
+                    results.Add(item);
                 }
             }
             return results;
